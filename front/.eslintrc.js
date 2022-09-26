@@ -8,7 +8,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    project: ['tsconfig.json'],
+    tsconfigRootDir: __dirname,
   },
   plugins: ['react', 'prettier'],
-  rules: {},
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'off',
+  },
 };
