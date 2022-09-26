@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { FunctionComponent, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 
 import ClientLogin from '../../components/ClientLogin';
 import EmployeeLogin from '../../components/EmployeeLogin';
@@ -7,13 +7,22 @@ import { ButtonsClassNames, RoleText } from './constants';
 import { UserType } from '../../types';
 import Logo from '../../images/lorenzo-tickets-logo.png';
 
-const Connection: FunctionComponent = () => {
+interface ConnectionProps {
+  logout: () => void;
+}
+
+const Connection = ({ logout }: ConnectionProps): ReactElement => {
   const [error, setError] = useState(false);
   const [userType, setUserType] = useState(UserType.CLIENT);
 
   const { EMPLOYEE, CLIENT } = UserType;
   const { selected, notSelected } = ButtonsClassNames;
   const { clientText, employeeText } = RoleText;
+
+  useEffect(() => {
+    // Nettoyage du localStorage afin de ne pas avoir de soucis si l'utilisateur ne c'est pas déconnecté
+    logout();
+  }, []);
 
   return (
     <div className="connection-container">

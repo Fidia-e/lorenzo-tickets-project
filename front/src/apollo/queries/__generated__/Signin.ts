@@ -3,20 +3,20 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { UserType, Role } from '../../__generated__/globalTypes';
+import { UserType, Role } from "./../../../../__generated__/globalTypes";
 
 // ====================================================
 // GraphQL query operation: Signin
 // ====================================================
 
 export interface Signin_signin_token {
-  __typename: 'Token';
+  __typename: "Token";
   token: string;
   expiresIn: string;
 }
 
 export interface Signin_signin {
-  __typename: 'UserConnected';
+  __typename: "UserConnected";
   id: any;
   firstname: string | null;
   lastname: string | null;

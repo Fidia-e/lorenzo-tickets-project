@@ -38,7 +38,7 @@ const App: FC = () => {
       <Routes>
         {/* Si l'utilisateur n'est pas connecté, il n'aura accès qu'a la page 403 
           Les routes pour les pages 404 & 403 sont tout le temps disponible afin d'en faire la démonstration rapidement */}
-        <Route path="/" element={<Connection />} />
+        <Route path="/" element={<Connection logout={logout} />} />
         <Route path="/accueil" element={user?.logged ? <Home /> : <Error403 />} />
         <Route path="/creer-un-ticket" element={user?.logged ? <AddTicket /> : <Error403 />} />
         <Route path="/tickets" element={user?.logged ? <Tickets /> : <Error403 />} />

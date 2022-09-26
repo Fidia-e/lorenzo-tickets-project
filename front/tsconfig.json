@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "jest.config.js"],
+  "include": ["src", "jest.config.js", "src/apollo/__generated__"],
   "types": ["node", "jest", "@testing-library/jest-dom"]
 }

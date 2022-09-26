@@ -8,7 +8,7 @@ const {
 // Types
 const Client = require('./client');
 const Ticket = require('./ticket');
-// const Message = require('./message');
+const Message = require('./message');
 const Employee = require('./employee');
 
 // Queries et Mutations
@@ -25,6 +25,8 @@ module.exports = {
   Client,
 
   Ticket,
+
+  Message,
 
   Employee,
 

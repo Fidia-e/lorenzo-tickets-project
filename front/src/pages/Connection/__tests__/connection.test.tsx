@@ -15,7 +15,7 @@ describe('<Connection />', () => {
       <ApolloProvider client={apolloClient}>
         <Router>
           <Routes>
-            <Route path="/" element={<Connection />} />
+            <Route path="/" element={<Connection logout={jest.fn()} />} />
           </Routes>
         </Router>
       </ApolloProvider>
@@ -31,7 +31,7 @@ describe('<Connection />', () => {
       <ApolloProvider client={apolloClient}>
         <Router>
           <Routes>
-            <Route path="/" element={<Connection />} />
+            <Route path="/" element={<Connection logout={jest.fn()} />} />
           </Routes>
         </Router>
       </ApolloProvider>
@@ -56,7 +56,7 @@ describe('<Connection />', () => {
       <ApolloProvider client={apolloClient}>
         <Router>
           <Routes>
-            <Route path="/" element={<Connection />} />
+            <Route path="/" element={<Connection logout={jest.fn()} />} />
           </Routes>
         </Router>
       </ApolloProvider>
