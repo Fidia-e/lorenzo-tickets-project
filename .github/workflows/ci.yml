@@ -24,3 +24,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run tests inside front folder
         run: cd front && npm test
+
+      # Runs a set of commands using the runners shell
+      - name: Run eslint inside front folder
+        run: cd front && npm run lint
