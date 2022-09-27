@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import './App.css';
+import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 
 import Connection from './pages/Connection';
