@@ -1,0 +1,25 @@
+enum Status {
+  Ouvert
+  Fermé
+  En cours
+}
+
+type Ticket {
+  id: PositiveInt!
+  title: String!
+  content: String!
+  status: Status!
+  client_id: PositiveInt!
+  client: Client
+  created_at: DateTime!
+  updated_at: DateTime
+  employee: [Employee]
+  message: [Message]
+
+
+input TicketInput {
+  title: String!
+  content: String!
+  status: Status!
+  client_id: PositiveInt!
+}

@@ -1,0 +1,25 @@
+enum Role {
+  Admin
+  Lead
+  Intervenor
+}
+
+type Employee {
+  id: PositiveInt!
+  firstname: String!
+  lastname: String!
+  email: EmailAddress!
+  password: String!
+  role: Role!
+  ticket: [Ticket]
+  created_at: DateTime!
+  updated_at: DateTime
+}
+
+input EmployeeInput {
+  firstname: String!
+  lastname: String!
+  email: EmailAddress!
+  password: String!
+  role: Role!
+}

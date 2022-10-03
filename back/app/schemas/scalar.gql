@@ -1,0 +1,8 @@
+"Adresse email standard"
+scalar EmailAddress
+
+"Format ISO 8601 d'un instant"
+scalar DateTime
+
+"Entier supérieur à 0"
+scalar PositiveInt

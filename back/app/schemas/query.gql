@@ -1,0 +1,33 @@
+type Query {
+  # ---------------------------------  Tickets  ----------------------------------
+
+  "Liste de tous les tickets" # pour l'admin
+  getAllTickets(skip: Int, take: Int): [Ticket!]!
+
+  "Récupération d'un ticket par son id"
+  getTicketById(id: Int!): Ticket
+
+  "Récupération de tous les tickets par leur client_id"
+  getAllTicketsByClientId(id: Int!): [Ticket!]
+
+  "Récupération de tous les tickets par leur employee_id"
+  getAllTicketsByEmployeeId(id: Int!): [Ticket!]
+
+  # ---------------------------------  Messages  ----------------------------------
+
+  "Liste de tous les messages" # pour l'admin
+  getAllMessages(skip: Int, take: Int): [Message!]!
+
+  "Récupération de tous les messages par leur ticket_id"
+  getAllMessagesByTicketId(id: Int!): [Message!]
+
+  # ---------------------------------  Users  ----------------------------------
+
+  "Liste des utilisateurs" # pour l'admin
+  getAllUsers(skip: Int, take: Int): [User!]!
+
+  # ---------------------------------  Clients  ----------------------------------
+
+  "Liste de tous les clients" # pour l'admin
+  getAllClients(skip: Int, take: Int): [Client!]!
+}
