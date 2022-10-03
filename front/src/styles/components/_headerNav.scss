@@ -1,18 +1,23 @@
-.header {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: aqua;
-  height: $s-header;
+.active {
+  color: #f0f;
 }
 
-.burgerMenuButton {
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   position: absolute;
+  height: calc(100vh - $s-header);
+  margin-top: $s-header;
+  top: 0;
+  bottom: 0;
+  left: 0;
   right: 0;
+  background-color: brown;
+  z-index: 999;
 }
+
 /*----------------------------------------------------------------------------------
 -------------------------------------  MOBILE --------------------------------------
 ----------------------------------------------------------------------------------*/
@@ -28,8 +33,10 @@
 }
 
 @media (min-width: 899px) {
-  .burgerMenuButton {
-    display: none;
+  .nav {
+    height: $s-header;
+    margin-top: 0;
+    flex-direction: row;
   }
 }
 
