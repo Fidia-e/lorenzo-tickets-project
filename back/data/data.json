@@ -1,0 +1,185 @@
+{
+  "ticket": [
+    {
+      "id": 1,
+      "title": "Ticket 1",
+      "content": "Ticket 1 description",
+      "status": "Ouvert",
+      "client_id": 1,
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 2,
+      "title": "Ticket 2",
+      "content": "Ticket 2 description",
+      "status": "Fermé",
+      "client_id": 2,
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 3,
+      "title": "Ticket 3",
+      "content": "Ticket 3 description",
+      "status": "En cours",
+      "client_id": 3,
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 4,
+      "title": "Ticket 4",
+      "content": "Ticket 4 description",
+      "status": "Ouvert",
+      "client_id": 4,
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 5,
+      "title": "Ticket 5",
+      "content": "Ticket 5 description",
+      "status": "Ouvert",
+      "client_id": 5,
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    }
+  ],
+  "employee": [
+    {
+      "id": 1,
+      "firstname": "Employee 1",
+      "lastname": "Employee 1",
+      "email": "employee1@test.test",
+      "password": "1234",
+      "role": "Admin",
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 2,
+      "firstname": "Employee 2",
+      "lastname": "Employee 2",
+      "email": "employee2@test.test",
+      "password": "1234",
+      "role": "Intervenor",
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 3,
+      "firstname": "Employee 3",
+      "lastname": "Employee 3",
+      "email": "employee3@test.test",
+      "password": "1234",
+      "role": "Intervenor",
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 4,
+      "firstname": "Employee 4",
+      "lastname": "Employee 4",
+      "email": "employee4@test.test",
+      "password": "1234",
+      "role": "Lead",
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 5,
+      "firstname": "Employee 5",
+      "lastname": "Employee 5",
+      "email": "employee5@test.test",
+      "password": "1234",
+      "role": "Intervenor",
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    }
+  ],
+  "client": [
+    {
+      "id": 1,
+      "email": "client1@test.test",
+      "company": "Company 1",
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 2,
+      "email": "client2@test.test",
+      "company": "Company 2",
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 3,
+      "email": "client3@test.test",
+      "company": "Company 3",
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 4,
+      "email": "client4@test.test",
+      "company": "Company 4",
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 5,
+      "email": "client5@test.test",
+      "company": "Company 5",
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    }
+  ],
+  "message": [
+    {
+      "id": 1,
+      "content": "Osef de ca en vrai, bah oui 1",
+      "ticket_id": 1,
+      "employee_id": 1,
+      "client_id": 1,
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 2,
+      "content": "Message 2",
+      "ticket_id": 2,
+      "employee_id": 2,
+      "client_id": 2,
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 3,
+      "content": "Message lorem quebec kaamelott 3",
+      "ticket_id": 3,
+      "employee_id": 3,
+      "client_id": 3,
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 4,
+      "content": "Message blabla 4",
+      "ticket_id": 4,
+      "employee_id": 4,
+      "client_id": 4,
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    },
+    {
+      "id": 5,
+      "content": "Message content 5",
+      "ticket_id": 5,
+      "employee_id": 5,
+      "client_id": 5,
+      "created_at": "2018-01-01 00:00:00",
+      "updated_at": "2018-01-01 00:00:00"
+    }
+  ]
+}
