@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "initDB": "psql postgres -f ./data/init.sql; npm run resetDB",
-    "resetDB": "psql dev -d lorenzo_tickets -f ./data/structure.sql; DEBUG=seeding node data/seeding.js"
+    "resetDB": "psql dev -d lorenzo_tickets -f ./data/structure.sql; psql dev -d lorenzo_tickets -f ./data/data.sql"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +20,6 @@
     "pg": "^8.8.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.5.0",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "bunyan": "^1.8.15",
     "debug": "^4.3.4",

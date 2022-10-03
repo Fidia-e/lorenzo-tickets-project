@@ -33,9 +33,9 @@ CREATe TABLE "client" (
 CREATE TABLE "message" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "content" TEXT NOT NULL,
-    "client_id" INT NOT NULL,
-    "employee_id" INT NOT NULL,
     "ticket_id" INT NOT NULL,
+    "client_id" INT,
+    "employee_id" INT,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
 );
