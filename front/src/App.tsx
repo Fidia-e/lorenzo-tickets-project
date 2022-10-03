@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 
 import Connection from './pages/Connection';
+import './styles/index.scss';
 
 const App: FC = () => (
   <div className="App">
