@@ -19,6 +19,7 @@ import LegalMentions from './pages/LegalMentions';
 import Error404 from './pages/Error404';
 import Error403 from './pages/Error403';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 const App: FC = () => {
   const { pathname } = useLocation();
@@ -44,6 +45,7 @@ const App: FC = () => {
         <Route path="*" element={<Error404 />} />
         <Route path="/403" element={<Error403 />} />
       </Routes>
+      {pathname !== '/' && <Footer />}
     </div>
   );
 };
