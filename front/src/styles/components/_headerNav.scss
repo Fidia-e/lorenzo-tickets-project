@@ -2,12 +2,12 @@
   color: #f0f;
 }
 
-.nav {
+.nav-header {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   height: calc(100vh - $s-header);
   margin-top: $s-header;
   top: 0;
@@ -33,7 +33,7 @@
 }
 
 @media (min-width: 899px) {
-  .nav {
+  .nav-header {
     height: $s-header;
     margin-top: 0;
     flex-direction: row;

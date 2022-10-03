@@ -42,7 +42,7 @@ const Header: FunctionComponent = () => {
       <button className="burgerMenuButton" onClick={handleBurgerMenuClick}>
         {isNavVisible ? 'close' : 'open'}
       </button>
-      {isNavVisible && <HeaderNav />}
+      {isNavVisible && <HeaderNav setIsNavVisible={setIsNavVisible} />}
     </div>
   );
 };
