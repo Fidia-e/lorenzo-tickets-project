@@ -1,18 +1,6 @@
-.header {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: aqua;
-  height: $s-header;
-}
+# All media
 
-.burgerMenuButton {
-  position: absolute;
-  right: 0;
-}
+```css
 /*----------------------------------------------------------------------------------
 -------------------------------------  MOBILE --------------------------------------
 ----------------------------------------------------------------------------------*/
@@ -28,9 +16,6 @@
 }
 
 @media (min-width: 899px) {
-  .burgerMenuButton {
-    display: none;
-  }
 }
 
 /*----------------------------------------------------------------------------------
@@ -39,3 +24,4 @@
 
 @media (min-width: 1199px) {
 }
+```
