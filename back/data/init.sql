@@ -1,0 +1,7 @@
+
+DROP DATABASE IF EXISTS lorenzo_tickets;
+DROP ROLE IF EXISTS dev;
+
+CREATE ROLE dev WITH LOGIN PASSWORD 'dev';
+CREATE DATABASE lorenzo_tickets OWNER dev;
+

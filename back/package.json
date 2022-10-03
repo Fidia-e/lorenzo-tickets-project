@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "initDB": "psql postgres -f ./data/init.sql; npm run resetDB",
+    "resetDB": "psql dev -d lorenzo_tickets -f ./data/structure.sql; DEBUG=seeding node data/seeding.js"
   },
   "keywords": [],
   "author": "",
@@ -14,10 +16,14 @@
     "dataloader": "^2.1.0",
     "datasource-sql": "^2.0.1",
     "dotenv": "^16.0.2",
-    "graphql": "^16.6.0"
+    "graphql": "^16.6.0",
+    "pg": "^8.8.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "bunyan": "^1.8.15",
+    "debug": "^4.3.4",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
