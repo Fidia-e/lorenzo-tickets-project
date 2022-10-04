@@ -1,0 +1,19 @@
+type Message {
+  id: PositiveInt!
+  content: String!
+  ticket_id: PositiveInt!
+  client_id: PositiveInt
+  employee_id: PositiveInt
+  ticket: Ticket
+  client: Client
+  employee: Employee
+  created_at: DateTime!
+  updated_at: DateTime
+}
+
+input MessageInput {
+  content: String!
+  ticket_id: PositiveInt!
+  client_id: PositiveInt
+  employee_id: PositiveInt
+}
