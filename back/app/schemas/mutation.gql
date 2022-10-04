@@ -1,26 +1,26 @@
 "Ajouter/modifier/supprimer des données"
 type Mutation {
-  # ---------------------------------  Ticket  ----------------------------------
-  addTicket(input: TicketInput): Ticket
-  readTicket(id: ID!): Ticket
-  updateTicket(id: ID!, input: TicketInput): Ticket
-  deleteTicket(input: TicketInput): Ticket
+  # # ---------------------------------  Ticket  ----------------------------------
+  # addTicket(input: TicketInput): Ticket
+  # readTicket(id: PositiveInt!): Ticket
+  # updateTicket(id: PositiveInt!, input: TicketInput): Ticket
+  # deleteTicket(input: TicketInput): Ticket
 
-  # ---------------------------------  Client  ----------------------------------
-  addClient(input: ClientInput): Client
-  readClient(id: ID!): Client
-  updateClient(id: ID!, input: ClientInput): Client
-  deleteClient(input: ClientInput): Client
+  # # ---------------------------------  Client  ----------------------------------
+  # addClient(input: ClientInput): Client
+  # readClient(id: PositiveInt!): Client
+  # updateClient(id: PositiveInt!, input: ClientInput): Client
+  # deleteClient(input: ClientInput): Client
 
-  # ---------------------------------  Message  ----------------------------------
-  addMessage(input: MessageInput): Message
-  readMessage(id: ID!): Message
-  updateMessage(id: ID!, input: MessageInput): Message
-  deleteMessage(input: MessageInput): Message
+  # # ---------------------------------  Message  ----------------------------------
+  # addMessage(input: MessageInput): Message
+  # readMessage(id: PositiveInt!): Message
+  # updateMessage(id: PositiveInt!, input: MessageInput): Message
+  # deleteMessage(input: MessageInput): Message
 
-  # ---------------------------------  Employee  ----------------------------------
-  addEmployee(input: EmployeeInput): Employee
-  readEmployee(id: ID!): Employee
-  updateEmployee(id: ID!, input: EmployeeInput): Employee
-  deleteEmployee(input: EmployeeInput): Employee
+  # # ---------------------------------  Employee  ----------------------------------
+  # addEmployee(input: EmployeeInput): Employee
+  # readEmployee(id: PositiveInt!): Employee
+  # updateEmployee(id: PositiveInt!, input: EmployeeInput): Employee
+  # deleteEmployee(input: EmployeeInput): Employee
 }

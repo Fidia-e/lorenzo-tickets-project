@@ -1,5 +1,5 @@
 const { SQLDataSource } = require('datasource-sql');
-const DataLoader = require('dataloader');
+// const DataLoader = require('dataloader');
 
 const SECONDS = 10; // par défaut 5 secondes, donc on le passe à 10
 
@@ -38,72 +38,68 @@ class CoreSQLDataSource extends SQLDataSource {
     return result;
   }
 
-  async findByPk(id) {
-    /*
-      Ici plutôt que de faire la requête directement
-      On passe l'id au DataLoader qui va le stocker
-      Et décharger toute la liste d'id au moment approprié
-      et redistribuer à chaque appelant les données demandées.
-    */
+  // async findByPk(id) {
+  //   /*
+  //     Ici plutôt que de faire la requête directement
+  //     On passe l'id au DataLoader qui va le stocker
+  //     Et décharger toute la liste d'id au moment approprié
+  //     et redistribuer à chaque appelant les données demandées.
+  //   */
 
-    if (process.env.DATALOADER_ENABLED) {
-      return this.idLoader.load(id);
-    }
+  //   if (process.env.DATALOADER_ENABLED) {
+  //     return this.idLoader.load(id);
+  //   }
 
-    const query = this.knex(this.tableName).connection(this.establishedConnection).select('*').where({ id });
+  //   const query = this.knex(this.tableName).connection(this.establishedConnection).select('*').where({ id });
 
-    const result = await (process.env.CACHE_ENABLED ? query.cache(SECONDS) : query);
+  //   const result = await (process.env.CACHE_ENABLED ? query.cache(SECONDS) : query);
 
-    return result[0];
-  }
+  //   return result[0];
+  // }
 
-  async insert(data) {
-    const result = await this.knex(this.tableName).connection(this.establishedConnection).insert(data).returning('*');
+  // async insert(data) {
+  //   const result = await this.knex(this.tableName).connection(this.establishedConnection).insert(data).returning('*');
 
-    return result[0];
-  }
+  //   return result[0];
+  // }
 
-  async update({ id }, inputData) {
-    const result = await this.knex(this.tableName)
-      .connection(this.establishedConnection)
-      .where({ id })
-      .update({ ...inputData, updated_at: new Date() })
-      .returning('*');
+  // async update({ id }, inputData) {
+  //   const result = await this.knex(this.tableName)
+  //     .connection(this.establishedConnection)
+  //     .where({ id })
+  //     .update({ ...inputData, updated_at: new Date() })
+  //     .returning('*');
 
-    return result;
-  }
+  //   return result;
+  // }
 
-  async delete(id) {
-    const result = await this.knex(this.tableName).connection(this.establishedConnection).where({ id }).delete();
+  // async delete(id) {
+  //   const result = await this.knex(this.tableName).connection(this.establishedConnection).where({ id }).delete();
 
-    return result;
-  }
+  //   return result;
+  // }
 
-  async findByPkBulk(ids) {
-    const query = this.knex(this.tableName).connection(this.establishedConnection).select('*').whereIn('id', ids);
+  // async findByPkBulk(ids) {
+  //   const query = this.knex(this.tableName).connection(this.establishedConnection).select('*').whereIn('id', ids);
 
-    const result = await (process.env.CACHE_ENABLED ? query.cache(SECONDS) : query);
+  //   const result = await (process.env.CACHE_ENABLED ? query.cache(SECONDS) : query);
 
-    return result;
-  }
+  //   return result;
+  // }
 
-  idLoader = new DataLoader(async ids => {
-    const intIds = ids.map(id => parseInt(id, 10));
-    /*
-      On appelle donc la méthode qui permet de récupérer
-      un ensemble de catégories via leurs ids
-    */
-    const records = await this.findByPkBulk(intIds);
+  // idLoader = new DataLoader(async ids => {
+  //   const intIds = ids.map(id => parseInt(id, 10));
+  //   const records = await this.findByPkBulk(intIds);
 
-    /*
-      Il est indispensable de retourner les id dans
-      le même ordre que ce qui nous est passé en paramètre
-      Les fonctions SQL IN / ANY ne nous garantissent
-      pas le même ordre que ce qui est passé en requête
-      On utilise donc la fonction map sur le tableau d'entrée pour réordonner les objets récupérés
-    */
-    return intIds.map(id => records.find(record => record.id === id));
-  });
+  //   /*
+  //     Il est indispensable de retourner les id dans
+  //     le même ordre que ce qui nous est passé en paramètre
+  //     Les fonctions SQL IN / ANY ne nous garantissent
+  //     pas le même ordre que ce qui est passé en requête
+  //     On utilise donc la fonction map sur le tableau d'entrée pour réordonner les objets récupérés
+  //   */
+  //   return intIds.map(id => records.find(record => record.id === id));
+  // });
 }
 
 module.exports = CoreSQLDataSource;

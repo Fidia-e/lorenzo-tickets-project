@@ -6,7 +6,6 @@ type Message {
   employee_id: PositiveInt
   ticket: Ticket
   client: Client
-  employee: Employee
   created_at: DateTime!
   updated_at: DateTime
 }

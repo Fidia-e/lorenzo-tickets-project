@@ -22,7 +22,7 @@ if (!['production', 'test'].includes(process.env.NODE_ENV)) {
 }
 
 const logger = bunyan.createLogger({
-  name: 'base-rest-api',
+  name: 'myapp',
   streams,
 });
 
