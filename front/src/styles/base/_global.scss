@@ -1,0 +1,11 @@
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+.app {
+  position: relative;
+  display: grid;
+  min-height: calc(100vh - $s-footer);
+  grid-template-rows: $s-header auto 0;
+}
