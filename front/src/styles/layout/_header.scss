@@ -1,11 +1,10 @@
 .header {
   display: flex;
   justify-content: center;
-  position: relative;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   background-color: aqua;
+  grid-row-start: 1;
   height: $s-header;
 }
 
