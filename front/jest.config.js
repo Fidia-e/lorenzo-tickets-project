@@ -8,6 +8,7 @@ const config = {
   modulePaths: ['<rootdir>/src'],
   transformIgnorePatterns: ['node_modules'],
   resetMocks: true,
+  watchAll: false,
 };
 
 module.exports = config;

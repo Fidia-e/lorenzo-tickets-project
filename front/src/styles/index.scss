@@ -6,8 +6,8 @@
 // layout
 @import 'layout/header', 'layout/footer';
 
-//pages
+// pages
 @import 'pages/connection', 'pages/GTCU';
 
 // components
-@import 'components/headerNav';
+@import 'components/headerNav', 'components/submitButton', 'components/field', 'components/roleChoiceButton';

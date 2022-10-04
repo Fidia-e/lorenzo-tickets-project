@@ -1,0 +1,14 @@
+.role-choice-button {
+  background-color: $c-background;
+  padding: 0.8em;
+  margin: 0.5em;
+
+  &-selected {
+    border-bottom: $c-selected solid 3px;
+    background-color: $c-frame;
+    color: $c-selected;
+    padding: 0.8em;
+    margin: 0.5em;
+    font-weight: bold;
+  }
+}
