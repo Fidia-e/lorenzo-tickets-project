@@ -13,11 +13,11 @@ INSERT INTO "employee" ("firstname", "lastname", "email", "password", "role") VA
 ('Prénom employee 5', 'Nom employee 5', 'employee5@test.test', '1234', 'Intervenor');
 
 INSERT INTO "ticket" ("title", "content", "status", "client_id") VALUES 
-('Titre Ticket 1', 'Ticket content 1', 'Ouvert', 1),
-('Titre Ticket 2', 'Ticket content 2', 'Fermé', 2),
-('Titre Ticket 3', 'Ticket content 3', 'En cours', 3),
-('Titre Ticket 4', 'Ticket content 4', 'Ouvert', 4),
-('Titre Ticket 5', 'Ticket content 5', 'Ouvert', 5);
+('Titre Ticket 1', 'Ticket content 1', 'Open', 1),
+('Titre Ticket 2', 'Ticket content 2', 'Closed', 2),
+('Titre Ticket 3', 'Ticket content 3', 'Underway', 3),
+('Titre Ticket 4', 'Ticket content 4', 'Open', 4),
+('Titre Ticket 5', 'Ticket content 5', 'Open', 5);
 
 INSERT INTO "message" ("content", "ticket_id", "client_id", "employee_id") VALUES 
 ('Message content 1', 1, NULL, 1),

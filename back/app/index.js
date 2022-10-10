@@ -1,11 +1,13 @@
+const depthLimit = require('graphql-depth-limit');
+
 const db = require('./db/pg');
 const typeDefs = require('./schemas');
 const resolvers = require('./resolvers');
-const logger = require('./helper/logger');
+const logger = require('./helpers/logger');
 
+const ClientDatasource = require('./datasources/client');
 const TicketDatasource = require('./datasources/ticket');
 const MessageDatasource = require('./datasources/message');
-const ClientDatasource = require('./datasources/client');
 const EmployeeDatasource = require('./datasources/employee');
 
 const knexConfig = {
@@ -17,9 +19,9 @@ module.exports = {
   typeDefs,
   resolvers,
   dataSources: () => ({
+    client: new ClientDatasource(knexConfig),
     ticket: new TicketDatasource(knexConfig),
     message: new MessageDatasource(knexConfig),
-    client: new ClientDatasource(knexConfig),
     employee: new EmployeeDatasource(knexConfig),
   }),
   formatError: err => {
@@ -28,4 +30,5 @@ module.exports = {
 
     return err.message;
   },
+  validationRules: [depthLimit(5)],
 };

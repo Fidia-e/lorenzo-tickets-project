@@ -1,3 +1,5 @@
+-- SQLBook: Code
+-- Active: 1664888159294@@127.0.0.1@5432@lorenzo_tickets
 BEGIN;
 
 DROP TABLE IF EXISTS 
@@ -8,7 +10,7 @@ DROP TABLE IF EXISTS
 
 DROP TYPE IF EXISTS "ticket_status", "employee_role";
 
-CREATE TYPE ticket_status AS ENUM ('Ouvert', 'En cours', 'Fermé');
+CREATE TYPE ticket_status AS ENUM ('Open', 'Closed', 'Underway');
 CREATE TYPE employee_role AS ENUM ('Intervenor', 'Lead', 'Admin');
 
 
@@ -16,7 +18,7 @@ CREATE TABLE "ticket" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "title" TEXT NOT NULL,
     "content" TEXT NOT NULL,
-    "status" ticket_status NOT NULL DEFAULT 'Ouvert',
+    "status" ticket_status NOT NULL DEFAULT 'Open',
     "client_id" INT NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
