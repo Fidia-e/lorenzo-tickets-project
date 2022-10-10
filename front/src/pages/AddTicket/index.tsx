@@ -1,6 +1,7 @@
 import { FunctionComponent, useState, FormEvent } from 'react';
 
 import Field from '../../components/Field';
+import FieldLongText from '../../components/FieldLongText';
 import SubmitButton from '../../components/SubmitButton';
 
 import '../../styles/index.scss';
@@ -25,11 +26,10 @@ const AddTicket: FunctionComponent = () => {
           value={title}
           updateField={setTitle}
         />
-        <Field
+        <FieldLongText
           identifier="ticket-content"
-          placeholder=""
+          placeholder="Décrivez votre problème"
           label="Description"
-          type="text"
           value={content}
           updateField={setContent}
         />
