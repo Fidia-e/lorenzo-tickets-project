@@ -11,12 +11,12 @@ const AddTicket: FunctionComponent = () => {
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    console.log('create ticket', event);
+    console.log('add ticket', event);
   };
 
   return (
-    <div className="create-ticket-form-container">
-      <form className="create-ticket-form" onSubmit={handleSubmit}>
+    <div className="add-ticket-form-container">
+      <form className="add-ticket-form" onSubmit={handleSubmit}>
         <Field
           identifier="ticket-title"
           placeholder=""
