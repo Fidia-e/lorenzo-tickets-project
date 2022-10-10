@@ -5,17 +5,20 @@
 
 const { gql } = require('apollo-server');
 const { readFileSync } = require('fs');
+const path = require('path');
 
 // Types
 const client = readFileSync(path.join(__dirname, './client.gql'));
-const employee = readFileSync(path.join(__dirname, './employee.gql'));
 const ticket = readFileSync(path.join(__dirname, './ticket.gql'));
 const message = readFileSync(path.join(__dirname, './message.gql'));
-const scalar = readFileSync(path.join(__dirname, './scalar.gql'));
+const employee = readFileSync(path.join(__dirname, './employee.gql'));
 
-// Query et mutations
+// Scalars
+const scalars = readFileSync(path.join(__dirname, './scalars.gql'));
+
+// Queries et mutations
 const query = readFileSync(path.join(__dirname, './query.gql'));
-const mutation = readFileSync(path.join(__dirname, './mutation.gql'));
+// const mutation = readFileSync(path.join(__dirname, './mutation.gql'));
 
 /*
   Les gabarits étiquetés (tagged templates)
@@ -25,19 +28,17 @@ const mutation = readFileSync(path.join(__dirname, './mutation.gql'));
 */
 
 const schema = gql`
+  ${scalars}
+
   ${query}
 
-  ${mutation}
-
   ${client}
-
-  ${employee}
 
   ${ticket}
 
   ${message}
 
-  ${scalar}
+  ${employee}
 `;
 
 module.exports = schema;

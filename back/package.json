@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "initDB": "psql postgres -f ./data/init.sql; npm run resetDB",
     "resetDB": "psql dev -d lorenzo_tickets -f ./data/structure.sql; psql dev -d lorenzo_tickets -f ./data/data.sql",
-    "dev": "DEBUG=*,-express*,-body-parser*,-nodemon* npx nodemon --ext 'js,gql'",
-    "devCache": "CACHE_ENABLED=true DEBUG=*,-nodemon* npx nodemon --ext 'js,gql'",
-    "devDataloader": "DATALOADER_ENABLED=true DEBUG=*,-nodemon* npx nodemon --ext 'js,gql'",
-    "devCacheDataloader": "CACHE_ENABLED=true DATALOADER_ENABLED=true DEBUG=*,-nodemon* npx nodemon --ext 'js,gql'"
+    "dev": "DEBUG=*,-express*,-body-parser*,-nodemon* CACHE_ENABLED=true DATALOADER_ENABLED=true npx nodemon --ext 'js,gql'",
+    "devCache": "CACHE_ENABLED=true DEBUG=*,-express*,-body-parser*,-nodemon* npx nodemon --ext 'js,gql'",
+    "devDataloader": "DATALOADER_ENABLED=true DEBUG=*,-express*,-body-parser*,-nodemon* npx nodemon --ext 'js,gql'",
+    "devCacheDataloader": "CACHE_ENABLED=true DATALOADER_ENABLED=true DEBUG=*,-express*,-nodemon* npx nodemon --ext 'js,gql'"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,7 @@
     "datasource-sql": "^2.0.1",
     "dotenv": "^16.0.2",
     "graphql": "^16.6.0",
+    "graphql-depth-limit": "^1.1.0",
     "graphql-scalars": "^1.18.0",
     "joi": "^17.6.2",
     "jsonwebtoken": "^8.5.1",

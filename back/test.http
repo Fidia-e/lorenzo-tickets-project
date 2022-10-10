@@ -1,0 +1,27 @@
+@endpoint = http://localhost:{{$dotenv PORT}}/graphql
+
+### Récupération de la liste des clients
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetAllClients{
+  getAllClients {
+    id
+    email
+    company
+  }
+}
+
+### Récupération de la liste des messages
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetAllMessages{
+  getAllMessages {
+    id
+    content
+    ticket_id
+  }
+}

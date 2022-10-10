@@ -1,7 +1,7 @@
 enum Status {
-  Ouvert
-  Fermé
-  En cours
+  Open
+  Closed
+  Underway
 }
 
 type Ticket {
@@ -13,9 +13,9 @@ type Ticket {
   client: Client
   created_at: DateTime!
   updated_at: DateTime
-  employee: [Employee]
-  message: [Message]
-
+  messages: [Message]
+  employees: [Employee]
+}
 
 input TicketInput {
   title: String!
