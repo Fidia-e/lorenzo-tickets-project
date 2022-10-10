@@ -1,4 +1,4 @@
-.create-ticket-form {
+.add-ticket-form {
   display: flex;
   flex-direction: column;
 
@@ -36,7 +36,7 @@
 }
 
 @media (min-width: 899px) {
-  .create-ticket-form {
+  .add-ticket-form {
     &-container {
       width: 40%;
     }
