@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react';
 import { useParams } from 'react-router-dom';
-import '../../styles/index.scss';
 
 const Ticket: FunctionComponent = () => {
   const { id } = useParams();

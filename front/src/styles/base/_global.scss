@@ -1,11 +1,58 @@
-body {
-  min-height: 100vh;
-  position: relative;
+/*----------------------------------------------------------------------------------
+-------------------------------------  MOBILE --------------------------------------
+----------------------------------------------------------------------------------*/
+
+@media (min-width: 320px) {
+  body {
+    min-height: 100vh;
+    position: relative;
+    background-color: $c-background;
+    color: $c-text;
+    font-size: 1em;
+  }
+
+  .app {
+    position: relative;
+    display: grid;
+    min-height: calc(100vh - $s-footer);
+    grid-template-rows: $s-header auto 0;
+  }
 }
 
-.app {
-  position: relative;
-  display: grid;
-  min-height: calc(100vh - $s-footer);
-  grid-template-rows: $s-header auto 0;
+/*----------------------------------------------------------------------------------
+-------------------------------------  TABLETTE ------------------------------------
+----------------------------------------------------------------------------------*/
+
+@media (min-width: 599px) {
+  body {
+    font-size: 1.2em;
+  }
+}
+
+@media (min-width: 899px) {
+  body {
+    font-size: 1.4em;
+  }
+}
+
+/*----------------------------------------------------------------------------------
+-------------------------------------  DESKTOP -------------------------------------
+----------------------------------------------------------------------------------*/
+
+@media (min-width: 1199px) {
+  body {
+    font-size: 1.6em;
+  }
+}
+
+@media (min-width: 1680) {
+  body {
+    font-size: 1.8em;
+  }
+}
+
+@media (min-width: 1920) {
+  body {
+    font-size: 2em;
+  }
 }

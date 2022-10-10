@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import './styles/index.scss';
 import Connection from './pages/Connection';
 import Home from './pages/Home';
 import AddTicket from './pages/AddTicket';

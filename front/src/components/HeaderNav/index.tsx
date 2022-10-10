@@ -1,7 +1,6 @@
 import { Dispatch, ReactElement, SetStateAction } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import '../../styles/index.scss';
 import { isActiveClassName } from '../../utils';
 
 interface HeaderNaveProps {

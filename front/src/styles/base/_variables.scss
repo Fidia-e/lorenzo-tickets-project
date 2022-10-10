@@ -3,8 +3,21 @@ $f-montserrat: 'Montserrat', sans-serif;
 $f-roboto: 'Roboto', sans-serif;
 
 // couleurs
-// $c-primary: #f5f5f5;
+$c-status-open: #d1495b; // Ouvert
+$c-status-underway: #edae49; // En cours
+$c-status-closed: #30638e; // Fermé
+$c-background: #fdffff;
+$c-frame: #f3fcff;
+$c-text: #011936;
+$c-selected: #182e48;
 
 // tailles
-$s-header: 25px;
-$s-footer: 20px;
+$s-header: 2em;
+$s-footer: 1.5em;
+$s-base-margin: 2em;
+
+// border-radius
+$br-mobile: 5px;
+
+// spacing
+// $margin: 0.5em;
