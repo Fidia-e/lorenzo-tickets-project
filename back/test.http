@@ -10,6 +10,8 @@ query GetAllClients{
     id
     email
     company
+    created_at
+    updated_at
   }
 }
 
@@ -37,6 +39,10 @@ query GetAllEmployees{
     email
     firstname
     lastname
+    password
+    role
+    created_at
+    updated_at
   }
 }
 
