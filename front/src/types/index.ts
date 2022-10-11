@@ -34,3 +34,11 @@ export interface Message {
   created_at: string;
   updated_at: string | null;
 }
+
+export interface Client {
+  id: number;
+  email: string;
+  company: string;
+  created_at: string;
+  updated_at: string | null;
+}
