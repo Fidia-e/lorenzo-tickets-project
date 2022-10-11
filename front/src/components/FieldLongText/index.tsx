@@ -1,17 +1,16 @@
-import { Dispatch, ReactElement, SetStateAction, ChangeEvent } from 'react';
+import { ReactElement, ChangeEvent } from 'react';
 
-interface FieldLongTextProps {
-  identifier: string;
-  placeholder: string;
-  label: string;
-  value: string;
-  updateField: Dispatch<SetStateAction<string>>;
-}
+import { FieldBaseProps } from '../../types';
 
 /**
- * A field to be used inside a form : label and textarea
+ * Composant réutilisable lorsqu'un textarea est nécessaire
+ * @param identifier sert à faire la liaison entre le textarea et le label
+ * @param placeholder le texte affiché par defaut dans le textarea
+ * @param label le texte du label
+ * @param value la valeur du textarea pour avoir un champ contrôlé
+ * @param updateField le setter qui permet de modifier @param value pour avoir un champ contrôlé
  */
-const FieldLongText = ({ identifier, placeholder, label, value, updateField }: FieldLongTextProps): ReactElement => {
+const FieldLongText = ({ identifier, placeholder, label, value, updateField }: FieldBaseProps): ReactElement => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const target = event.currentTarget;
     updateField(target.value);
