@@ -1,0 +1,77 @@
+import { Message } from '../../types';
+
+export const messagesTableHeaders: string[] = [
+  'id',
+  'content',
+  'ticket_id',
+  'employee_id',
+  'client_id',
+  'created_at',
+  'updated_at',
+];
+
+export const messagesData: Message[] = [
+  {
+    id: 1,
+    content: 'Message content 1',
+    ticket_id: 1,
+    employee_id: 1,
+    client_id: null,
+    created_at: '2022-10-10T19:24:00.293Z',
+    updated_at: null,
+  },
+  {
+    id: 2,
+    content: 'Message content 2',
+    ticket_id: 2,
+    employee_id: null,
+    client_id: 2,
+    created_at: '2022-10-10T19:24:00.293Z',
+    updated_at: null,
+  },
+  {
+    id: 3,
+    content: 'Message content 3',
+    ticket_id: 3,
+    employee_id: 3,
+    client_id: null,
+    created_at: '2022-10-10T19:24:00.293Z',
+    updated_at: null,
+  },
+  {
+    id: 4,
+    content: 'Message content 4',
+    ticket_id: 4,
+    employee_id: null,
+    client_id: 4,
+    created_at: '2022-10-10T19:24:00.293Z',
+    updated_at: null,
+  },
+  {
+    id: 5,
+    content: 'Message content 5',
+    ticket_id: 5,
+    employee_id: 5,
+    client_id: null,
+    created_at: '2022-10-10T19:24:00.293Z',
+    updated_at: null,
+  },
+  {
+    id: 6,
+    content: 'Message content 6',
+    ticket_id: 1,
+    employee_id: null,
+    client_id: 1,
+    created_at: '2022-10-10T19:24:00.293Z',
+    updated_at: null,
+  },
+  {
+    id: 7,
+    content: 'Message content 7',
+    ticket_id: 1,
+    employee_id: 1,
+    client_id: null,
+    created_at: '2022-10-10T19:24:00.293Z',
+    updated_at: null,
+  },
+];
