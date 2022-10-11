@@ -10,6 +10,11 @@ interface TableProps {
   items: Ticket[]; // TODO when using table with new items, add a pipe and the Type[]
 }
 
+/**
+ * Composant réutilisable pour les pages nécéssitant une table
+ * @param thHeaders sert à créer et identifier les colonnes propres à chaque utilisation
+ * @param items un tableau contenant les données propres à chaque utilisation
+ */
 const Table = ({ thHeaders, items }: TableProps): ReactElement => {
   const handleOnClick = (event: React.MouseEvent<HTMLElement>): void => {
     console.log(event.currentTarget);
