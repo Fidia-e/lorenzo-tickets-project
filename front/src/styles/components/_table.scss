@@ -1,0 +1,25 @@
+.table-container {
+  padding: 10px 10px;
+
+  .table {
+    background-color: $c-frame;
+    border-radius: 100px;
+    width: 100%;
+    border: 2px solid $c-selected;
+
+    th {
+      text-align: left;
+      padding: 5px;
+    }
+
+    thead {
+      border: solid 2px $c-selected;
+      background-color: $c-text;
+      color: $c-background;
+    }
+
+    tr:nth-child(even) {
+      background-color: $c-background;
+    }
+  }
+}
