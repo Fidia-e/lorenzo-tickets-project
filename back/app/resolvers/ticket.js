@@ -1,9 +1,9 @@
 module.exports = {
   messages(parent, _, { dataSources }) {
-    return dataSources.message.getAllMessagesByTicketId(parent.id);
+    return dataSources.message.findMessagesByTicketId(parent.id);
   },
 
   employees(parent, _, { dataSources }) {
-    return dataSources.employee.getAllEmployeesByTicketId(parent.id);
+    return dataSources.employee.findEmployeesByTicket(parent.id);
   },
 };

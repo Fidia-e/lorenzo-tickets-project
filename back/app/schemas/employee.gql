@@ -11,7 +11,7 @@ type Employee {
   email: EmailAddress!
   password: String!
   role: Role!
-  ticket: [Ticket]
+  tickets: [Ticket!]!
   created_at: DateTime!
   updated_at: DateTime
 }

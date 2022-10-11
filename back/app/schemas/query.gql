@@ -5,30 +5,30 @@ type Query {
   "Liste de tous les tickets" # pour l'admin
   getAllTickets(skip: Int, take: Int): [Ticket!]!
 
-  # "Récupération d'un ticket par son id"
-  # getTicketById(id: Int!): Ticket
+  "Récupération d'un ticket par son id"
+  getTicketById(id: Int!): Ticket
 
-  "Récupération de tous les tickets par leur client_id"
+  "Récupération de tous les tickets par client"
   getAllTicketsByClientId(id: Int!): [Ticket!]
 
-  # "Récupération de tous les tickets par leur employee_id"
-  # getAllTicketsByEmployeeId(id: Int!): [Ticket!]
+  "Récupération de tous les tickets par employee"
+  getAllTicketsByEmployeeId(employee_id: Int!): [Ticket!]
 
-  # # ---------------------------------  Messages  ----------------------------------
+  # ---------------------------------  Messages  ----------------------------------
 
   "Liste de tous les messages" # pour l'admin
   getAllMessages(skip: Int, take: Int): [Message!]!
 
-  "Récupération de tous les messages par leur ticket_id"
+  "Récupération de tous les messages d'un ticket"
   getAllMessagesByTicketId(id: Int!): [Message!]
 
-  # # ---------------------------------  Employees  ----------------------------------
+  # ---------------------------------  Employees  ----------------------------------
 
-  # "Liste des utilisateurs" # pour l'admin
-  # getAllUsers(skip: Int, take: Int): [User!]!
+  "Liste des employee" # pour l'admin
+  getAllEmployees(skip: Int, take: Int): [Employee!]!
 
-  "Récupération de tous les messages par leur employee_id"
-  getAllEmployeesByTicketId(id: Int!): [Employee!]
+  "Récupération de tous les employees d'un ticket"
+  getAllEmployeesByTicketId(ticket_id: Int!): [Employee!]
 
   # ---------------------------------  Clients  ----------------------------------
 

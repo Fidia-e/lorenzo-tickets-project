@@ -4,7 +4,7 @@ type Client {
   company: String!
   created_at: DateTime!
   updated_at: DateTime
-  tickets: [Ticket]
+  tickets: [Ticket!]!
 }
 
 input ClientInput {
