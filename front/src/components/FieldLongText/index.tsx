@@ -11,7 +11,7 @@ import { FieldBaseProps } from '../../types';
  * @param updateField le setter qui permet de modifier @param value pour avoir un champ contrôlé
  */
 const FieldLongText = ({ identifier, placeholder, label, value, updateField }: FieldBaseProps): ReactElement => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>): void => {
     const target = event.currentTarget;
     updateField(target.value);
   };
@@ -28,8 +28,8 @@ const FieldLongText = ({ identifier, placeholder, label, value, updateField }: F
         placeholder={placeholder}
         name={identifier}
         value={value}
-        onChange={() => handleChange}
-      ></textarea>
+        onChange={handleChange}
+      />
     </div>
   );
 };
