@@ -6,6 +6,14 @@ export enum Status {
   UNDERWAY = 'Underway',
 }
 
+export interface FieldBaseProps {
+  identifier: string;
+  placeholder: string;
+  label: string;
+  value: string;
+  updateField: Dispatch<SetStateAction<string>>;
+}
+
 // TODO change once we have retrieve type from back
 export interface Ticket {
   id: number;
@@ -17,10 +25,12 @@ export interface Ticket {
   updated_at: string | null;
 }
 
-export interface FieldBaseProps {
-  identifier: string;
-  placeholder: string;
-  label: string;
-  value: string;
-  updateField: Dispatch<SetStateAction<string>>;
+export interface Message {
+  id: number;
+  content: string;
+  ticket_id: number;
+  employee_id: number | null;
+  client_id: number | null;
+  created_at: string;
+  updated_at: string | null;
 }

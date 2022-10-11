@@ -1,7 +1,13 @@
 import { FunctionComponent } from 'react';
 
-const Messages: FunctionComponent = () => {
-  return <h1>Page des messages</h1>;
-};
+import Table from '../../components/Table';
+import { messagesTableHeaders, messagesData } from './constants';
+
+const Messages: FunctionComponent = () => (
+  <div className="messages-container">
+    <h1>Page des messages</h1>
+    <Table thHeaders={messagesTableHeaders} items={messagesData} />
+  </div>
+);
 
 export default Messages;
