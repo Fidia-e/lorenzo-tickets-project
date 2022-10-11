@@ -11,10 +11,10 @@ type Ticket {
   status: Status!
   client_id: PositiveInt!
   client: Client
+  messages: [Message!]!
+  employees: [Employee!]!
   created_at: DateTime!
   updated_at: DateTime
-  messages: [Message]
-  employees: [Employee]
 }
 
 input TicketInput {

@@ -8,10 +8,10 @@ const { readFileSync } = require('fs');
 const path = require('path');
 
 // Types
-const client = readFileSync(path.join(__dirname, './client.gql'));
 const ticket = readFileSync(path.join(__dirname, './ticket.gql'));
-const message = readFileSync(path.join(__dirname, './message.gql'));
+const client = readFileSync(path.join(__dirname, './client.gql'));
 const employee = readFileSync(path.join(__dirname, './employee.gql'));
+const message = readFileSync(path.join(__dirname, './message.gql'));
 
 // Scalars
 const scalars = readFileSync(path.join(__dirname, './scalars.gql'));
@@ -32,13 +32,13 @@ const schema = gql`
 
   ${query}
 
-  ${client}
-
   ${ticket}
 
-  ${message}
+  ${client}
 
   ${employee}
+
+  ${message}
 `;
 
 module.exports = schema;

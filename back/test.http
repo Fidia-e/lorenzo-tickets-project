@@ -25,3 +25,142 @@ query GetAllMessages{
     ticket_id
   }
 }
+
+### Récupération de tous les employee
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetAllEmployees{
+  getAllEmployees {
+    id
+    email
+    firstname
+    lastname
+  }
+}
+
+### Récupération de la liste de tous les tickets
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetAllTickets{
+  getAllTickets {
+    id
+    title
+    content
+    status
+    client_id
+    employees {
+      id
+      email
+    }
+    messages {
+      id
+      content
+    }
+    created_at
+    updated_at
+  }
+}
+
+### Récupération d'un ticket par son id
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetTicketById($id: Int!){
+  getTicketById(id: $id) {
+    id
+    title
+    content
+    status
+    client_id
+    created_at
+    updated_at
+    client {
+      id
+      email
+      company
+    }
+  }
+}
+
+{
+  "id": 3
+}
+
+### Récupération de tous les tickets d'un client
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetAllTicketsByClientId($id: Int!){
+  getAllTicketsByClientId(id: $id) {
+    id
+    title
+    content
+    status
+    client_id
+  }
+}
+
+{
+  "id": 1
+}
+
+### Récupération de tous les messages d'un ticket
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetAllMessagesByTicketId($id: Int!){
+  getAllMessagesByTicketId(id: $id) {
+    id
+    content
+    ticket_id
+  }
+}
+
+{
+  "id": 1
+}
+
+### Récupération de tous les employees d'un ticket
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetAllEmployeesByTicketId($ticket_id: Int!){
+  getAllEmployeesByTicketId(ticket_id: $ticket_id) {
+    id
+    email
+    firstname
+    lastname
+    role
+  }
+}
+
+{
+  "ticket_id": 6
+}
+
+### Récupération de tous les tickets d'un employee
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query GetAllTicketsByEmployeeId($employee_id: Int!){
+  getAllTicketsByEmployeeId(employee_id: $employee_id) {
+    id
+    title
+    content
+    status
+    client_id
+  }
+}
+
+{
+  "employee_id": 1
+}

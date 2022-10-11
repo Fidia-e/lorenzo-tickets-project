@@ -6,7 +6,8 @@ DROP TABLE IF EXISTS
 "ticket",
 "client",
 "message",
-"employee";
+"employee",
+"ticket_employee";
 
 DROP TYPE IF EXISTS "ticket_status", "employee_role";
 
@@ -51,6 +52,14 @@ CREATE TABLE "employee" (
     "role" employee_role NOT NULL,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
     "updated_at" TIMESTAMPTZ
+);
+
+CREATE TABLE "ticket_employee" (
+    "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    "ticket_id" INT NOT NULL REFERENCES "ticket" ("id") ON DELETE CASCADE,
+    "employee_id" INT NOT NULL REFERENCES "employee" ("id") ON DELETE CASCADE,
+    "created_at" TIMESTAMPTZ NOT NULL DEFAULT now(),
+    UNIQUE("ticket_id", "employee_id")
 );
 
 COMMIT;
