@@ -3,11 +3,11 @@ import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import React, { ReactElement } from 'react';
 
-import { Ticket, Message } from '../../types';
+import { Ticket, Message, Client } from '../../types';
 
 interface TableProps {
   thHeaders: string[];
-  items: Ticket[] | Message[]; // TODO ajouter un pipe et le type pour chaque utilisation de Table, exemple: | Client[]
+  items: Ticket[] | Message[] | Client[]; // TODO ajouter un pipe et le type pour chaque utilisation de Table, exemple: | Client[]
 }
 
 /**
