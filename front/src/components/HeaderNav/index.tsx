@@ -7,7 +7,12 @@ interface HeaderNaveProps {
   setIsNavVisible: Dispatch<SetStateAction<boolean>>;
 }
 
+/**
+ * Composant pour l'affichage de la navigation
+ * @param setIsNavVisible sert à conditionner l'affichage du "menu burger"
+ */
 const HeaderNav = ({ setIsNavVisible }: HeaderNaveProps): ReactElement => {
+  // Sert à fermer le "menu burger" lorsque l'écran à une taille qui le nécessite
   const handleClick = (): void => {
     if (innerWidth < 899) {
       setIsNavVisible(false);

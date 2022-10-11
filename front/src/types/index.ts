@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export enum Status {
   OPEN = 'Open',
   CLOSED = 'Closed',
@@ -13,4 +15,12 @@ export interface Ticket {
   client_id: number;
   created_at: string;
   updated_at: string | null;
+}
+
+export interface FieldBaseProps {
+  identifier: string;
+  placeholder: string;
+  label: string;
+  value: string;
+  updateField: Dispatch<SetStateAction<string>>;
 }

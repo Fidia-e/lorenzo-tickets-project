@@ -7,9 +7,14 @@ import { Ticket } from '../../types';
 
 interface TableProps {
   thHeaders: string[];
-  items: Ticket[]; // TODO when using table with new items, add a pipe and the Type[]
+  items: Ticket[]; // TODO ajouter un pipe et le type pour chaque utilisation de Table, exemple: | Client[]
 }
 
+/**
+ * Composant réutilisable pour les pages nécéssitant une table
+ * @param thHeaders sert à créer et identifier les colonnes propres à chaque utilisation
+ * @param items un tableau contenant les données propres à chaque utilisation
+ */
 const Table = ({ thHeaders, items }: TableProps): ReactElement => {
   const handleOnClick = (event: React.MouseEvent<HTMLElement>): void => {
     console.log(event.currentTarget);

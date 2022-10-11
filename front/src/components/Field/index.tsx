@@ -1,16 +1,19 @@
-import { Dispatch, ReactElement, SetStateAction, ChangeEvent } from 'react';
+import { ReactElement, ChangeEvent } from 'react';
 
-interface FieldProps {
-  identifier: string;
-  placeholder: string;
-  label: string;
+import { FieldBaseProps } from '../../types';
+
+interface FieldProps extends FieldBaseProps {
   type: string;
-  value: string;
-  updateField: Dispatch<SetStateAction<string>>;
 }
 
 /**
- * A field to be used inside a form : label and input
+ * Composant réutilisable lorsqu'un input est nécessaire
+ * @param identifier sert à faire la liaison entre l'input et le label
+ * @param placeholder le texte affiché par defaut dans l'input
+ * @param label le texte du label
+ * @param type le type de l'input
+ * @param value la valeur de l'input pour avoir un champ contrôlé
+ * @param updateField le setter qui permet de modifier @param value pour avoir un champ contrôlé
  */
 const Field = ({ identifier, placeholder, label, type, value, updateField }: FieldProps): ReactElement => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
