@@ -3,13 +3,13 @@ import { Dispatch, SetStateAction } from 'react';
 export enum Status {
   OPEN = 'Open',
   CLOSED = 'Closed',
-  UNDERWAY = 'Underway'
+  UNDERWAY = 'Underway',
 }
 
 export enum Role {
   ADMIN = 'Admin',
   LEAD = 'Lead',
-  INTERVENOR = 'Intervenor'
+  INTERVENOR = 'Intervenor',
 }
 
 export interface FieldBaseProps {
@@ -42,6 +42,7 @@ export interface Message {
 }
 
 export interface Client {
+  // logged: boolean,
   id: number;
   email: string;
   company: string;
@@ -50,6 +51,7 @@ export interface Client {
 }
 
 export interface Employee {
+  // logged: boolean,
   id: number;
   firstname: string;
   lastname: string;
@@ -58,4 +60,20 @@ export interface Employee {
   role: Role;
   created_at: string;
   updated_at: string | null;
+}
+
+export interface Signin_signin {
+  __typename: 'EmployeeConnected';
+  id: string;
+  firstname: string;
+  email: string;
+}
+
+export interface Signin {
+  signin: Signin_signin | null;
+}
+
+export interface SigninVariables {
+  email: string;
+  password: string;
 }
