@@ -1,5 +1,10 @@
 "Récupérer des données"
 type Query {
+  # ------------------------------  Authentication  -------------------------------
+
+  "Authentification de l'employee"
+  signin(email: EmailAddress!, password: String!): EmployeeConnected
+
   # ---------------------------------  Tickets  ----------------------------------
 
   "Liste de tous les tickets" # pour l'admin

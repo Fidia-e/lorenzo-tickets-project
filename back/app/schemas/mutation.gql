@@ -1,5 +1,8 @@
 "Ajouter/modifier/supprimer des données"
 type Mutation {
+  # ---------------------------------  Signin  ----------------------------------
+  # signup(input: UserInput): User
+
   # ---------------------------------  Ticket  ----------------------------------
   createTicket(input: TicketInput): Ticket
   # readTicket(id: PositiveInt!): Ticket

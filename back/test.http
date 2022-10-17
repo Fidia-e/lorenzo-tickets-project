@@ -170,3 +170,24 @@ query GetAllTicketsByEmployeeId($employee_id: Int!){
 {
   "employee_id": 1
 }
+
+### Authentification pour un employé
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query signin($email: EmailAddress!, $password: String!) {
+  signin(email: $email, password: $password) {
+    id
+    firstname
+    # token {
+    #   token
+    #   expiresIn
+    # }
+  }
+}
+
+{
+  "email": "employee1@test.test",
+  "password": "1234"
+}
