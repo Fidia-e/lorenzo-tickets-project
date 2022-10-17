@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^3.10.2",
+    "bcrypt": "^5.1.0",
     "dataloader": "^2.1.0",
     "datasource-sql": "^2.0.1",
     "dotenv": "^16.0.2",

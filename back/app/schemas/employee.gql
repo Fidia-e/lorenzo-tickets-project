@@ -23,3 +23,25 @@ input EmployeeInput {
   password: String!
   role: Role!
 }
+
+type EmployeeConnected {
+  id: PositiveInt!
+  firstname: String!
+  lastname: String!
+  email: EmailAddress!
+  role: Role!
+  token: Token
+  created_at: DateTime!
+  updated_at: DateTime
+}
+
+"""
+Le token comprends les informations utilisateur
+- username
+- email
+- ip
+"""
+type Token {
+  token: String!
+  expiresIn: String!
+}
