@@ -9,7 +9,8 @@ export enum Status {
 export enum Role {
   ADMIN = 'Admin',
   LEAD = 'Lead',
-  INTERVENOR = 'Intervenor'
+  INTERVENOR = 'Intervenor',
+  UNKNOWN = 'unknown'
 }
 
 export interface FieldBaseProps {
@@ -51,7 +52,6 @@ export interface Client {
 }
 
 export interface Employee {
-  // logged: boolean
   id: number;
   firstname: string;
   lastname: string;
@@ -62,18 +62,33 @@ export interface Employee {
   updated_at: string | null;
 }
 
-export interface Signin_signin {
-  __typename: 'EmployeeConnected';
-  id: string;
-  firstname: string;
+interface Signin_signin_token {
+  token: string;
+  expiresIn: string;
+}
+
+interface Signin_signin {
+  id: number;
   email: string;
+  token: Signin_signin_token;
+  role: Role;
+}
+
+export interface EmployeeLogged {
+  logged: boolean;
+  id: number;
+  email: string;
+  role: Role;
+  token: string;
 }
 
 export interface Signin {
-  signin: Signin_signin | null;
+  signin: Signin_signin;
 }
 
 export interface SigninVariables {
   email: string;
   password: string;
 }
+
+export type Nullable<T> = T | null;

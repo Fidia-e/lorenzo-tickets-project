@@ -1,15 +1,41 @@
-import { render, screen } from '@testing-library/react';
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import React from 'react';
+import { render, screen } from '@testing-library/react';
+import * as RRD from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import '@testing-library/jest-dom';
+
 import Connection from '../index';
 import { ButtonsClassNames, RoleText, Role } from '../constants';
-
 const { selected, notSelected } = ButtonsClassNames;
 const { clientText, employeeText } = RoleText;
 const { employee, client } = Role;
 
 describe('<Connection />', () => {
+  // beforeEach(() => {
+  //   const { pathname } = useLocation();
+  //   jest.spyOn(RRD, 'useLocation').mockReturnValue({
+  //     pathname: '/'
+  //   } as unknown as any);
+
+  //   jest.mock('react-router-dom', () => ({
+  //     ...jest.requireActual('react-router-dom'),
+  //     useLocation: jest.fn().mockImplementation(() => {
+  //       return { pathname: '/' };
+  //     })
+  //   }));
+  // });
+
   it('should always be there', () => {
-    render(<Connection />);
+    render(
+      <Router>
+        <Routes>
+          <Route path="/" element={<Connection />} />
+        </Routes>
+      </Router>
+    );
+
+    console.log(screen.debug());
 
     expect(screen.getByText('Client')).toBeInTheDocument();
     expect(screen.getByText('Employé(e)')).toBeInTheDocument();
@@ -19,7 +45,13 @@ describe('<Connection />', () => {
   it('should be there for client', () => {
     React.useState = jest.fn().mockReturnValue([client, {}]);
 
-    render(<Connection />);
+    render(
+      <Router>
+        <Routes>
+          <Route path="/" element={<Connection />} />
+        </Routes>
+      </Router>
+    );
 
     expect(screen.getByText(clientText)).toBeInTheDocument();
     expect(screen.queryByLabelText(employeeText)).not.toBeInTheDocument();
@@ -29,7 +61,13 @@ describe('<Connection />', () => {
   it('should be there for employee', () => {
     React.useState = jest.fn().mockReturnValue([employee, {}]);
 
-    render(<Connection />);
+    render(
+      <Router>
+        <Routes>
+          <Route path="/" element={<Connection />} />
+        </Routes>
+      </Router>
+    );
 
     expect(screen.getByText(employeeText)).toBeInTheDocument();
     expect(screen.queryByLabelText(clientText)).not.toBeInTheDocument();
@@ -39,7 +77,13 @@ describe('<Connection />', () => {
   it('should have the client button selected', () => {
     React.useState = jest.fn().mockReturnValue([client, {}]);
 
-    render(<Connection />);
+    render(
+      <Router>
+        <Routes>
+          <Route path="/" element={<Connection />} />
+        </Routes>
+      </Router>
+    );
 
     const buttons = screen.getAllByRole('button');
     const clientButton = buttons[0];
@@ -54,7 +98,13 @@ describe('<Connection />', () => {
   it('should have the employee button selected', () => {
     React.useState = jest.fn().mockReturnValue([employee, {}]);
 
-    render(<Connection />);
+    render(
+      <Router>
+        <Routes>
+          <Route path="/" element={<Connection />} />
+        </Routes>
+      </Router>
+    );
 
     const buttons = screen.getAllByRole('button');
     const clientButton = buttons[0];

@@ -1,22 +1,25 @@
 import { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/client';
-
 import apolloClient from './apollo';
 
+import App from './App';
+import { ContextProvider } from './context/employee';
 import './styles/index.scss';
 
 const rootElement = document.getElementById('root');
 
 const root = ReactDOM.createRoot(rootElement as Element);
+
 root.render(
   <StrictMode>
     <ApolloProvider client={apolloClient}>
       <Router>
-        <App />
+        <ContextProvider>
+          <App />
+        </ContextProvider>
       </Router>
     </ApolloProvider>
   </StrictMode>

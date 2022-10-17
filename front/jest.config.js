@@ -1,6 +1,5 @@
 const config = {
   verbose: true,
-  testEnvironment: 'node',
   roots: ['<rootDir>/src'],
   // the following line is needed in order to grab modules from the
   // src folder without the need to write them relatively
@@ -9,6 +8,8 @@ const config = {
   transformIgnorePatterns: ['node_modules'],
   resetMocks: true,
   watchAll: false,
+  preset: 'ts-jest/presets/js-with-ts',
+  testEnvironment: 'jsdom',
 };
 
 module.exports = config;

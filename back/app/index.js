@@ -34,7 +34,7 @@ module.exports = {
     const ctx = {
       ...req,
       ip: req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(/, /)[0] : req.connection.remoteAddress,
-      user: jwt.get(req),
+      employee: jwt.get(req),
     };
     return ctx;
   },

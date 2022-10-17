@@ -30,7 +30,8 @@ module.exports = {
       rules: {
         'react/react-in-jsx-scope': 'off',
         'react/jsx-uses-react': 'off',
-        '@typescript-eslint/no-floating-promises': 'error',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': 'warn',
       },
     },
   ],
