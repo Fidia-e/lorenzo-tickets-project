@@ -7,10 +7,11 @@ export const SIGNIN = gql`
       firstname
       lastname
       email
-      # token {
-      #     token
-      #     expiresIn
-      # }
+      role
+      token {
+        token
+        expiresIn
+      }
     }
   }
 `;

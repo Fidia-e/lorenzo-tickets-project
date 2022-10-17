@@ -1,10 +1,10 @@
 const depthLimit = require('graphql-depth-limit');
 
 const db = require('./db/pg');
+const jwt = require('./helpers/jwt');
 const typeDefs = require('./schemas');
 const resolvers = require('./resolvers');
 const logger = require('./helpers/logger');
-
 const ClientDatasource = require('./datasources/client');
 const TicketDatasource = require('./datasources/ticket');
 const MessageDatasource = require('./datasources/message');
@@ -29,6 +29,14 @@ module.exports = {
     logger.error(err);
 
     return err.message;
+  },
+  context: ({ req }) => {
+    const ctx = {
+      ...req,
+      ip: req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(/, /)[0] : req.connection.remoteAddress,
+      user: jwt.get(req),
+    };
+    return ctx;
   },
   validationRules: [depthLimit(5)],
 };
