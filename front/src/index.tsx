@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/client';
+
+import apolloClient from './apollo';
+
 import './styles/index.scss';
 
 const rootElement = document.getElementById('root');
@@ -10,9 +14,11 @@ const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement as Element);
 root.render(
   <StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <ApolloProvider client={apolloClient}>
+      <Router>
+        <App />
+      </Router>
+    </ApolloProvider>
   </StrictMode>
 );
 
