@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { UserInputError, AuthenticationError } = require('apollo-server');
-// const jwt = require('../helpers/jwt');
+const jwt = require('../helpers/jwt');
 
 module.exports = {
   async signin(_, args, { dataSources, ip }) {
@@ -8,7 +8,7 @@ module.exports = {
     const { email, password } = args;
 
     const employees = await dataSources.employee.findAll({ email });
-    console.log('employees----------->', employees);
+    // console.log('employees----------->', employees);
 
     if (!employees.length) {
       throw new UserInputError(errorMessage);
@@ -23,12 +23,8 @@ module.exports = {
     if (!result) {
       throw new AuthenticationError(errorMessage);
     }
-    /*
-      La propriété id n'est pas une propriété, mais un getter, il faut donc l'ajouter
-      manuellement
-      Avec les dataSources l'id est redevenu un paramètre, on peut donc le retirer de façon manuel
-    */
-    // employee.token = jwt.create({ ...employee, ip });
+
+    employee.token = jwt.create({ ...employee, ip });
 
     return employee;
   },

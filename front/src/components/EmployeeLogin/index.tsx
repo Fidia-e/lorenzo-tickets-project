@@ -10,19 +10,19 @@ const EmployeeLogin: FunctionComponent = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [triggerSignin, { error }] = useLazyQuery<Signin, SigninVariables>(SIGNIN, {
+  const [triggerSignin, { error, data }] = useLazyQuery<Signin, SigninVariables>(SIGNIN, {
     onCompleted: data => {
       console.log(data);
-    },
+    }
   });
 
-  console.log(error);
+  console.log(error, data);
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
 
     void triggerSignin({
-      variables: { email, password },
+      variables: { email, password }
     });
 
     console.log('email:', email);

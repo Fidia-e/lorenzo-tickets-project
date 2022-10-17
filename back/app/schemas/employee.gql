@@ -36,8 +36,9 @@ type EmployeeConnected {
 }
 
 """
-Le token comprends les informations utilisateur
-- username
+Le token comprends les informations employee
+- firstname
+- lastname
 - email
 - ip
 """

@@ -6,11 +6,11 @@ INSERT INTO "client" ("email", "company") VALUES
 ('client5@test.test', 'Company 5');
 
 INSERT INTO "employee" ("firstname", "lastname", "email", "password", "role") VALUES 
-('Prénom employee 1', 'Nom employee 1', 'employee1@test.test', '1234', 'Admin'),
-('Prénom employee 2', 'Nom employee 2', 'employee2@test.test', '1234', 'Lead'),
-('Prénom employee 3', 'Nom employee 3', 'employee3@test.test', '1234', 'Intervenor'),
-('Prénom employee 4', 'Nom employee 4', 'employee4@test.test', '1234', 'Intervenor'),
-('Prénom employee 5', 'Nom employee 5', 'employee5@test.test', '1234', 'Intervenor');
+('Prénom employee 1', 'Nom employee 1', 'employee1@test.test', '$2b$10$gCy4Ly5qxv93CpcUJraPNOCKlYBB6tUYxqM7dKxlm1oxzj5/tcMrq', 'Admin'),
+('Prénom employee 2', 'Nom employee 2', 'employee2@test.test', '$2b$10$x2JmdEEvjyKpZOZsypqEpOdjNtW6rcc8GvkXgpoovMWy6QnQg8AbC', 'Lead'),
+('Prénom employee 3', 'Nom employee 3', 'employee3@test.test', '$2b$10$1Tx/AREHFScfNTXDKlS57.KB//i4wjwQgtQ4G1Vo1ugMONj.Z4ZvC', 'Intervenor'),
+('Prénom employee 4', 'Nom employee 4', 'employee4@test.test', '$2b$10$ijAEMAxlT7QDun9ZXALKneg8qDCzRlOljlnDxCvcnLXNAjP37kwXm', 'Intervenor'),
+('Prénom employee 5', 'Nom employee 5', 'employee5@test.test', '$2b$10$.nogxltL0SmvKihbJxlqROd67pga.HfXEvaapYAbp/sMWr1.eBTES', 'Intervenor');
 
 INSERT INTO "ticket" ("title", "content", "status", "client_id") VALUES 
 ('Titre Ticket 1', 'Ticket content 1', 'Open', 1),

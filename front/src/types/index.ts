@@ -3,13 +3,13 @@ import { Dispatch, SetStateAction } from 'react';
 export enum Status {
   OPEN = 'Open',
   CLOSED = 'Closed',
-  UNDERWAY = 'Underway',
+  UNDERWAY = 'Underway'
 }
 
 export enum Role {
   ADMIN = 'Admin',
   LEAD = 'Lead',
-  INTERVENOR = 'Intervenor',
+  INTERVENOR = 'Intervenor'
 }
 
 export interface FieldBaseProps {
@@ -51,7 +51,7 @@ export interface Client {
 }
 
 export interface Employee {
-  // logged: boolean,
+  // logged: boolean
   id: number;
   firstname: string;
   lastname: string;
