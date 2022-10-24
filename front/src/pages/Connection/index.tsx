@@ -5,11 +5,12 @@ import EmployeeLogin from '../../components/EmployeeLogin';
 import { Role, ButtonsClassNames, RoleText } from './constants';
 
 const Connection: FunctionComponent = () => {
+  const [error, setError] = useState(false);
+  const [role, setRole] = useState(Role.client);
+
   const { employee, client } = Role;
   const { selected, notSelected } = ButtonsClassNames;
   const { clientText, employeeText } = RoleText;
-
-  const [role, setRole] = useState(Role.client);
 
   return (
     <div className="connection-container">
@@ -30,9 +31,10 @@ const Connection: FunctionComponent = () => {
       {role === employee && (
         <div className="login-form-role">
           <p>{employeeText}</p>
-          <EmployeeLogin />
+          <EmployeeLogin setError={setError} />
         </div>
       )}
+      {error && <p className="error-message">Erreur de connexion</p>}
     </div>
   );
 };

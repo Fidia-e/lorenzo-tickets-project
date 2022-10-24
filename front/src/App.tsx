@@ -19,9 +19,15 @@ import Error404 from './pages/Error404';
 import Error403 from './pages/Error403';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { useEmployeeContext, emptyEmployee } from './context/employee';
 
 const App: FC = () => {
   const { pathname } = useLocation();
+  const { setEmployee } = useEmployeeContext();
+
+  const logout = (): void => {
+    setEmployee(emptyEmployee);
+  };
 
   return (
     <div className="app">
