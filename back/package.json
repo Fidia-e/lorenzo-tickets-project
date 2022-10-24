@@ -10,7 +10,8 @@
     "dev": "DEBUG=*,-express*,-body-parser*,-nodemon* CACHE_ENABLED=true DATALOADER_ENABLED=true npx nodemon --ext 'js,gql'",
     "devCache": "CACHE_ENABLED=true DEBUG=*,-express*,-body-parser*,-nodemon* npx nodemon --ext 'js,gql'",
     "devDataloader": "DATALOADER_ENABLED=true DEBUG=*,-express*,-body-parser*,-nodemon* npx nodemon --ext 'js,gql'",
-    "devCacheDataloader": "CACHE_ENABLED=true DATALOADER_ENABLED=true DEBUG=*,-express*,-nodemon* npx nodemon --ext 'js,gql'"
+    "devCacheDataloader": "CACHE_ENABLED=true DATALOADER_ENABLED=true DEBUG=*,-express*,-nodemon* npx nodemon --ext 'js,gql'",
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
