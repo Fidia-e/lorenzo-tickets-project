@@ -1,4 +1,5 @@
-import { fireEvent, getByText, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import apolloClient from '../../../apollo';
@@ -11,11 +12,13 @@ const { clientText, employeeText } = RoleText;
 describe('<Connection />', () => {
   it('should always be on screen', () => {
     render(
-      <Router>
-        <Routes>
-          <Route path="/" element={<Connection />} />
-        </Routes>
-      </Router>
+      <ApolloProvider client={apolloClient}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Connection />} />
+          </Routes>
+        </Router>
+      </ApolloProvider>
     );
 
     expect(screen.getByText('Client')).toBeInTheDocument();
@@ -25,11 +28,13 @@ describe('<Connection />', () => {
 
   it('is a client', () => {
     render(
-      <Router>
-        <Routes>
-          <Route path="/" element={<Connection />} />
-        </Routes>
-      </Router>
+      <ApolloProvider client={apolloClient}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Connection />} />
+          </Routes>
+        </Router>
+      </ApolloProvider>
     );
 
     const buttons = screen.getAllByRole('button');

@@ -6,7 +6,7 @@ import { ApolloProvider } from '@apollo/client';
 import apolloClient from './apollo';
 
 import App from './App';
-import { ContextProvider } from './context/employee';
+import { ContextProvider } from './context/user';
 import './styles/index.scss';
 
 const rootElement = document.getElementById('root');

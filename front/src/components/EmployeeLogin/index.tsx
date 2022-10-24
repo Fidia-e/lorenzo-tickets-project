@@ -5,44 +5,42 @@ import { useNavigate } from 'react-router-dom';
 import Field from '../Field';
 import SubmitButton from '../SubmitButton';
 import { SIGNIN } from '../../apollo/queries/signin';
-import { EmployeeLogged, Signin, SigninVariables } from '../../types';
-import { useEmployeeContext } from '../../context/employee';
+import { UserLogged, Signin, SigninVariables, UserType, UserLoginProps } from '../../types';
+import { useUserContext } from '../../context/user';
 
-interface EmployeeLoginProps {
-  setError: Dispatch<SetStateAction<boolean>>;
-}
-
-const EmployeeLogin = ({ setError }: EmployeeLoginProps): ReactElement => {
+const EmployeeLogin = ({ setError }: UserLoginProps): ReactElement => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { setEmployee } = useEmployeeContext();
+  const { setUser } = useUserContext();
   const navigate = useNavigate();
 
   const [triggerSignin] = useLazyQuery<Signin, SigninVariables>(SIGNIN, {
     onCompleted: data => {
-      const newEmployee: EmployeeLogged = {
+      const newUser: UserLogged = {
         id: data.signin.id,
         email: data.signin.email,
         token: data.signin.token.token,
         role: data.signin.role,
-        logged: true
+        userType: data.signin?.userType,
+        logged: true,
       };
 
-      setEmployee(newEmployee);
+      setUser(newUser);
       setError(false);
       navigate('/accueil');
     },
     onError: () => {
       setError(true);
-    }
+    },
   });
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
+    console.log('email', email, 'pwd', password);
 
     void triggerSignin({
-      variables: { email, password: password ?? '' }
+      variables: { email, password: password ?? '', userType: UserType.EMPLOYEE },
     });
   };
 

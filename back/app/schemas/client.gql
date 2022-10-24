@@ -1,3 +1,8 @@
+enum UserType {
+  client
+  employee
+}
+
 type Client {
   id: PositiveInt!
   email: EmailAddress!

@@ -10,6 +10,7 @@ const config = {
   watchAll: false,
   preset: 'ts-jest/presets/js-with-ts',
   testEnvironment: 'jsdom',
+  // setupFilesAfterEnv: ['<rootDir>/setup-jest.js'], // Ne fonctionne pas avec l'extension vscode jest runner TODO config
 };
 
 module.exports = config;

@@ -2,33 +2,34 @@ import { FunctionComponent, useState } from 'react';
 
 import ClientLogin from '../../components/ClientLogin';
 import EmployeeLogin from '../../components/EmployeeLogin';
-import { Role, ButtonsClassNames, RoleText } from './constants';
+import { ButtonsClassNames, RoleText } from './constants';
+import { UserType } from '../../types';
 
 const Connection: FunctionComponent = () => {
   const [error, setError] = useState(false);
-  const [role, setRole] = useState(Role.client);
+  const [userType, setUserType] = useState(UserType.CLIENT);
 
-  const { employee, client } = Role;
+  const { EMPLOYEE, CLIENT } = UserType;
   const { selected, notSelected } = ButtonsClassNames;
   const { clientText, employeeText } = RoleText;
 
   return (
     <div className="connection-container">
       <div className="button-container">
-        <button className={role === client ? selected : notSelected} onClick={() => setRole(client)}>
+        <button className={userType === CLIENT ? selected : notSelected} onClick={() => setUserType(CLIENT)}>
           Client
         </button>
-        <button className={role === employee ? selected : notSelected} onClick={() => setRole(employee)}>
+        <button className={userType === EMPLOYEE ? selected : notSelected} onClick={() => setUserType(EMPLOYEE)}>
           Employé(e)
         </button>
       </div>
-      {role === client && (
+      {userType === CLIENT && (
         <div className="login-form-role">
           <p>{clientText}</p>
-          <ClientLogin />
+          <ClientLogin setError={setError} />
         </div>
       )}
-      {role === employee && (
+      {userType === EMPLOYEE && (
         <div className="login-form-role">
           <p>{employeeText}</p>
           <EmployeeLogin setError={setError} />
