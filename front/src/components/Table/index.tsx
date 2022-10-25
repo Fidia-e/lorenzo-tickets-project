@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -33,12 +36,15 @@ const Table = ({ thHeaders, items }: TableProps): ReactElement => {
           </tr>
         </thead>
         <tbody>
-          {items.map((item, index: number) => {
+          {items.map(item => {
             return (
-              <tr key={`tr${index}`}>
-                {Object.values(item).map((value: string | number | null, index: number) => (
-                  <td key={`td${index}`}>{value ?? 'null'}</td>
-                ))}
+              <tr key={`tr${item.id}`}>
+                {thHeaders.map((thHeader, index) => {
+                  //
+                  const value = item[thHeader as keyof typeof item];
+                  return <td key={`td${index}${item.id}`}>{value ?? null}</td>;
+                })}
+
                 <td onClick={handleOnClick} className="see">
                   <FontAwesomeIcon icon={faEye} />
                 </td>

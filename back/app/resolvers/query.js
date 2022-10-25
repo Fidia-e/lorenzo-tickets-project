@@ -58,7 +58,11 @@ module.exports = {
 
   // ------------------------------- Ticket -------------------------------
 
-  getAllTickets(_, __, { dataSources }) {
+  getAllTickets(_, __, { dataSources, user }) {
+    console.log(user);
+    if (!user) {
+      throw new AuthenticationError('You must be authenticate');
+    }
     return dataSources.ticket.findAll();
   },
 
