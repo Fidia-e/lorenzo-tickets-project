@@ -39,3 +39,5 @@ Détail d'une table
 `\d <database>`
 
 `\q` ou `exit;` => pour sortir
+
+/!\ Pour pgAdmin 4, il faut refaire un Grand Wizard à chaque fois que la bdd est modifié pour donner les droits à dev

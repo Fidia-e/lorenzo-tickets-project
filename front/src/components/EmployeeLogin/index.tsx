@@ -1,4 +1,4 @@
-import { ReactElement, useState, FormEvent, Dispatch, SetStateAction } from 'react';
+import { ReactElement, useState, FormEvent } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 
@@ -37,7 +37,6 @@ const EmployeeLogin = ({ setError }: UserLoginProps): ReactElement => {
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    console.log('email', email, 'pwd', password);
 
     void triggerSignin({
       variables: { email, password: password ?? '', userType: UserType.EMPLOYEE },
