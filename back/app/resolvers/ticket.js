@@ -6,4 +6,8 @@ module.exports = {
   employees(parent, _, { dataSources }) {
     return dataSources.employee.findEmployeesByTicket(parent.id);
   },
+
+  client(parent, _, { dataSources }) {
+    return dataSources.client.findByPk(parent.client_id);
+  },
 };
