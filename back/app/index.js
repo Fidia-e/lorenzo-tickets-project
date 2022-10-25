@@ -31,7 +31,6 @@ module.exports = {
     return err.message;
   },
   context: ({ req }) => {
-    console.log('context req:', req.headers);
     const ctx = {
       ...req,
       ip: req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(/, /)[0] : req.connection.remoteAddress,
