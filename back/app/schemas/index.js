@@ -18,7 +18,7 @@ const scalars = readFileSync(path.join(__dirname, './scalars.gql'));
 
 // Queries et mutations
 const query = readFileSync(path.join(__dirname, './query.gql'));
-// const mutation = readFileSync(path.join(__dirname, './mutation.gql'));
+const mutation = readFileSync(path.join(__dirname, './mutation.gql'));
 
 /*
   Les gabarits étiquetés (tagged templates)
@@ -39,6 +39,8 @@ const schema = gql`
   ${employee}
 
   ${message}
+
+  ${mutation}
 `;
 
 module.exports = schema;

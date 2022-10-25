@@ -24,6 +24,13 @@ export enum UserType {
   employee = "employee",
 }
 
+export interface TicketInput {
+  title: string;
+  content: string;
+  status: Status;
+  client_id: any;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================
