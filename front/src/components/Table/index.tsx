@@ -3,11 +3,12 @@ import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import React, { ReactElement } from 'react';
 
-import { Ticket, Message, Client, Employee } from '../../types';
+import { Message, Client, Employee } from '../../types';
+import { GetAllTickets_getAllTickets } from '../../apollo/queries/__generated__/GetAllTickets';
 
 interface TableProps {
   thHeaders: string[];
-  items: Ticket[] | Message[] | Client[] | Employee[];
+  items: GetAllTickets_getAllTickets[] | Message[] | Client[] | Employee[];
 }
 
 /**
