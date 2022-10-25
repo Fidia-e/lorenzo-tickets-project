@@ -33,7 +33,6 @@ module.exports = {
 
     if (args.userType === 'client') {
       const clients = await dataSources.client.findAll({ email });
-      console.log('clients------------->', clients);
 
       if (!clients.length) {
         throw new UserInputError(errorMessage);

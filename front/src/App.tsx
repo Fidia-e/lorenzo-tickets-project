@@ -31,8 +31,6 @@ const App: FC = () => {
     navigate('/');
   };
 
-  console.log(user.role);
-
   return (
     <div className="app">
       {/* Le Header et le Footer ne sont pas affiché si l'utilisateur n'est pas connecté ou sur la page de connexion */}
