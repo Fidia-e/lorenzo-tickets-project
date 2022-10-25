@@ -5,19 +5,18 @@ const { AuthenticationError } = require('apollo-server');
 const secret = process.env.JWT_SECRET || 'passphrase';
 
 module.exports = {
-  create(employeeData) {
-    const options = {};
-    options.expiresIn = process.env.JWT_EXPIRES;
+  create(userData) {
+    const expiresIn = process.env.JWT_EXPIRES;
 
-    const employee = {
-      id: employeeData.id,
-      email: employeeData.email,
-      ip: employeeData.ip,
+    const user = {
+      id: userData.id,
+      email: userData.email,
+      ip: userData.ip,
     };
 
     return {
-      token: jwt.sign(employee, secret, options),
-      expiresIn: options.expiresIn,
+      token: jwt.sign(user, secret, { expiresIn }),
+      expiresIn,
     };
   },
   get(request) {
@@ -26,14 +25,14 @@ module.exports = {
       const [, token] = bearerHeader.split(' ');
 
       try {
-        const employee = jwt.verify(token, secret);
+        const user = jwt.verify(token, secret);
 
-        if (!employee.ip || employee.ip !== request.ip) {
+        if (!user.ip || user.ip !== request.ip) {
           throw new AuthenticationError("This IP can't access to this service, please renew your token /signin");
         }
-        debug(employee);
+        debug(user);
 
-        return employee;
+        return user;
       } catch (error) {
         throw new AuthenticationError('Token expired');
       }

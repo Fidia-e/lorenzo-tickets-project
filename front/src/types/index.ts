@@ -1,16 +1,20 @@
 import { Dispatch, SetStateAction } from 'react';
 
 export enum Status {
-  OPEN = 'Open',
-  CLOSED = 'Closed',
-  UNDERWAY = 'Underway'
+  OPEN = 'open',
+  CLOSED = 'closed',
+  UNDERWAY = 'underway',
 }
 
 export enum Role {
-  ADMIN = 'Admin',
-  LEAD = 'Lead',
-  INTERVENOR = 'Intervenor',
-  UNKNOWN = 'unknown'
+  ADMIN = 'admin',
+  LEAD = 'lead',
+  INTERVENOR = 'intervenor',
+}
+
+export enum UserType {
+  EMPLOYEE = 'employee',
+  CLIENT = 'client',
 }
 
 export interface FieldBaseProps {
@@ -19,6 +23,10 @@ export interface FieldBaseProps {
   label: string;
   value: string;
   updateField: Dispatch<SetStateAction<string>>;
+}
+
+export interface UserLoginProps {
+  setError: Dispatch<SetStateAction<boolean>>;
 }
 
 // TODO change once we have retrieve type from back
@@ -69,16 +77,21 @@ interface Signin_signin_token {
 
 interface Signin_signin {
   id: number;
+  firstname?: string;
+  lastname?: string;
   email: string;
+  role?: Role;
+  userType: UserType;
+  company?: string;
   token: Signin_signin_token;
-  role: Role;
 }
 
-export interface EmployeeLogged {
+export interface UserLogged {
   logged: boolean;
   id: number;
   email: string;
-  role: Role;
+  role?: Role;
+  userType: UserType;
   token: string;
 }
 
@@ -88,7 +101,8 @@ export interface Signin {
 
 export interface SigninVariables {
   email: string;
-  password: string;
+  password?: string;
+  userType: UserType;
 }
 
 export type Nullable<T> = T | null;

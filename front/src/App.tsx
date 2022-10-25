@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 
 import Connection from './pages/Connection';
 import Home from './pages/Home';
@@ -19,38 +19,45 @@ import Error404 from './pages/Error404';
 import Error403 from './pages/Error403';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { useEmployeeContext, emptyEmployee } from './context/employee';
+import { useUserContext, emptyUser } from './context/user';
 
 const App: FC = () => {
   const { pathname } = useLocation();
-  const { setEmployee } = useEmployeeContext();
+  const { user, setUser } = useUserContext();
+  const navigate = useNavigate();
 
   const logout = (): void => {
-    setEmployee(emptyEmployee);
+    setUser(emptyUser);
+    navigate('/');
   };
+
+  console.log(user.role);
 
   return (
     <div className="app">
-      {pathname !== '/' && <Header />}
+      {/* Le Header et le Footer ne sont pas affiché si l'utilisateur n'est pas connecté ou sur la page de connexion */}
+      {pathname !== '/' && user?.logged && <Header logout={logout} />}
       <Routes>
+        {/* Si l'utilisateur n'est pas connecté, il n'aura accès qu'a la page 403 
+          Les routes pour les pages 404 & 403 sont tout le temps disponible afin d'en faire la démonstration rapidement */}
         <Route path="/" element={<Connection />} />
-        <Route path="/accueil" element={<Home />} />
-        <Route path="/creer-un-ticket" element={<AddTicket />} />
-        <Route path="/tickets" element={<Tickets />} />
-        <Route path="/ticket/:id" element={<Ticket />} />
-        <Route path="/employes" element={<Employees />} />
-        <Route path="/ajout-employe" element={<AddEmployee />} />
-        <Route path="/clients" element={<Clients />} />
-        <Route path="/ajout-client" element={<AddClient />} />
-        <Route path="/messages" element={<Messages />} />
-        <Route path="/ajout-message" element={<AddMessage />} />
-        <Route path="/profil" element={<Profile />} />
-        <Route path="/cgu" element={<GTCU />} />
-        <Route path="/mentions-legales" element={<LegalMentions />} />
+        <Route path="/accueil" element={user?.logged ? <Home /> : <Error403 />} />
+        <Route path="/creer-un-ticket" element={user?.logged ? <AddTicket /> : <Error403 />} />
+        <Route path="/tickets" element={user?.logged ? <Tickets /> : <Error403 />} />
+        <Route path="/ticket/:id" element={user?.logged ? <Ticket /> : <Error403 />} />
+        <Route path="/employes" element={user?.logged ? <Employees /> : <Error403 />} />
+        <Route path="/ajout-employe" element={user?.logged ? <AddEmployee /> : <Error403 />} />
+        <Route path="/clients" element={user?.logged ? <Clients /> : <Error403 />} />
+        <Route path="/ajout-client" element={user?.logged ? <AddClient /> : <Error403 />} />
+        <Route path="/messages" element={user?.logged ? <Messages /> : <Error403 />} />
+        <Route path="/ajout-message" element={user?.logged ? <AddMessage /> : <Error403 />} />
+        <Route path="/profil" element={user?.logged ? <Profile /> : <Error403 />} />
+        <Route path="/cgu" element={user?.logged ? <GTCU /> : <Error403 />} />
+        <Route path="/mentions-legales" element={user?.logged ? <LegalMentions /> : <Error403 />} />
         <Route path="*" element={<Error404 />} />
         <Route path="/403" element={<Error403 />} />
       </Routes>
-      {pathname !== '/' && <Footer />}
+      {pathname !== '/' && user?.logged && <Footer />}
     </div>
   );
 };

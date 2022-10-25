@@ -176,18 +176,26 @@ POST {{ endpoint }}
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 
-query signin($email: EmailAddress!, $password: String!) {
-  signin(email: $email, password: $password) {
+query signin($email: EmailAddress!, $password: String, $userType: UserType!) {
+  signin(email: $email, password: $password, userType: $userType) {
     id
     firstname
+    lastname
+    email
+    role
+    userType
+    company
     token {
       token
       expiresIn
     }
+    created_at
+    updated_at
   }
 }
 
 {
-  "email": "employee1@test.test",
-  "password": "1234"
+  "email": "client1@test.test",
+  "password": "",
+  "userType": "client"
 }

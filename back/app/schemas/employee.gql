@@ -1,7 +1,12 @@
 enum Role {
-  Admin
-  Lead
-  Intervenor
+  admin
+  lead
+  intervenor
+}
+
+enum UserType {
+  client
+  employee
 }
 
 type Employee {
@@ -22,17 +27,6 @@ input EmployeeInput {
   email: EmailAddress!
   password: String!
   role: Role!
-}
-
-type EmployeeConnected {
-  id: PositiveInt!
-  firstname: String!
-  lastname: String!
-  email: EmailAddress!
-  role: Role!
-  token: Token
-  created_at: DateTime!
-  updated_at: DateTime
 }
 
 """

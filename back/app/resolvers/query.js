@@ -5,28 +5,47 @@ const jwt = require('../helpers/jwt');
 module.exports = {
   async signin(_, args, { dataSources, ip }) {
     const errorMessage = 'Authentication invalid';
-    const { email, password } = args;
+    // eslint-disable-next-line no-unused-vars
+    const { email, password, userType } = args;
 
-    const employees = await dataSources.employee.findAll({ email });
-    // console.log('employees----------->', employees);
+    if (args.userType === 'employee') {
+      const employees = await dataSources.employee.findAll({ email });
 
-    if (!employees.length) {
-      throw new UserInputError(errorMessage);
+      if (!employees.length) {
+        throw new UserInputError(errorMessage);
+      }
+
+      const employee = employees[0];
+
+      const result = await bcrypt.compare(password, employee.password);
+
+      // console.log('pwd hashé:', bcrypt.hashSync('1234', 10)); // pour hasher les password
+
+      if (!result) {
+        throw new AuthenticationError(errorMessage);
+      }
+
+      employee.token = jwt.create({ ...employee, ip });
+      employee.userType = 'employee';
+
+      return employee;
     }
 
-    const employee = employees[0];
+    if (args.userType === 'client') {
+      const clients = await dataSources.client.findAll({ email });
+      console.log('clients------------->', clients);
 
-    const result = await bcrypt.compare(password, employee.password);
+      if (!clients.length) {
+        throw new UserInputError(errorMessage);
+      }
 
-    // console.log('pwd hashé:', bcrypt.hashSync('1234', 10)); // pour hasher les password
+      const client = clients[0];
 
-    if (!result) {
-      throw new AuthenticationError(errorMessage);
+      client.token = jwt.create({ ...client, ip });
+      client.userType = 'client';
+
+      return client;
     }
-
-    employee.token = jwt.create({ ...employee, ip });
-
-    return employee;
   },
 
   // ------------------------------- Client -------------------------------

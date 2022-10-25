@@ -1,9 +1,27 @@
+enum UserType {
+  client
+  employee
+}
+
+type UserConnected {
+  id: PositiveInt!
+  firstname: String
+  lastname: String
+  email: EmailAddress!
+  role: Role
+  userType: UserType!
+  token: Token
+  company: String
+  created_at: DateTime!
+  updated_at: DateTime
+}
+
 "Récupérer des données"
 type Query {
   # ------------------------------  Authentication  -------------------------------
 
-  "Authentification de l'employee"
-  signin(email: EmailAddress!, password: String!): EmployeeConnected
+  "Authentification de l'utilisateur"
+  signin(email: EmailAddress!, password: String, userType: UserType!): UserConnected!
 
   # ---------------------------------  Tickets  ----------------------------------
 

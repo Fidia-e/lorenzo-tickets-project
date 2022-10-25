@@ -1,9 +1,13 @@
-import { FunctionComponent, useLayoutEffect, useState } from 'react';
+import { ReactElement, useLayoutEffect, useState } from 'react';
 
 import '../../styles/index.scss';
 import HeaderNav from '../HeaderNav';
 
-const Header: FunctionComponent = () => {
+interface HeaderProps {
+  logout: () => void;
+}
+
+const Header = ({ logout }: HeaderProps): ReactElement => {
   // Sert à afficher la navigation, le css s'occupe du style soit "normal" soit "menu burger"
   const [isNavVisible, setIsNavVisible] = useState(false);
   // Sert à gérer l'affichage de la navigation selon la taille d'écran notamment pour les rotations
@@ -44,7 +48,7 @@ const Header: FunctionComponent = () => {
       <button className="burgerMenuButton" onClick={handleBurgerMenuClick}>
         {isNavVisible ? 'close' : 'open'}
       </button>
-      {isNavVisible && <HeaderNav setIsNavVisible={setIsNavVisible} />}
+      {isNavVisible && <HeaderNav logout={logout} setIsNavVisible={setIsNavVisible} />}
     </div>
   );
 };
