@@ -3,14 +3,14 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { TicketInput } from '../../__generated__/globalTypes';
+import { TicketInput } from "./../../../../__generated__/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: CreateTicket
 // ====================================================
 
 export interface CreateTicket_createTicket {
-  __typename: 'Ticket';
+  __typename: "Ticket";
   id: any;
   title: string;
   content: string;

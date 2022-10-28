@@ -581,6 +581,41 @@
             "deprecationReason": null
           },
           {
+            "name": "getEmployeeByEmail",
+            "description": "Recupération d'un employee par l'email",
+            "args": [
+              {
+                "name": "email",
+                "description": null,
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "SCALAR",
+                    "name": "EmailAddress",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "Employee",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "getAllClients",
             "description": "Liste de tous les clients",
             "args": [

@@ -121,7 +121,7 @@ module.exports = {
     return dataSources.employee.findEmployeesByTicket(args.ticket_id);
   },
 
-  //   getEmployeeByEmail(_, { email }, { dataSources }) {
-  //     return dataSources.employee.findByEmail(email);
-  //   },
+  getEmployeeByEmail(_, { email }, { dataSources }) {
+    return dataSources.employee.findByEmail(email);
+  },
 };
