@@ -13,6 +13,7 @@ const Employee = require('./employee');
 
 // Queries et Mutations
 const Query = require('./query');
+const Mutation = require('./mutation');
 
 module.exports = {
   DateTime,
@@ -28,4 +29,6 @@ module.exports = {
   Employee,
 
   Query,
+
+  Mutation,
 };

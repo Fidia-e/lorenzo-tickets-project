@@ -10,6 +10,7 @@ Après avoir cloner le repo:
 # Prettier et ESLint configuration
 
 Installer les 3 extensions:
+
 - Prettier - Code formatter
 - Pretter - ESLint
 - ESLint
@@ -17,6 +18,7 @@ Installer les 3 extensions:
 Initialiser Eslint en cli `npx eslint --init`
 
 Questions:
+
 - How would you like to use ESLint? : To check syntax, find problems, and enforce code style
 - What type of modules does your project use? : JavaScript modules (import/export)
 - Which framework does your project use? : React
@@ -26,6 +28,7 @@ Questions:
 - What format do you want your config file to be in? JS
 
 Installer prettier et les plugins eslint pour prettier
+
 ```bash
 yarn add prettier eslint-config-prettier prettier-eslint --dev
 npm i prettier eslint-config-prettier prettier-eslint --save-dev
@@ -36,17 +39,18 @@ Créer un fichier .prettierrc à la racine du projet
 Rajouter `'prettier'` dans le fichier .eslintrc.js dans les tableaux `'extends'` et `'plugins'` (à la fin du tableau)
 
 Exemple de fichier .prettierrc
+
 ```json
-    {
-        "singleQuote": true,
-        "tabWidth": 2,
-        "semi": true,
-        "printWidth": 120,
-        "arrowParens": "avoid",
-        "traillingComma": "es5",
-        "useTabs": false,
-        "bracketSpacing": true,
-    }
+{
+  "singleQuote": true,
+  "tabWidth": 2,
+  "semi": true,
+  "printWidth": 120,
+  "arrowParens": "avoid",
+  "traillingComma": "es5",
+  "useTabs": false,
+  "bracketSpacing": true
+}
 ```
 
 Ajouter ces lignes dans le fichier settings.json de vsc:
@@ -60,3 +64,5 @@ Ajouter ces lignes dans le fichier settings.json de vsc:
       "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
 ```
+
+Après avoir utilisé le script `npm run generateTypes`, deplacer le dossier `__generated__` crée à la racine du dossier front vers : `src/apollo`.

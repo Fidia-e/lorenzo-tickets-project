@@ -57,11 +57,11 @@ class CoreSQLDataSource extends SQLDataSource {
     return result[0];
   }
 
-  // async insert(data) {
-  //   const result = await this.knex(this.tableName).connection(this.establishedConnection).insert(data).returning('*');
+  async insert(data) {
+    const result = await this.knex(this.tableName).connection(this.establishedConnection).insert(data).returning('*');
 
-  //   return result[0];
-  // }
+    return result[0];
+  }
 
   // async update({ id }, inputData) {
   //   const result = await this.knex(this.tableName)

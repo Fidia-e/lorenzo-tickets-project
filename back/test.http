@@ -201,3 +201,26 @@ query signin($email: EmailAddress!, $password: String, $userType: UserType!) {
   "password": "",
   "userType": "client"
 }
+
+### Creation d'un ticket
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation CreateTicket($input: TicketInput) {
+  createTicket(input: $input){
+    id
+    title
+    content
+    client_id 
+  }
+}
+
+{
+  "input": {
+    "title": "Titre nouveau ticket",
+    "content": "Contenu du nouveau ticket",
+    "status": "open",
+    "client_id": 1
+  }
+}
