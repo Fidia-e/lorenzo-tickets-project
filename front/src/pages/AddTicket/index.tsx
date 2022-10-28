@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, FormEvent } from 'react';
+import { useState, FormEvent, ReactElement } from 'react';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,54 +9,37 @@ import { useUserContext } from '../../context/user';
 
 import { ADD_TICKET } from '../../apollo/mutations/addTicket';
 import { CreateTicket, CreateTicketVariables } from '../../apollo/mutations/__generated__/CreateTicket';
+import { Status } from '../../apollo/__generated__/globalTypes';
 
 import '../../styles/index.scss';
-import { setDefaultResultOrder } from 'dns';
 
-const AddTicket: FunctionComponent = () => {
+const AddTicket = (): ReactElement => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const { user } = useUserContext();
 
   const navigate = useNavigate();
 
-  const [triggerAddTicket ] = useMutation<CreateTicket, CreateTicketVariables>(ADD_TICKET), {
-    onCompleted: data => {
-      const newTicket: CreateTicket = {
-        title: data.createTicket.title,
-        content: data.createTicket.content,
-        status: data.createTicket.status,
-        client_id: data.createTicket.client_id,
-      };
-
-      // setError(false)
-      // navigate('/');
+  const [addTicket] = useMutation<CreateTicket, CreateTicketVariables>(ADD_TICKET, {
+    variables: {
+      input: {
+        title,
+        content,
+        status: Status.open,
+        client_id: user.id,
+      },
     },
-    onError: (error) => {
+    onCompleted: data => {
+      navigate(`/ticket/${data?.createTicket?.id as number}`);
+    },
+    onError: error => {
       console.log(error);
-    }
-  };
+    },
+  });
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    console.log('add ticket', event);
-
-    // addTicket({
-    //   variables: {
-    //     input: {
-    //       title: title,
-    //       content: content,
-    //       status: '',
-    //       client_id: '',
-    //     },
-    //   },
-    // })
-    //   .then(() => {
-    //     navigate('/');
-    //   })
-    //   .catch(() => {
-    //     setErrorMessage('erreur moi meme');
-    //   });
+    void addTicket();
   };
 
   return (
