@@ -48,7 +48,10 @@ module.exports = {
   },
 
   // ------------------------------- Client -------------------------------
-  getAllClients(_, __, { dataSources }) {
+  getAllClients(_, __, { dataSources, user }) {
+    if (!user) {
+      throw new AuthenticationError('You must be authenticate');
+    }
     return dataSources.client.findAll();
   },
 
@@ -58,39 +61,63 @@ module.exports = {
 
   // ------------------------------- Ticket -------------------------------
 
-  getAllTickets(_, __, { dataSources }) {
+  getAllTickets(_, __, { dataSources, user }) {
+    if (!user) {
+      throw new AuthenticationError('You must be authenticate');
+    }
     return dataSources.ticket.findAll();
   },
 
-  getTicketById(_, { id }, { dataSources }) {
+  getTicketById(_, { id }, { dataSources, user }) {
+    if (!user) {
+      throw new AuthenticationError('You must be authenticate');
+    }
     return dataSources.ticket.findByPk(id);
   },
 
-  getAllTicketsByClientId(_, { id }, { dataSources }) {
+  getAllTicketsByClientId(_, { id }, { dataSources, user }) {
+    if (!user) {
+      throw new AuthenticationError('You must be authenticate');
+    }
     return dataSources.ticket.findAll({ client_id: id });
   },
 
-  async getAllTicketsByEmployeeId(_, args, { dataSources }) {
+  async getAllTicketsByEmployeeId(_, args, { dataSources, user }) {
+    if (!user) {
+      throw new AuthenticationError('You must be authenticate');
+    }
     return dataSources.ticket.findByEmployee(args.employee_id);
   },
 
   // ------------------------------- Message -------------------------------
 
-  getAllMessages(_, __, { dataSources }) {
+  getAllMessages(_, __, { dataSources, user }) {
+    if (!user) {
+      throw new AuthenticationError('You must be authenticate');
+    }
     return dataSources.message.findAll();
   },
 
-  getAllMessagesByTicketId(_, { id }, { dataSources }) {
+  getAllMessagesByTicketId(_, { id }, { dataSources, user }) {
+    if (!user) {
+      throw new AuthenticationError('You must be authenticate');
+    }
     return dataSources.message.findAll({ ticket_id: id });
   },
 
   // ------------------------------- Employee -------------------------------
 
-  getAllEmployees(_, __, { dataSources }) {
+  getAllEmployees(_, __, { dataSources, user }) {
+    if (!user) {
+      throw new AuthenticationError('You must be authenticate');
+    }
     return dataSources.employee.findAll();
   },
 
-  async getAllEmployeesByTicketId(_, args, { dataSources }) {
+  async getAllEmployeesByTicketId(_, args, { dataSources, user }) {
+    if (!user) {
+      throw new AuthenticationError('You must be authenticate');
+    }
     return dataSources.employee.findEmployeesByTicket(args.ticket_id);
   },
 

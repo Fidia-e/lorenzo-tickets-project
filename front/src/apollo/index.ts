@@ -8,20 +8,21 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  const employeeJSON = localStorage.getItem('employee');
+  const userJSON = localStorage.getItem('user');
 
-  // si on est pas connecté... (pas de user...)
-  if (employeeJSON == null || Boolean((JSON.parse(employeeJSON) as Record<string, unknown>).token)) {
+  // si on est connecté
+  if (userJSON !== null && Boolean((JSON.parse(userJSON) as Record<string, unknown>).token)) {
     return {
-      ...(headers as Record<string, unknown>),
+      headers: {
+        ...headers,
+        authorization: `Bearer ${(JSON.parse(userJSON) as Record<string, unknown>).token as string}`,
+      } as unknown,
     };
   }
 
+  // si on est pas connecté... (pas de user...)
   return {
-    headers: {
-      ...headers,
-      Authorization: `Bearer ${(JSON.parse(employeeJSON) as Record<string, unknown>).token as string}`,
-    } as unknown,
+    ...(headers as Record<string, unknown>),
   };
 });
 
