@@ -1,0 +1,24 @@
+.messages-container {
+  .messages-table {
+    thead {
+      tr {
+        .thead-table {
+          &:nth-child(2n) {
+            // content
+            width: 700px;
+          }
+
+          &:nth-child(3n) {
+            // ticket_id
+            width: 200px;
+          }
+
+          &:nth-child(4n) {
+            // employee_id
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+}

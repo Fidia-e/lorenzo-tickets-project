@@ -7,7 +7,8 @@
 @import 'layout/header', 'layout/footer';
 
 // pages
-@import 'pages/connection', 'pages/GTCU', 'pages/addTicket';
+@import 'pages/connection', 'pages/GTCU', 'pages/addTicket', 'pages/home', 'pages/tickets', 'pages/employees',
+  'pages/clients', 'pages/messages', 'pages/profile';
 
 // components
 @import 'components/headerNav', 'components/submitButton', 'components/field', 'components/roleChoiceButton',

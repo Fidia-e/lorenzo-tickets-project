@@ -6,7 +6,7 @@ import { clientsData, clientsTableHeaders } from './constants';
 const Clients: FunctionComponent = () => (
   <div className="clients-container">
     <h1>Page des clients</h1>
-    <Table thHeaders={clientsTableHeaders} items={clientsData} />
+    <Table thHeaders={clientsTableHeaders} items={clientsData} styleName="table clients-table" />
   </div>
 );
 

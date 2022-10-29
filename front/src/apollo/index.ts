@@ -4,7 +4,7 @@ import fetch from 'cross-fetch';
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3005',
-  fetch,
+  fetch
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -15,21 +15,21 @@ const authLink = setContext((_, { headers }) => {
     return {
       headers: {
         ...headers,
-        authorization: `Bearer ${(JSON.parse(userJSON) as Record<string, unknown>).token as string}`,
-      } as unknown,
+        authorization: `Bearer ${(JSON.parse(userJSON) as Record<string, unknown>).token as string}`
+      } as unknown
     };
   }
 
   // si on est pas connecté... (pas de user...)
   return {
-    ...(headers as Record<string, unknown>),
+    ...(headers as Record<string, unknown>)
   };
 });
 
 // création du client
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache()
 });
 
 export default client;

@@ -1,25 +1,82 @@
 .table-container {
   padding: 10px 10px;
 
+  .blue-status,
+  .yellow-status,
+  .red-status {
+  }
+
+  .blue-status {
+    background-color: $c-status-closed;
+  }
+
+  .yellow-status {
+    background-color: $c-status-underway;
+  }
+
+  .red-status {
+    background-color: $c-status-open;
+  }
+
   .table {
-    background-color: $c-frame;
     border-radius: 100px;
     width: 100%;
     border: 2px solid $c-selected;
-
-    th {
-      text-align: left;
-      padding: 5px;
-    }
 
     thead {
       border: solid 2px $c-selected;
       background-color: $c-text;
       color: $c-background;
+
+      tr {
+        .thead-table {
+          text-align: center;
+          padding: 5px;
+
+          &:nth-child(-n + 1) {
+            // id
+            width: 50px;
+          }
+        }
+      }
     }
 
-    tr:nth-child(even) {
-      background-color: $c-background;
+    tbody {
+      td {
+        text-align: center;
+        border-left: 1px solid $c-grey;
+        padding: 0.3rem;
+        // margin: auto;
+
+        &:nth-child(-n + 1) {
+          background-color: $c-text;
+          color: $c-background;
+          width: 50px;
+        }
+      }
+
+      tr:nth-child(even) {
+        border-top: 1px solid $c-grey;
+        border-bottom: 1px solid $c-grey;
+      }
+
+      .see,
+      .edit,
+      .delete {
+        font-size: 1.5rem;
+      }
+
+      .blue {
+        color: $c-status-closed;
+      }
+
+      .yellow {
+        color: $c-status-underway;
+      }
+
+      .red {
+        color: $c-status-open;
+      }
     }
   }
 }

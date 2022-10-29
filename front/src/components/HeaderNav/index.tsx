@@ -62,7 +62,9 @@ const HeaderNav = ({ setIsNavVisible, logout }: HeaderNaveProps): ReactElement =
         )
       }
 
-      <button onClick={logout}>Déconnexion</button>
+      <button className="logoutBtn" onClick={logout}>
+        Déconnexion
+      </button>
     </nav>
   );
 };

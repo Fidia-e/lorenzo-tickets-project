@@ -1,0 +1,195 @@
+.home-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  .home-text {
+    width: 90%;
+    text-align: center;
+  }
+
+  .bubble-1 {
+    position: absolute;
+    z-index: -1;
+    width: 300px;
+    height: 500px;
+    top: -5rem;
+    right: -5rem;
+    opacity: 0.2;
+    animation-name: move;
+    animation-duration: 14s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+    background: linear-gradient(41deg, #182e48 0%, #30638e 47%, #f3fcff 100%);
+  }
+
+  .bubble-2 {
+    position: absolute;
+    z-index: -1;
+    width: 300px;
+    height: 500px;
+    bottom: -5rem;
+    left: -5rem;
+    opacity: 0.2;
+    animation-name: move;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+    background: linear-gradient(41deg, #182e48 0%, #30638e 47%, #f3fcff 100%);
+  }
+
+  .bubble-3 {
+    position: absolute;
+    z-index: -1;
+    width: 400px;
+    height: 500px;
+    bottom: 0;
+    right: 5%;
+    opacity: 0.1;
+    animation-name: move;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+    background: linear-gradient(41deg, #182e48 0%, #30638e 47%, #f3fcff 100%);
+  }
+}
+
+/*----------------------------------------------------------------------------------
+-------------------------------------  MOBILE --------------------------------------
+----------------------------------------------------------------------------------*/
+
+@media (min-width: 375px) {
+  .home-container {
+    .bubble-1 {
+      width: 350px;
+      height: 400px;
+      top: -5rem;
+      right: -5rem;
+    }
+
+    .bubble-2 {
+      width: 350px;
+      height: 400px;
+      bottom: -5rem;
+      left: -5rem;
+    }
+
+    .bubble-3 {
+      width: 350px;
+      height: 700px;
+      bottom: 0;
+      right: 5%;
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------
+-------------------------------------  TABLETTE ------------------------------------
+----------------------------------------------------------------------------------*/
+
+@media (min-width: 599px) {
+  .home-container {
+    .bubble-1 {
+      width: 550px;
+      height: 500px;
+      top: -5rem;
+      right: -5rem;
+    }
+
+    .bubble-2 {
+      width: 550px;
+      height: 400px;
+      bottom: -5rem;
+      left: -5rem;
+    }
+
+    .bubble-3 {
+      width: 700px;
+      height: 900px;
+      bottom: 0;
+      right: 5%;
+    }
+  }
+}
+
+@media (min-width: 899px) {
+  .home-container {
+    .bubble-1 {
+      width: 750px;
+      height: 600px;
+      top: -5rem;
+      right: -5rem;
+    }
+
+    .bubble-2 {
+      width: 750px;
+      height: 600px;
+      bottom: -5rem;
+      left: -5rem;
+    }
+
+    .bubble-3 {
+      width: 850px;
+      height: 1100px;
+      bottom: 10%;
+      right: 5%;
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------
+-------------------------------------  DESKTOP -------------------------------------
+----------------------------------------------------------------------------------*/
+
+@media (min-width: 1199px) {
+  .home-container {
+    .bubble-1 {
+      width: 700px;
+      height: 500px;
+      top: -5rem;
+      right: -5rem;
+    }
+
+    .bubble-2 {
+      width: 700px;
+      height: 500px;
+      bottom: -5rem;
+      left: -5rem;
+    }
+
+    .bubble-3 {
+      width: 1000px;
+      height: 1100px;
+      bottom: -5rem;
+      right: 5%;
+    }
+  }
+}
+
+@media (min-width: 1399px) {
+  .home-container {
+    .bubble-1 {
+      width: 950px;
+      height: 700px;
+      top: -10rem;
+      right: -10rem;
+    }
+
+    .bubble-2 {
+      width: 950px;
+      height: 700px;
+      bottom: -10rem;
+      left: -10rem;
+    }
+
+    .bubble-3 {
+      width: 1200px;
+      height: 1100px;
+      bottom: 5%;
+      right: 15%;
+    }
+  }
+}

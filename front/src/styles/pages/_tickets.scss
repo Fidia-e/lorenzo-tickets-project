@@ -1,3 +1,19 @@
 .tickets-container {
-  grid-row-start: 2;
+  .tickets-table {
+    thead {
+      tr {
+        .thead-table {
+          &:nth-child(3n) {
+            // content
+            width: 650px;
+          }
+
+          &:nth-child(6n) {
+            // created_at
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
 }

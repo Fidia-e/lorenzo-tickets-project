@@ -47,20 +47,23 @@ const AddTicket = (): ReactElement => {
       <form className="add-ticket-form" onSubmit={handleSubmit}>
         <Field
           identifier="ticket-title"
-          placeholder=""
+          placeholder="Si vous deviez résumer votre problème en une phrase"
           label="Titre"
           type="text"
           value={title}
           updateField={setTitle}
+          styleName="input input-add-ticket-title"
         />
         <FieldLongText
           identifier="ticket-content"
-          placeholder="Décrivez votre problème"
+          placeholder="Décrivez votre problème en détails"
           label="Description"
           value={content}
           updateField={setContent}
+          styleName=""
         />
-        <SubmitButton text="Envoyer" />
+        <SubmitButton text="Envoyer" styleName="submit-button" />
+        <div className="bubble-1"></div>
       </form>
     </div>
   );
