@@ -3,14 +3,14 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { Role } from "./../../../../__generated__/globalTypes";
+import { Role } from '../../__generated__/globalTypes';
 
 // ====================================================
 // GraphQL query operation: GetEmployeeByEmail
 // ====================================================
 
 export interface GetEmployeeByEmail_getEmployeeByEmail {
-  __typename: "Employee";
+  __typename: 'Employee';
   firstname: string;
   lastname: string;
   role: Role;

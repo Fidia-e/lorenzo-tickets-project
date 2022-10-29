@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { FormEvent, FunctionComponent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -11,7 +12,7 @@ import { GET_TICKET_BY_ID } from '../../apollo/queries/getTicketById';
 import {
   GetTicketById,
   GetTicketByIdVariables,
-  GetTicketById_getTicketById
+  GetTicketById_getTicketById,
 } from '../../apollo/queries/__generated__/GetTicketById';
 import FieldLongText from '../../components/FieldLongText';
 import Message from '../../components/Message';
@@ -20,13 +21,13 @@ import { useUserContext } from '../../context/user';
 import { emptyTicket } from './constants';
 import {
   addTicketToEmployee,
-  addTicketToEmployeeVariables
+  addTicketToEmployeeVariables,
 } from '../../apollo/mutations/__generated__/addTicketToEmployee';
 import { ADD_TICKET_TO_EMPLOYEE } from '../../apollo/mutations/addTicketToEmployee';
 import { REMOVE_TICKET_TO_EMPLOYEE } from '../../apollo/mutations/removeTicketToEmployee';
 import {
   removeTicketToEmployee,
-  removeTicketToEmployeeVariables
+  removeTicketToEmployeeVariables,
 } from '../../apollo/mutations/__generated__/removeTicketToEmployee';
 import { ticketStatusClassName, ticketStatusTraduction } from '../../utils';
 import Loader from '../../components/Loader';
@@ -66,7 +67,7 @@ const Ticket: FunctionComponent = () => {
     onError: error => {
       console.log(error);
       setLoading(false);
-    }
+    },
   });
 
   const [addMessage] = useMutation<CreateMessage, CreateMessageVariables>(ADD_MESSAGE, {
@@ -75,8 +76,8 @@ const Ticket: FunctionComponent = () => {
         content: newMessageText,
         ticket_id: idAsNumber,
         client_id: user.userType === 'client' ? user.id : null,
-        employee_id: user.userType === 'employee' ? user.id : null
-      }
+        employee_id: user.userType === 'employee' ? user.id : null,
+      },
     },
     onCompleted: data => {
       setNewMessageText('');
@@ -84,15 +85,15 @@ const Ticket: FunctionComponent = () => {
     },
     onError: error => {
       console.log(error);
-    }
+    },
   });
 
   const [addTicketToEmployee] = useMutation<addTicketToEmployee, addTicketToEmployeeVariables>(ADD_TICKET_TO_EMPLOYEE, {
     variables: {
       input: {
         ticket_id: ticket.id as number,
-        employee_id: user.id
-      }
+        employee_id: user.id,
+      },
     },
     onCompleted: data => {
       setIsEmployeeHandlingTicket(true);
@@ -101,7 +102,7 @@ const Ticket: FunctionComponent = () => {
     onError: error => {
       setIsEmployeeHandlingTicket(false);
       console.log(error);
-    }
+    },
   });
 
   const [removeTicketToEmployee] = useMutation<removeTicketToEmployee, removeTicketToEmployeeVariables>(
@@ -110,8 +111,8 @@ const Ticket: FunctionComponent = () => {
       variables: {
         input: {
           ticket_id: ticket.id as number,
-          employee_id: user.id
-        }
+          employee_id: user.id,
+        },
       },
       onCompleted: data => {
         setIsEmployeeHandlingTicket(true);
@@ -120,7 +121,7 @@ const Ticket: FunctionComponent = () => {
       onError: error => {
         setIsEmployeeHandlingTicket(false);
         console.log(error);
-      }
+      },
     }
   );
 

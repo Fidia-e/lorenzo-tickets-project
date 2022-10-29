@@ -48,7 +48,7 @@ const Tickets = (): ReactElement => {
   const [triggerGetAllTicketsByClientId] = useLazyQuery<GetAllTicketsByClientId, GetAllTicketsByClientIdVariables>(
     GET_ALL_TICKETS_BY_CLIENT_ID,
     {
-      variables: { id: user.id },
+      variables: { id: user.id as number },
       onCompleted: data => {
         if (data !== null) {
           setAllTickets(data.getAllTicketsByClientId as GetAllTicketsByClientId_getAllTicketsByClientId[]);

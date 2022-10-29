@@ -24,15 +24,15 @@ const AddTicket = (): ReactElement => {
         title,
         content,
         status: Status.open,
-        client_id: user.id
-      }
+        client_id: user.id as number,
+      },
     },
     onCompleted: data => {
       navigate(`/ticket/${data?.createTicket?.id as number}`);
     },
     onError: error => {
       console.log(error);
-    }
+    },
   });
 
   const handleSubmit = (event: FormEvent): void => {

@@ -9,8 +9,6 @@ const Profile: FunctionComponent = () => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
-  console.log(user);
-
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
     console.log(event);
