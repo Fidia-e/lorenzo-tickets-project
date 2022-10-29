@@ -3,14 +3,14 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { MessageInput } from '../../__generated__/globalTypes';
+import { MessageInput } from "./../../../../__generated__/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: CreateMessage
 // ====================================================
 
 export interface CreateMessage_createMessage {
-  __typename: 'Message';
+  __typename: "Message";
   content: string;
   ticket_id: any;
   client_id: any | null;

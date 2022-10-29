@@ -20,6 +20,7 @@ import Error403 from './pages/Error403';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { useUserContext, emptyUser } from './context/user';
+import { UserType } from './apollo/__generated__/globalTypes';
 
 const App: FC = () => {
   const { pathname } = useLocation();
@@ -49,7 +50,10 @@ const App: FC = () => {
         <Route path="/ajout-client" element={user?.logged ? <AddClient /> : <Error403 />} />
         <Route path="/messages" element={user?.logged ? <Messages /> : <Error403 />} />
         <Route path="/ajout-message" element={user?.logged ? <AddMessage /> : <Error403 />} />
-        <Route path="/profil" element={user?.logged ? <Profile /> : <Error403 />} />
+        <Route
+          path="/profil"
+          element={user?.logged && user?.userType === UserType.employee ? <Profile /> : <Error403 />}
+        />
         <Route path="/cgu" element={user?.logged ? <GTCU /> : <Error403 />} />
         <Route path="/mentions-legales" element={user?.logged ? <LegalMentions /> : <Error403 />} />
         <Route path="*" element={<Error404 />} />

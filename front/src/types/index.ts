@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Role, Status, UserType } from '../apollo/__generated__/globalTypes';
+import { Role, Status } from '../apollo/__generated__/globalTypes';
 
 export enum ItemType {
   MESSAGE = 'Message',
@@ -60,41 +60,6 @@ export interface Employee {
   role: Role;
   created_at: string;
   updated_at: string | null;
-}
-
-interface Signin_signin_token {
-  token: string;
-  expiresIn: string;
-}
-
-interface Signin_signin {
-  id: number;
-  firstname?: string;
-  lastname?: string;
-  email: string;
-  role?: Role;
-  userType: UserType;
-  company?: string;
-  token: Signin_signin_token;
-}
-
-export interface UserLogged {
-  logged: boolean;
-  id: number;
-  email: string;
-  role?: Role;
-  userType: UserType;
-  token: string;
-}
-
-export interface Signin {
-  signin: Signin_signin;
-}
-
-export interface SigninVariables {
-  email: string;
-  password?: string;
-  userType: UserType;
 }
 
 export type Nullable<T> = T | null;

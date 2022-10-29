@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import Field from '../Field';
 import SubmitButton from '../SubmitButton';
 import { SIGNIN } from '../../apollo/queries/signin';
-import { UserLogged, Signin, SigninVariables, UserLoginProps } from '../../types';
+import { UserLoginProps } from '../../types';
 import { useUserContext } from '../../context/user';
+import { Signin, SigninVariables, Signin_signin } from '../../apollo/queries/__generated__/Signin';
 import { UserType } from '../../apollo/__generated__/globalTypes';
 
 const ClientLogin = ({ setError }: UserLoginProps): ReactElement => {
@@ -17,13 +18,13 @@ const ClientLogin = ({ setError }: UserLoginProps): ReactElement => {
 
   const [triggerSignin] = useLazyQuery<Signin, SigninVariables>(SIGNIN, {
     onCompleted: data => {
-      const newUser: UserLogged = {
-        id: data.signin.id,
-        email: data.signin.email,
-        token: data.signin.token.token,
-        userType: data.signin?.userType,
+      const newUser = {
+        id: data.signin.id as number,
+        email: data.signin.email as string,
+        token: data.signin.token?.token,
+        userType: data.signin.userType,
         logged: true,
-      };
+      } as unknown as Signin_signin;
 
       setUser(newUser);
       setError(false);
