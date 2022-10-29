@@ -9,7 +9,7 @@ import { GET_TICKET_BY_ID } from '../../apollo/queries/getTicketById';
 import {
   GetTicketById,
   GetTicketByIdVariables,
-  GetTicketById_getTicketById,
+  GetTicketById_getTicketById
 } from '../../apollo/queries/__generated__/GetTicketById';
 import FieldLongText from '../../components/FieldLongText';
 import Message from '../../components/Message';
@@ -36,7 +36,7 @@ const Ticket: FunctionComponent = () => {
     },
     onError: error => {
       console.log(error);
-    },
+    }
   });
 
   const [addMessage] = useMutation<CreateMessage, CreateMessageVariables>(ADD_MESSAGE, {
@@ -45,8 +45,8 @@ const Ticket: FunctionComponent = () => {
         content: newMessageText,
         ticket_id: idAsNumber,
         client_id: user.userType === 'client' ? user.id : null,
-        employee_id: user.userType === 'employee' ? user.id : null,
-      },
+        employee_id: user.userType === 'employee' ? user.id : null
+      }
     },
     onCompleted: data => {
       setNewMessageText('');
@@ -54,7 +54,7 @@ const Ticket: FunctionComponent = () => {
     },
     onError: error => {
       console.log(error);
-    },
+    }
   });
 
   const handleSubmit = (event: FormEvent): void => {
@@ -109,8 +109,9 @@ const Ticket: FunctionComponent = () => {
             label="Ajouter un message"
             value={newMessageText}
             updateField={setNewMessageText}
+            styleName=""
           />
-          <SubmitButton text="Envoyer" />
+          <SubmitButton text="Envoyer" styleName="" />
         </form>
       </div>
     </div>
