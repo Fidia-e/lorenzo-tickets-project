@@ -11,7 +11,7 @@ const Error404: FunctionComponent = () => {
   const fullText = user?.logged ? (
     <>
       {baseText} l&apos;
-      <Link to="/accueil">Accueil</Link>
+      <Link to="/accueil">accueil</Link>
     </>
   ) : (
     <>

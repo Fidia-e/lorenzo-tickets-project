@@ -10,7 +10,7 @@ $c-background: #fdffff;
 $c-frame: #f3fcff;
 $c-text: #011936;
 $c-selected: #182e48;
-$c-grey: #ddd;
+$c-blue-grey: lighten($c-status-closed, 60%);
 
 // tailles
 $s-header: 50px;
@@ -19,6 +19,3 @@ $s-base-margin: 2em;
 
 // border-radius
 $br-mobile: 5px;
-
-// spacing
-// $margin: 0.5em;

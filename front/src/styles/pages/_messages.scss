@@ -2,7 +2,9 @@
   .messages-table {
     thead {
       tr {
-        .thead-table {
+        padding: 0.5rem 0;
+
+        th {
           &:nth-child(2n) {
             // content
             width: 700px;
@@ -15,7 +17,27 @@
 
           &:nth-child(4n) {
             // employee_id
-            width: 200px;
+            width: 150px;
+          }
+
+          &:nth-child(5n) {
+            // client_id
+            width: 150px;
+          }
+
+          &:nth-child(6n) {
+            // created_at
+            width: 150px;
+          }
+
+          &:nth-child(7n) {
+            // updated_at
+            width: 150px;
+          }
+
+          &:nth-child(8n) {
+            // gestion
+            width: 100px;
           }
         }
       }

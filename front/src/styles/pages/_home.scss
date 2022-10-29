@@ -9,6 +9,7 @@
   .home-text {
     width: 90%;
     text-align: center;
+    font-weight: 500;
   }
 
   .bubble-1 {
@@ -18,12 +19,14 @@
     height: 500px;
     top: -5rem;
     right: -5rem;
-    opacity: 0.2;
+    opacity: 0.5;
     animation-name: move;
     animation-duration: 14s;
     animation-iteration-count: infinite;
     animation-delay: 0s;
-    background: linear-gradient(41deg, #182e48 0%, #30638e 47%, #f3fcff 100%);
+    background-image: url('../../images/lorenzo-lamas.jpeg');
+    background-position: center;
+    background-size: cover;
   }
 
   .bubble-2 {
@@ -33,12 +36,14 @@
     height: 500px;
     bottom: -5rem;
     left: -5rem;
-    opacity: 0.2;
+    opacity: 0.5;
     animation-name: move;
     animation-duration: 15s;
     animation-iteration-count: infinite;
     animation-delay: 0s;
-    background: linear-gradient(41deg, #182e48 0%, #30638e 47%, #f3fcff 100%);
+    background-image: url('../../images/lorenzo-lamas.jpeg');
+    background-position: center;
+    background-size: cover;
   }
 
   .bubble-3 {
@@ -146,6 +151,11 @@
 
 @media (min-width: 1199px) {
   .home-container {
+    .home-text {
+      width: 60%;
+      line-height: 1.5rem;
+    }
+
     .bubble-1 {
       width: 700px;
       height: 500px;

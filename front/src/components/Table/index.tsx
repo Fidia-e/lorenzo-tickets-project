@@ -12,6 +12,7 @@ import { GetAllTickets_getAllTickets } from '../../apollo/queries/__generated__/
 import { useUserContext } from '../../context/user';
 import { GetAllTicketsByClientId_getAllTicketsByClientId } from '../../apollo/queries/__generated__/GetAllTicketsByClientId';
 import { ItemType } from '../../utils';
+import Moment from 'react-moment';
 
 interface TableProps {
   thHeaders: string[];
@@ -58,7 +59,7 @@ const Table = ({ thHeaders, items, styleName, deleteFunction, itemType }: TableP
         </thead>
         <tbody>
           {
-            /* Le map permet de boucler sur tout les objets que l'on veut afficher */
+            /* Le map permet de boucler sur tous les objets que l'on veut afficher */
             items.map(item => {
               // Vérification du type de l'item
               let urlParam;
@@ -77,7 +78,7 @@ const Table = ({ thHeaders, items, styleName, deleteFunction, itemType }: TableP
                       // On va chercher la valeur de la clé puis on l'affiche
                       const value = item[thHeader as keyof typeof item] as string;
 
-                      // on affiche la valeur si elle existe
+                      // On affiche la valeur si elle existe
                       let fragment = <p>{value ?? null}</p>;
 
                       // si la valeur correspond au statut,
@@ -90,6 +91,11 @@ const Table = ({ thHeaders, items, styleName, deleteFunction, itemType }: TableP
                       }
                       if (value === 'underway') {
                         fragment = <p className="yellow-status">en cours</p>;
+                      }
+
+                      // Si la valeur correspond à la date, on la formate
+                      if ((thHeader === 'created_at' || thHeader === 'updated_at') && value != null) {
+                        fragment = <Moment format="DD/MM/YYYY">{value}</Moment>;
                       }
 
                       return <td key={`td${index}${item.id as number}`}>{fragment}</td>;

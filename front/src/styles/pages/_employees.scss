@@ -1,4 +1,51 @@
 .employees-container {
   .employees-table {
+    thead {
+      tr {
+        padding: 0.5rem 0;
+
+        th {
+          &:nth-child(2n) {
+            // firtsname
+            width: 200px;
+          }
+
+          &:nth-child(3n) {
+            // lastanme
+            width: 200px;
+          }
+
+          &:nth-child(4n) {
+            // email
+            width: auto;
+          }
+
+          &:nth-child(5n) {
+            // password
+            width: 50px;
+          }
+
+          &:nth-child(6n) {
+            // role
+            width: 150px;
+          }
+
+          &:nth-child(7n) {
+            // created_at
+            width: 150px;
+          }
+
+          &:nth-child(8n) {
+            // updated_at
+            width: 150px;
+          }
+
+          &:nth-child(9n) {
+            // gestion
+            width: 70px;
+          }
+        }
+      }
+    }
   }
 }

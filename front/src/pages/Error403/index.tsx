@@ -11,7 +11,7 @@ const Error403: FunctionComponent = () => {
   const fullText = user?.logged ? (
     <>
       {baseText} retournez plutôt vers l&apos;
-      <Link to="/accueil">Accueil</Link>
+      <Link to="/accueil">accueil</Link>
     </>
   ) : (
     <>

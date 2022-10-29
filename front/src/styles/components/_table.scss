@@ -1,21 +1,30 @@
 .table-container {
+  width: auto;
   padding: 10px 10px;
+  overflow-x: scroll;
 
   .blue-status,
   .yellow-status,
   .red-status {
+    width: 100px;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 0.2rem 0;
   }
 
   .blue-status {
     background-color: $c-status-closed;
+    color: $c-background;
   }
 
   .yellow-status {
     background-color: $c-status-underway;
+    color: $c-text;
   }
 
   .red-status {
     background-color: $c-status-open;
+    color: $c-background;
   }
 
   .table {
@@ -24,18 +33,18 @@
     border: 2px solid $c-selected;
 
     thead {
-      border: solid 2px $c-selected;
+      border: solid 1px $c-blue-grey;
       background-color: $c-text;
       color: $c-background;
 
       tr {
-        .thead-table {
-          text-align: center;
-          padding: 5px;
+        padding: 0.5rem 0;
 
-          &:nth-child(-n + 1) {
-            // id
-            width: 50px;
+        th {
+          &:nth-child(n) {
+            // head du tableau
+            padding: 0.5rem 0;
+            border-right: solid 1px $c-blue-grey;
           }
         }
       }
@@ -44,20 +53,20 @@
     tbody {
       td {
         text-align: center;
-        border-left: 1px solid $c-grey;
+        border-left: 1px solid $c-blue-grey;
         padding: 0.3rem;
         // margin: auto;
 
         &:nth-child(-n + 1) {
           background-color: $c-text;
           color: $c-background;
-          width: 50px;
+          width: 60px;
         }
       }
 
       tr:nth-child(even) {
-        border-top: 1px solid $c-grey;
-        border-bottom: 1px solid $c-grey;
+        border-top: 1px solid $c-blue-grey;
+        border-bottom: 1px solid $c-blue-grey;
       }
 
       .see,

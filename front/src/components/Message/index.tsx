@@ -5,9 +5,10 @@ import { GetTicketById_getTicketById_messages } from '../../apollo/queries/__gen
 
 interface MessageProps {
   message: GetTicketById_getTicketById_messages;
+  clientId: number;
 }
 
-const Message = ({ message }: MessageProps): ReactElement => {
+const Message = ({ message, clientId }: MessageProps): ReactElement => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const author =
     message.client_id != null
@@ -18,12 +19,14 @@ const Message = ({ message }: MessageProps): ReactElement => {
       : "Problème lors de la récupération de l'auteur";
 
   return (
-    <div className="message-container">
-      <span>{author}</span>
-      <span>
-        <Moment format="DD/MM/YYYY">{message.created_at}</Moment>
-      </span>
-      <p>{message.content}</p>
+    <div className={message.client_id === clientId ? 'message message-client-container' : 'message message-container'}>
+      <div className="infos-container">
+        <span className="author-infos">{author}</span>
+        <span className="date-infos">
+          <Moment format="DD/MM/YYYY à HH:mm">{message.created_at}</Moment>
+        </span>
+      </div>
+      <div>{message.content}</div>
     </div>
   );
 };

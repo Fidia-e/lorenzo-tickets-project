@@ -46,7 +46,12 @@ body {
       .employees-container,
       .clients-container,
       .messages-container,
-      .profile-container {
+      .profile-container,
+      .ticket-container,
+      .error404-container,
+      .error403-container,
+      .gtcu-container,
+      .legalesMentions-container {
         width: 100%;
         min-height: calc(100vh - $s-footer * 1.6);
         position: relative;
