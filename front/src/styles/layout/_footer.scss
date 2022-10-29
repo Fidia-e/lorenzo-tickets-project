@@ -1,10 +1,11 @@
 .footer {
-  grid-row-start: 3;
+  width: 100%;
+  height: $s-footer;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: aqua;
-  height: $s-footer;
+  background-color: $c-text;
+  color: $c-frame;
 }
 
 /*----------------------------------------------------------------------------------

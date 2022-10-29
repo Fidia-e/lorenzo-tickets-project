@@ -21,7 +21,7 @@ const ClientLogin = ({ setError }: UserLoginProps): ReactElement => {
         email: data.signin.email,
         token: data.signin.token.token,
         userType: data.signin?.userType,
-        logged: true,
+        logged: true
       };
 
       setUser(newUser);
@@ -30,14 +30,14 @@ const ClientLogin = ({ setError }: UserLoginProps): ReactElement => {
     },
     onError: () => {
       setError(true);
-    },
+    }
   });
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
 
     void triggerSignin({
-      variables: { email, userType: UserType.CLIENT },
+      variables: { email, userType: UserType.CLIENT }
     });
   };
 
@@ -51,8 +51,9 @@ const ClientLogin = ({ setError }: UserLoginProps): ReactElement => {
           type="email"
           value={email}
           updateField={setEmail}
+          styleName="input"
         />
-        <SubmitButton text="Connexion" />
+        <SubmitButton text="Connexion" styleName="submit-button submit-login" />
       </form>
     </div>
   );

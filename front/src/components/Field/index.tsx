@@ -14,8 +14,9 @@ interface FieldProps extends FieldBaseProps {
  * @param type le type de l'input
  * @param value la valeur de l'input pour avoir un champ contrôlé
  * @param updateField le setter qui permet de modifier @param value pour avoir un champ contrôlé
+ * @param styleName le nom de la classe css à appliquer
  */
-const Field = ({ identifier, placeholder, label, type, value, updateField }: FieldProps): ReactElement => {
+const Field = ({ identifier, placeholder, label, type, value, updateField, styleName }: FieldProps): ReactElement => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const target = event.currentTarget;
     updateField(target.value);
@@ -28,7 +29,7 @@ const Field = ({ identifier, placeholder, label, type, value, updateField }: Fie
       </label>
       <input
         autoComplete="off"
-        className="input"
+        className={styleName}
         id={identifier}
         placeholder={placeholder}
         name={identifier}

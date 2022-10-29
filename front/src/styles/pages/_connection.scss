@@ -1,17 +1,81 @@
 .connection-container {
+  min-height: 100vh;
+  width: 80%;
+  height: 450px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  grid-row-start: 2;
 
-  .login-form-role {
+  .form-container {
+    width: 100%;
+    height: 60%;
     display: flex;
+    justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
-  }
+    background-color: $c-text;
+    position: relative;
+    margin: auto;
+    color: $c-frame;
+    border-radius: 30px;
 
-  .not-display {
-    display: none;
+    .logoCtn {
+      width: 150px;
+      position: absolute;
+      top: -3rem;
+      right: -1rem;
+      transform: rotateZ(20deg);
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .login-form-role {
+      height: 200px;
+      align-items: center;
+
+      .login-form {
+        text-align: center;
+      }
+    }
+
+    .not-display {
+      display: none;
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------
+-------------------------------------  TABLETTE ------------------------------------
+----------------------------------------------------------------------------------*/
+
+@media (min-width: 599px) {
+  .connection-container {
+    width: 70%;
+    height: 500px;
+
+    .form-container {
+      .logoCtn {
+        width: 250px;
+        top: -3.5rem;
+        left: -7rem;
+        transform: rotateZ(-10deg);
+      }
+
+      .login-form-role {
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 1199px) {
+  .connection-container {
+    width: 50%;
   }
 }

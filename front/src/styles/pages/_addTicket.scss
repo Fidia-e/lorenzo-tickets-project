@@ -1,23 +1,51 @@
-.add-ticket-form {
+.add-ticket-form-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 auto;
 
-  #ticket-content {
-    height: 300px;
-  }
+  .add-ticket-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $c-grey;
+    padding: 1rem;
 
-  &-container {
-    padding: 1em;
-    width: 95%;
-    margin: 10% auto;
-    border: 1px solid $c-selected;
-  }
+    #ticket-content {
+      height: 300px;
+    }
 
-  .submit-button {
-    width: fit-content;
-    align-self: flex-end;
-    padding: 1em 1.5em;
-    margin: 0;
+    .input-add-ticket-title {
+      &::placeholder {
+        color: darken($c-grey, 40%);
+        font-family: monospace;
+      }
+    }
+
+    .submit-button {
+      width: fit-content;
+      align-self: flex-end;
+      padding: 1em 1.5em;
+      margin: 0;
+    }
+
+    .bubble-1 {
+      position: absolute;
+      z-index: -5;
+      width: 300px;
+      height: 500px;
+      top: 10%;
+      right: 5%;
+      opacity: 0.1;
+      animation-name: move;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-delay: 0s;
+      background: linear-gradient(41deg, #182e48 0%, #30638e 47%, #f3fcff 100%);
+    }
   }
 }
 
@@ -25,7 +53,25 @@
 -------------------------------------  MOBILE --------------------------------------
 ----------------------------------------------------------------------------------*/
 
-@media (min-width: 320px) {
+@media (min-width: 375px) {
+  .add-ticket-form-container {
+    .add-ticket-form {
+      .bubble-1 {
+        width: 350px;
+      }
+    }
+  }
+}
+
+@media (min-width: 414px) {
+  .add-ticket-form-container {
+    .add-ticket-form {
+      .bubble-1 {
+        width: 380px;
+        height: 550px;
+      }
+    }
+  }
 }
 
 /*----------------------------------------------------------------------------------
@@ -33,12 +79,31 @@
 ----------------------------------------------------------------------------------*/
 
 @media (min-width: 599px) {
+  .add-ticket-form-container {
+    .add-ticket-form {
+      width: 70%;
+
+      .bubble-1 {
+        width: 550px;
+        height: 700px;
+        top: 10%;
+        right: 10%;
+      }
+    }
+  }
 }
 
 @media (min-width: 899px) {
-  .add-ticket-form {
-    &-container {
-      width: 40%;
+  .add-ticket-form-container {
+    .add-ticket-form {
+      width: 60%;
+
+      .bubble-1 {
+        width: 850px;
+        height: 1000px;
+        top: 10%;
+        right: 10%;
+      }
     }
   }
 }
@@ -47,4 +112,42 @@
 ----------------------------------------------------------------------------------*/
 
 @media (min-width: 1199px) {
+  .add-ticket-form-container {
+    .add-ticket-form {
+      .bubble-1 {
+        width: 1000px;
+        height: 800px;
+        top: 5%;
+        right: 5%;
+      }
+    }
+  }
+}
+
+@media (min-width: 1399px) {
+  .add-ticket-form-container {
+    .add-ticket-form {
+      width: 40%;
+
+      .bubble-1 {
+        width: 1200px;
+        height: 800px;
+        top: 10%;
+        right: 10%;
+      }
+    }
+  }
+}
+
+@media (min-width: 1599px) {
+  .add-ticket-form-container {
+    .add-ticket-form {
+      .bubble-1 {
+        width: 1300px;
+        height: 1000px;
+        top: 5%;
+        right: 15%;
+      }
+    }
+  }
 }

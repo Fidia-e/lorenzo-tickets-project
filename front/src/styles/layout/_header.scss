@@ -1,22 +1,29 @@
 .header {
+  width: 100%;
+  height: $s-header;
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  background-color: $c-text;
+  position: relative;
   position: sticky;
   top: 0;
-  background-color: aqua;
-  grid-row-start: 1;
-  height: $s-header;
-}
+  z-index: 9999;
 
-.burgerMenuButton {
-  position: absolute;
-  right: 0;
-}
-/*----------------------------------------------------------------------------------
--------------------------------------  MOBILE --------------------------------------
-----------------------------------------------------------------------------------*/
+  .burgerMenuButton {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    background-color: $c-status-closed;
+    color: $c-frame;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
 
-@media (min-width: 320px) {
+    &:hover {
+      background-color: $c-selected;
+    }
+  }
 }
 
 /*----------------------------------------------------------------------------------
@@ -27,8 +34,17 @@
 }
 
 @media (min-width: 899px) {
-  .burgerMenuButton {
-    display: none;
+  .header {
+    height: 75px;
+
+    .burgerMenuButton {
+      display: none;
+    }
+
+    a {
+      margin: 0 0.5rem;
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -37,4 +53,19 @@
 ----------------------------------------------------------------------------------*/
 
 @media (min-width: 1199px) {
+  .header {
+    a {
+      margin: 0 1rem;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+@media (min-width: 1399px) {
+  .header {
+    a {
+      margin: 0 1.5rem;
+      font-size: 1.5rem;
+    }
+  }
 }

@@ -10,6 +10,10 @@ const Home: FunctionComponent = () => (
       qu&apos;il aimait qui avait été touchée. Accusé à tort de meurtre, il rôdait maintenant du côté du Dakota. Un
       hors-la-loi poursuivant les hors-la-loi, un chasseur de prime, un renégat.
     </p>
+
+    <div className="bubble-1"></div>
+    <div className="bubble-2"></div>
+    <div className="bubble-3"></div>
   </div>
 );
 

@@ -43,7 +43,7 @@ describe('<Connection />', () => {
 
     expect(screen.getByText(clientText)).toBeInTheDocument();
     expect(screen.queryByLabelText(employeeText)).not.toBeInTheDocument();
-    expect(screen.queryByLabelText('Mot de Passe')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Mot de passe')).not.toBeInTheDocument();
 
     expect(clientButton).toHaveClass(selected);
     expect(clientButton).not.toHaveClass(notSelected);
@@ -70,7 +70,7 @@ describe('<Connection />', () => {
 
     expect(screen.getByText(employeeText)).toBeInTheDocument();
     expect(screen.queryByLabelText(clientText)).not.toBeInTheDocument();
-    expect(screen.queryByLabelText('Mot de Passe')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Mot de passe')).toBeInTheDocument();
 
     expect(employeeButton).toHaveClass(selected);
     expect(employeeButton).not.toHaveClass(notSelected);

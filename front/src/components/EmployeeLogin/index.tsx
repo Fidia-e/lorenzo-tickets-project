@@ -23,7 +23,7 @@ const EmployeeLogin = ({ setError }: UserLoginProps): ReactElement => {
         token: data.signin.token.token,
         role: data.signin.role,
         userType: data.signin?.userType,
-        logged: true,
+        logged: true
       };
 
       setUser(newUser);
@@ -32,14 +32,14 @@ const EmployeeLogin = ({ setError }: UserLoginProps): ReactElement => {
     },
     onError: () => {
       setError(true);
-    },
+    }
   });
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
 
     void triggerSignin({
-      variables: { email, password: password ?? '', userType: UserType.EMPLOYEE },
+      variables: { email, password: password ?? '', userType: UserType.EMPLOYEE }
     });
   };
 
@@ -53,16 +53,18 @@ const EmployeeLogin = ({ setError }: UserLoginProps): ReactElement => {
           type="email"
           value={email}
           updateField={setEmail}
+          styleName="input"
         />
         <Field
           identifier="password"
-          placeholder="Mot de Passe"
-          label="Mot de Passe"
+          placeholder="mot de passe"
+          label="Mot de passe"
           type="password"
           value={password}
           updateField={setPassword}
+          styleName="input"
         />
-        <SubmitButton text="Connexion" />
+        <SubmitButton text="Connexion" styleName="submit-button submit-login" />
       </form>
     </div>
   );

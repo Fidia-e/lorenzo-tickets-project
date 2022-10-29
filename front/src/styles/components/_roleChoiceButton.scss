@@ -1,14 +1,38 @@
 .role-choice-button {
+  width: 110px;
   background-color: $c-background;
-  padding: 0.8em;
+  padding: 0.5rem 1rem;
   margin: 0.5em;
+  border-radius: 20px;
+  font-weight: bold;
+  border-bottom: $c-background solid 5px;
 
   &-selected {
-    border-bottom: $c-selected solid 3px;
-    background-color: $c-frame;
-    color: $c-selected;
-    padding: 0.8em;
-    margin: 0.5em;
+    width: 110px;
+    border-bottom: $c-status-underway solid 5px;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5em;
     font-weight: bold;
+    border-radius: 20px;
+  }
+}
+
+@media (min-width: 599px) {
+  .role-choice-button {
+    width: 150px;
+
+    &-selected {
+      width: 150px;
+    }
+  }
+}
+
+@media (min-width: 899px) {
+  .role-choice-button {
+    padding: 0.8rem 1.2rem;
+
+    &-selected {
+      padding: 0.8rem 1.2rem;
+    }
   }
 }

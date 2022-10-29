@@ -1,28 +1,35 @@
 .active {
-  color: #f0f;
+  color: $c-status-underway;
 }
 
 .nav-header {
+  width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   position: fixed;
   height: calc(100vh - $s-header);
-  margin-top: $s-header;
-  top: 0;
+  top: $s-header;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: brown;
-  z-index: 999;
-}
+  background-color: $c-text;
+  z-index: 9999999;
+  color: $c-frame;
 
-/*----------------------------------------------------------------------------------
--------------------------------------  MOBILE --------------------------------------
-----------------------------------------------------------------------------------*/
+  .logoutBtn {
+    margin-top: 2rem;
+    background-color: $c-status-closed;
+    color: $c-frame;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
 
-@media (min-width: 320px) {
+    &:hover {
+      background-color: $c-selected;
+    }
+  }
 }
 
 /*----------------------------------------------------------------------------------
@@ -37,6 +44,14 @@
     height: $s-header;
     margin-top: 0;
     flex-direction: row;
+    position: unset;
+
+    .logoutBtn {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      margin-top: 0;
+    }
   }
 }
 
@@ -45,4 +60,10 @@
 ----------------------------------------------------------------------------------*/
 
 @media (min-width: 1199px) {
+  .nav-header {
+    .logoutBtn {
+      top: 1rem;
+      right: 1rem;
+    }
+  }
 }

@@ -3,18 +3,18 @@ import { Dispatch, SetStateAction } from 'react';
 export enum Status {
   OPEN = 'open',
   CLOSED = 'closed',
-  UNDERWAY = 'underway',
+  UNDERWAY = 'underway'
 }
 
 export enum Role {
   ADMIN = 'admin',
   LEAD = 'lead',
-  INTERVENOR = 'intervenor',
+  INTERVENOR = 'intervenor'
 }
 
 export enum UserType {
   EMPLOYEE = 'employee',
-  CLIENT = 'client',
+  CLIENT = 'client'
 }
 
 export interface FieldBaseProps {
@@ -23,6 +23,7 @@ export interface FieldBaseProps {
   label: string;
   value: string;
   updateField: Dispatch<SetStateAction<string>>;
+  styleName: string;
 }
 
 export interface UserLoginProps {
