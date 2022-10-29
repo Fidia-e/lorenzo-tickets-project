@@ -7,11 +7,14 @@ import { GET_ALL_TICKETS } from '../../apollo/queries/getAllTickets';
 import {
   GetAllTicketsByClientId,
   GetAllTicketsByClientIdVariables,
-  GetAllTicketsByClientId_getAllTicketsByClientId
+  GetAllTicketsByClientId_getAllTicketsByClientId,
 } from '../../apollo/queries/__generated__/GetAllTicketsByClientId';
 import { GET_ALL_TICKETS_BY_CLIENT_ID } from '../../apollo/queries/getAllTicketsByClientId';
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery, useMutation } from '@apollo/client';
 import { useUserContext } from '../../context/user';
+import { DeleteTicket, DeleteTicketVariables } from '../../apollo/mutations/__generated__/DeleteTicket';
+import { DELETE_TICKET } from '../../apollo/mutations/deleteTicket';
+import { ItemType } from '../../utils';
 
 const Tickets: FunctionComponent = () => {
   const { user } = useUserContext();
@@ -19,6 +22,15 @@ const Tickets: FunctionComponent = () => {
   const initialTickets: GetAllTickets_getAllTickets[] | GetAllTicketsByClientId_getAllTicketsByClientId[] = [];
 
   const [allTickets, setAllTickets] = useState(initialTickets);
+  const deleteMessageError = 'Un problème est survenu lors de la suppression du ticket';
+  const [deleteMessage, setDeleteMessage] = useState('');
+
+  const clearDeleteMessage = (): void => {
+    setTimeout(() => {
+      setDeleteMessage('');
+      location.reload(); // TODO trouver une meilleur façon de faire
+    }, 2000);
+  };
 
   const [triggerGetAllTickets] = useLazyQuery<GetAllTickets>(GET_ALL_TICKETS, {
     onCompleted: data => {
@@ -26,7 +38,7 @@ const Tickets: FunctionComponent = () => {
     },
     onError: error => {
       console.log(error);
-    }
+    },
   });
 
   const [triggerGetAllTicketsByClientId] = useLazyQuery<GetAllTicketsByClientId, GetAllTicketsByClientIdVariables>(
@@ -40,9 +52,25 @@ const Tickets: FunctionComponent = () => {
       },
       onError: error => {
         console.log(error);
-      }
+      },
     }
   );
+
+  const [triggerDeleteTicket] = useMutation<DeleteTicket, DeleteTicketVariables>(DELETE_TICKET, {
+    onCompleted: data => {
+      if (data !== null && data.deleteTicket === true) {
+        setDeleteMessage('Le ticket à bien été supprimé');
+      }
+      if (data !== null && data.deleteTicket === false) {
+        setDeleteMessage(deleteMessageError);
+      }
+      clearDeleteMessage();
+    },
+    onError: () => {
+      setDeleteMessage(deleteMessageError);
+      clearDeleteMessage();
+    },
+  });
 
   useEffect(() => {
     if (user.userType === 'client') {
@@ -56,7 +84,14 @@ const Tickets: FunctionComponent = () => {
   return (
     <div className="tickets-container">
       <h1>Page des tickets</h1>
-      <Table thHeaders={ticketsTableHeaders} items={allTickets} styleName="table tickets-table" />
+      <p>{deleteMessage}</p>
+      <Table
+        thHeaders={ticketsTableHeaders}
+        items={allTickets}
+        styleName="table tickets-table"
+        deleteFunction={triggerDeleteTicket}
+        itemType={ItemType.TICKET}
+      />
     </div>
   );
 };

@@ -63,21 +63,21 @@ class CoreSQLDataSource extends SQLDataSource {
     return result[0];
   }
 
-  // async update({ id }, inputData) {
-  //   const result = await this.knex(this.tableName)
-  //     .connection(this.establishedConnection)
-  //     .where({ id })
-  //     .update({ ...inputData, updated_at: new Date() })
-  //     .returning('*');
+  async update({ id }, inputData) {
+    const result = await this.knex(this.tableName)
+      .connection(this.establishedConnection)
+      .where({ id })
+      .update({ ...inputData, updated_at: new Date() })
+      .returning('*');
 
-  //   return result;
-  // }
+    return result;
+  }
 
-  // async delete(id) {
-  //   const result = await this.knex(this.tableName).connection(this.establishedConnection).where({ id }).delete();
+  async delete(id) {
+    const result = await this.knex(this.tableName).connection(this.establishedConnection).where({ id }).delete();
 
-  //   return result;
-  // }
+    return result;
+  }
 
   async findByPkBulk(ids) {
     const query = this.knex(this.tableName).connection(this.establishedConnection).select('*').whereIn('id', ids);

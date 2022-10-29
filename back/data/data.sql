@@ -19,7 +19,14 @@ INSERT INTO "ticket" ("title", "content", "status", "client_id") VALUES
 ('Titre Ticket 3', 'Ticket content 3', 'underway', 3),
 ('Titre Ticket 4', 'Ticket content 4', 'open', 4),
 ('Titre Ticket 5', 'Ticket content 5', 'open', 5),
-('Titre Ticket 6', 'Ticket content 6', 'underway', 1);
+('Titre Ticket 6', 'Ticket content 6', 'underway', 1),
+('Titre Ticket 7', 'Ticket content 7', 'underway', 1),
+('Titre Ticket 8', 'Ticket content 8', 'underway', 1),
+('Titre Ticket 9', 'Ticket content 9', 'underway', 1),
+('Titre Ticket 10', 'Ticket content 10', 'underway', 1),
+('Titre Ticket 11', 'Ticket content 11', 'underway', 1),
+('Titre Ticket 12', 'Ticket content 12', 'underway', 1),
+('Titre Ticket 13', 'Ticket content 13', 'underway', 1);
 
 INSERT INTO "message" ("content", "ticket_id", "client_id", "employee_id") VALUES 
 ('Message content 1', 1, NULL, 1),

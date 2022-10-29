@@ -1,12 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
-
 import React, { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Message, Client, Employee } from '../../types';
 import { GetAllTickets_getAllTickets } from '../../apollo/queries/__generated__/GetAllTickets';
 import { useUserContext } from '../../context/user';
 import { GetAllTicketsByClientId_getAllTicketsByClientId } from '../../apollo/queries/__generated__/GetAllTicketsByClientId';
+import { ItemType } from '../../utils';
 
 interface TableProps {
   thHeaders: string[];
@@ -17,6 +22,8 @@ interface TableProps {
     | Client[]
     | Employee[];
   styleName: string;
+  deleteFunction?: any;
+  itemType: ItemType;
 }
 
 /**
@@ -24,9 +31,13 @@ interface TableProps {
  * @param thHeaders sert à créer et identifier les colonnes propres à chaque utilisation
  * @param items un tableau contenant les données propres à chaque utilisation
  * @param styleName sert à identifier la table et à lui appliquer des styles propres à chaque utilisation
+ * @param deleteFunction la fonction qui servira à supprimer un item
+ * @param itemType le type de l'item utilisé afin d'afficher ou non le bouton voir d'un item et de modifier l'url param
  */
-const Table = ({ thHeaders, items, styleName }: TableProps): ReactElement => {
+const Table = ({ thHeaders, items, styleName, deleteFunction, itemType }: TableProps): ReactElement => {
   const { user } = useUserContext();
+  const { MESSAGE, TICKET } = ItemType;
+
   const handleOnClick = (event: React.MouseEvent<HTMLElement>): void => {
     console.log(event.currentTarget);
   };
@@ -49,6 +60,15 @@ const Table = ({ thHeaders, items, styleName }: TableProps): ReactElement => {
           {
             /* Le map permet de boucler sur tout les objets que l'on veut afficher */
             items.map(item => {
+              // Vérification du type de l'item
+              let urlParam;
+              if (itemType === TICKET && item.id != null) {
+                urlParam = item.id;
+              }
+              if (itemType === MESSAGE && (item as Message).ticket_id != null) {
+                urlParam = (item as Message).ticket_id;
+              }
+
               return (
                 <tr key={`tr${item.id as number}`}>
                   {
@@ -76,10 +96,14 @@ const Table = ({ thHeaders, items, styleName }: TableProps): ReactElement => {
                     })
                   }
 
-                  {/* Visible pour tout le monde */}
-                  <td onClick={handleOnClick} className="see blue">
-                    <FontAwesomeIcon icon={faEye} />
-                  </td>
+                  {/* Visible pour tout le monde pour les pages de ticket et message */}
+                  {(itemType === MESSAGE || itemType === TICKET) && (
+                    <td onClick={handleOnClick} className="see blue">
+                      <Link to={`/ticket/${urlParam as number}`}>
+                        <FontAwesomeIcon icon={faEye} />
+                      </Link>
+                    </td>
+                  )}
 
                   {
                     /* Visible que pour les admins */
@@ -88,7 +112,10 @@ const Table = ({ thHeaders, items, styleName }: TableProps): ReactElement => {
                         <td onClick={handleOnClick} className="edit yellow">
                           <FontAwesomeIcon icon={faPen} />
                         </td>
-                        <td onClick={handleOnClick} className="delete red">
+                        <td
+                          onClick={() => deleteFunction({ variables: { [`delete${itemType}Id`]: item.id } })}
+                          className="delete red"
+                        >
                           <FontAwesomeIcon icon={faTrash} />
                         </td>
                       </>

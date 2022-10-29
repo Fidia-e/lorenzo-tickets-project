@@ -1,13 +1,10 @@
 "Ajouter/modifier/supprimer des données"
 type Mutation {
-  # ---------------------------------  Signin  ----------------------------------
-  # signup(input: UserInput): User
-
   # ---------------------------------  Ticket  ----------------------------------
   createTicket(input: TicketInput): Ticket
   # readTicket(id: PositiveInt!): Ticket
   # updateTicket(id: PositiveInt!, input: TicketInput): Ticket
-  # deleteTicket(input: TicketInput): Ticket
+  deleteTicket(id: PositiveInt!): Boolean
 
   # # ---------------------------------  Client  ----------------------------------
   # createClient(input: ClientInput): Client
@@ -16,7 +13,7 @@ type Mutation {
   # deleteClient(input: ClientInput): Client
 
   # # ---------------------------------  Message  ----------------------------------
-  # createMessage(input: MessageInput): Message
+  createMessage(input: MessageInput): Message
   # readMessage(id: PositiveInt!): Message
   # updateMessage(id: PositiveInt!, input: MessageInput): Message
   # deleteMessage(input: MessageInput): Message

@@ -64,5 +64,3 @@ Ajouter ces lignes dans le fichier settings.json de vsc:
       "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
 ```
-
-Après avoir utilisé le script `npm run generateTypes`, deplacer le dossier `__generated__` crée à la racine du dossier front vers : `src/apollo`.
