@@ -7,7 +7,7 @@ import { GET_ALL_TICKETS } from '../../apollo/queries/getAllTickets';
 import {
   GetAllTicketsByClientId,
   GetAllTicketsByClientIdVariables,
-  GetAllTicketsByClientId_getAllTicketsByClientId,
+  GetAllTicketsByClientId_getAllTicketsByClientId
 } from '../../apollo/queries/__generated__/GetAllTicketsByClientId';
 import { GET_ALL_TICKETS_BY_CLIENT_ID } from '../../apollo/queries/getAllTicketsByClientId';
 import { useLazyQuery, useMutation } from '@apollo/client';
@@ -38,7 +38,7 @@ const Tickets: FunctionComponent = () => {
     },
     onError: error => {
       console.log(error);
-    },
+    }
   });
 
   const [triggerGetAllTicketsByClientId] = useLazyQuery<GetAllTicketsByClientId, GetAllTicketsByClientIdVariables>(
@@ -52,7 +52,7 @@ const Tickets: FunctionComponent = () => {
       },
       onError: error => {
         console.log(error);
-      },
+      }
     }
   );
 
@@ -69,7 +69,7 @@ const Tickets: FunctionComponent = () => {
     onError: () => {
       setDeleteMessage(deleteMessageError);
       clearDeleteMessage();
-    },
+    }
   });
 
   useEffect(() => {
