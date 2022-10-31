@@ -1,8 +1,8 @@
 import { useState, ReactElement } from 'react';
 
 import Table from '../../components/Table';
+import { ItemType } from '../../types';
 import { clientsData, clientsTableHeaders } from './constants';
-import { ItemType } from '../../utils';
 import Loader from '../../components/Loader';
 
 const Clients = (): ReactElement => {

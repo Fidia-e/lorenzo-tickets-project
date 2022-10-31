@@ -2,8 +2,8 @@ import { useState, FunctionComponent } from 'react';
 
 import Table from '../../components/Table';
 import { messagesTableHeaders, messagesData } from './constants';
-import { ItemType } from '../../utils';
 import Loader from '../../components/Loader';
+import { ItemType } from '../../types';
 
 const Messages: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);

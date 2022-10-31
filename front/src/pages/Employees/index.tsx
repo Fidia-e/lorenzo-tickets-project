@@ -2,8 +2,8 @@ import { useState, ReactElement } from 'react';
 
 import Table from '../../components/Table';
 import { employeesData, employeesTableHeaders } from './constants';
-import { ItemType } from '../../utils';
 import Loader from '../../components/Loader';
+import { ItemType } from '../../types';
 
 const Employees = (): ReactElement => {
   const [loading, setLoading] = useState(true);

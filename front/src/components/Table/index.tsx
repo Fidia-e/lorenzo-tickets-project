@@ -8,11 +8,11 @@ import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
-import { Message, Client, Employee } from '../../types';
+import { Message, Client, Employee, ItemType } from '../../types';
 import { GetAllTickets_getAllTickets } from '../../apollo/queries/__generated__/GetAllTickets';
 import { useUserContext } from '../../context/user';
 import { GetAllTicketsByClientId_getAllTicketsByClientId } from '../../apollo/queries/__generated__/GetAllTicketsByClientId';
-import { ItemType, ticketStatusClassName, ticketStatusTraduction } from '../../utils';
+import { ticketStatusClassName, ticketStatusTraduction } from '../../utils';
 
 interface TableProps {
   thHeaders: string[];

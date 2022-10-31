@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import Field from '../Field';
 import SubmitButton from '../SubmitButton';
 import { SIGNIN } from '../../apollo/queries/signin';
-import { UserLogged, Signin, SigninVariables, UserType, UserLoginProps } from '../../types';
+import { UserLogged, Signin, SigninVariables, UserLoginProps } from '../../types';
 import { useUserContext } from '../../context/user';
+import { UserType } from '../../apollo/__generated__/globalTypes';
 
 const EmployeeLogin = ({ setError }: UserLoginProps): ReactElement => {
   const [email, setEmail] = useState('');
@@ -23,7 +24,7 @@ const EmployeeLogin = ({ setError }: UserLoginProps): ReactElement => {
         token: data.signin.token.token,
         role: data.signin.role,
         userType: data.signin?.userType,
-        logged: true
+        logged: true,
       };
 
       setUser(newUser);
@@ -32,14 +33,14 @@ const EmployeeLogin = ({ setError }: UserLoginProps): ReactElement => {
     },
     onError: () => {
       setError(true);
-    }
+    },
   });
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
 
     void triggerSignin({
-      variables: { email, password: password ?? '', userType: UserType.EMPLOYEE }
+      variables: { email, password: password ?? '', userType: UserType.employee },
     });
   };
 

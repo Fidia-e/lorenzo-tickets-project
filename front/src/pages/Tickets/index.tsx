@@ -7,15 +7,15 @@ import { GET_ALL_TICKETS } from '../../apollo/queries/getAllTickets';
 import {
   GetAllTicketsByClientId,
   GetAllTicketsByClientIdVariables,
-  GetAllTicketsByClientId_getAllTicketsByClientId
+  GetAllTicketsByClientId_getAllTicketsByClientId,
 } from '../../apollo/queries/__generated__/GetAllTicketsByClientId';
 import { GET_ALL_TICKETS_BY_CLIENT_ID } from '../../apollo/queries/getAllTicketsByClientId';
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { useUserContext } from '../../context/user';
 import { DeleteTicket, DeleteTicketVariables } from '../../apollo/mutations/__generated__/DeleteTicket';
 import { DELETE_TICKET } from '../../apollo/mutations/deleteTicket';
-import { ItemType } from '../../utils';
 import Loader from '../../components/Loader';
+import { ItemType } from '../../types';
 
 const Tickets = (): ReactElement => {
   const { user } = useUserContext();
@@ -42,7 +42,7 @@ const Tickets = (): ReactElement => {
     onError: error => {
       console.log(error);
       setLoading(false);
-    }
+    },
   });
 
   const [triggerGetAllTicketsByClientId] = useLazyQuery<GetAllTicketsByClientId, GetAllTicketsByClientIdVariables>(
@@ -56,7 +56,7 @@ const Tickets = (): ReactElement => {
       },
       onError: error => {
         console.log(error);
-      }
+      },
     }
   );
 
@@ -73,7 +73,7 @@ const Tickets = (): ReactElement => {
     onError: () => {
       setDeleteMessage(deleteMessageError);
       clearDeleteMessage();
-    }
+    },
   });
 
   useEffect(() => {
