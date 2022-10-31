@@ -21,12 +21,18 @@ type Employee {
   updated_at: DateTime
 }
 
-input EmployeeInput {
-  firstname: String!
-  lastname: String!
-  email: EmailAddress!
+type EmployeeUpdate {
+  id: PositiveInt
+  firstname: String
+  lastname: String
+  email: EmailAddress
+  role: Role
+  created_at: DateTime!
+  updated_at: DateTime
+}
+
+input EmployeePasswordInput {
   password: String!
-  role: Role!
 }
 
 """

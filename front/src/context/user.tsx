@@ -1,15 +1,18 @@
 import { createContext, useContext, ReactNode, ReactElement } from 'react';
 import { Role, UserType } from '../apollo/__generated__/globalTypes';
-
 import { UserLogged } from '../types';
+
 import { useLocalStorage } from '../utils';
 
 export const emptyUser: UserLogged = {
   id: '' as unknown as number,
   email: '',
   token: '',
+  firstname: '',
+  lastname: '',
   role: null as unknown as Role,
   userType: null as unknown as UserType,
+  company: null as unknown as string,
   logged: false,
 };
 

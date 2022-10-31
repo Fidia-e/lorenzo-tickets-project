@@ -62,39 +62,16 @@ export interface Employee {
   updated_at: string | null;
 }
 
-interface Signin_signin_token {
-  token: string;
-  expiresIn: string;
-}
-
-interface Signin_signin {
-  id: number;
-  firstname?: string;
-  lastname?: string;
-  email: string;
-  role?: Role;
-  userType: UserType;
-  company?: string;
-  token: Signin_signin_token;
-}
-
 export interface UserLogged {
-  logged: boolean;
   id: number;
+  firstname?: string | null;
+  lastname?: string | null;
   email: string;
-  role?: Role;
+  role?: Role | null;
   userType: UserType;
+  company?: string | null;
   token: string;
-}
-
-export interface Signin {
-  signin: Signin_signin;
-}
-
-export interface SigninVariables {
-  email: string;
-  password?: string;
-  userType: UserType;
+  logged: boolean;
 }
 
 export type Nullable<T> = T | null;

@@ -260,3 +260,21 @@ mutation removeTicketToEmployee($input: TicketEmployeeInput) {
     "employee_id": 1
   }
 }
+
+### Mise a jour du password
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation UpdateEmployeePassword($id: PositiveInt!, $input: EmployeePasswordInput) {
+  UpdateEmployeePassword(id: $id, input: $input){
+    id
+  }
+}
+
+{
+  "id": 1,
+  "input": {
+    "password": "1234"
+  }
+}

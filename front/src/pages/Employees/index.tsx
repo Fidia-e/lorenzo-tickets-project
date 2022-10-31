@@ -6,6 +6,7 @@ import Loader from '../../components/Loader';
 import { ItemType } from '../../types';
 
 const Employees = (): ReactElement => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [loading, setLoading] = useState(true);
 
   // TODO: setLoading au onCompleted et onError de la requête
