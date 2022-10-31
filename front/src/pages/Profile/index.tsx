@@ -1,17 +1,48 @@
 import { FormEvent, FunctionComponent, useState } from 'react';
 import Field from '../../components/Field';
+import { useMutation } from '@apollo/client';
 
 import { useUserContext } from '../../context/user';
 import SubmitButton from '../../components/SubmitButton';
+import { UPDATE_EMPLOYEE_PASSWORD } from '../../apollo/mutations/updateEmployeePassword';
+import {
+  UpdateEmployeePassword,
+  UpdateEmployeePasswordVariables,
+} from '../../apollo/mutations/__generated__/updateEmployeePassword';
 
 const Profile: FunctionComponent = () => {
   const { user } = useUserContext();
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
+  const [updatePassword] = useMutation<UpdateEmployeePassword, UpdateEmployeePasswordVariables>(
+    UPDATE_EMPLOYEE_PASSWORD,
+    {
+      variables: {
+        id: user.id,
+        input: {
+          password: newPassword,
+        },
+      },
+      onCompleted: data => {
+        alert('mot de passe mis a jour !');
+        setNewPassword('');
+        setConfirmNewPassword('');
+      },
+      onError: error => {
+        console.log(error);
+      },
+    }
+  );
+
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
     console.log(event);
+    if (confirmNewPassword === newPassword) {
+      void updatePassword();
+    } else {
+      alert('Vos mot de passe ne correspondent pas ');
+    }
   };
 
   return (
@@ -22,13 +53,14 @@ const Profile: FunctionComponent = () => {
         <p>Prenom : {user.firstname}</p>
         <p>Adresse email : {user.email}</p>
       </div>
+      <h2>Modification de votre mot de passe</h2>
       <form className="change-password-form" onSubmit={handleSubmit}>
         <Field
           styleName=""
           identifier="new-password"
           placeholder="Nouveau mot de passe"
           label=""
-          type="text"
+          type="password"
           value={newPassword}
           updateField={setNewPassword}
         />
@@ -37,7 +69,7 @@ const Profile: FunctionComponent = () => {
           identifier="confirm-new-password"
           placeholder="Confirmation du mot de passe"
           label=""
-          type="text"
+          type="password"
           value={confirmNewPassword}
           updateField={setConfirmNewPassword}
         />

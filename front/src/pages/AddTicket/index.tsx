@@ -24,7 +24,7 @@ const AddTicket = (): ReactElement => {
         title,
         content,
         status: Status.open,
-        client_id: user.id as number,
+        client_id: user.id,
       },
     },
     onCompleted: data => {

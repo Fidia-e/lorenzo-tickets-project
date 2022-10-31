@@ -267,7 +267,7 @@ Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 
 mutation UpdateEmployeePassword($id: PositiveInt!, $input: EmployeePasswordInput) {
-  updateEmployeePassword(id: $id, input: $input) {
+  UpdateEmployeePassword(id: $id, input: $input){
     id
   }
 }

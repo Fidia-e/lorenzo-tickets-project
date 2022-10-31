@@ -24,6 +24,10 @@ export enum UserType {
   employee = "employee",
 }
 
+export interface EmployeePasswordInput {
+  password: string;
+}
+
 export interface MessageInput {
   content: string;
   ticket_id: any;

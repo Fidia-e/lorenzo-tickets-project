@@ -33,13 +33,6 @@ class Employee extends CoreSQLDataSource {
     return result;
   }
 
-  async findByEmail(email) {
-    const query = this.knex(this.tableName).connection(this.establishedConnection).where('email', email);
-
-    const result = await (process.env.CACHE_ENABLED ? query.cache(SECONDS) : query);
-    return result;
-  }
-
   ticketIdLoader = new DataLoader(async ids => {
     const intIds = ids.map(id => parseInt(id, 10));
     const records = await this.findByTicketBulk(intIds);

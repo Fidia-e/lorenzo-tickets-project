@@ -21,7 +21,7 @@ type Mutation {
   # # ---------------------------------  Employee  ----------------------------------
   # createEmployee(input: EmployeeInput): Employee
   # readEmployee(id: PositiveInt!): Employee
-  # updateEmployee(id: PositiveInt!, input: EmployeeInput): Employee
+  UpdateEmployeePassword(id: PositiveInt!, input: EmployeePasswordInput): EmployeeUpdate
   # deleteEmployee(input: EmployeeInput): Employee
 
   # # ---------------------------------  TicketEmployee  ---------------------------------

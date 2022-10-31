@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Role, Status } from '../apollo/__generated__/globalTypes';
+import { Role, Status, UserType } from '../apollo/__generated__/globalTypes';
 
 export enum ItemType {
   MESSAGE = 'Message',
@@ -60,6 +60,18 @@ export interface Employee {
   role: Role;
   created_at: string;
   updated_at: string | null;
+}
+
+export interface UserLogged {
+  id: number;
+  firstname?: string | null;
+  lastname?: string | null;
+  email: string;
+  role?: Role | null;
+  userType: UserType;
+  company?: string | null;
+  token: string;
+  logged: boolean;
 }
 
 export type Nullable<T> = T | null;

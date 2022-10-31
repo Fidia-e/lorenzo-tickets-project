@@ -53,9 +53,6 @@ type Query {
   "Récupération de tous les employees d'un ticket"
   getAllEmployeesByTicketId(ticket_id: Int!): [Employee!]
 
-  "Recupération d'un employee par l'email"
-  getEmployeeByEmail(email: EmailAddress!): [Employee!]
-
   # ---------------------------------  Clients  ----------------------------------
 
   "Liste de tous les clients" # pour l'admin

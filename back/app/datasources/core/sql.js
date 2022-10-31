@@ -63,14 +63,14 @@ class CoreSQLDataSource extends SQLDataSource {
     return result[0];
   }
 
-  async update({ id }, inputData) {
+  async update(id, inputData) {
     const result = await this.knex(this.tableName)
       .connection(this.establishedConnection)
       .where({ id })
       .update({ ...inputData, updated_at: new Date() })
       .returning('*');
 
-    return result;
+    return result[0];
   }
 
   async delete(id) {
