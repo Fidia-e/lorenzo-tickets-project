@@ -1,0 +1,48 @@
+.loaderCtn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+
+  .loader {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(217deg, $c-text, rgba(0, 102, 255, 0) 70.71%),
+      linear-gradient(127deg, $c-selected, rgba(255, 208, 0, 0) 70.71%),
+      linear-gradient(336deg, $c-background, rgba(255, 255, 255, 0) 70.71%);
+    animation: animate 1s linear infinite;
+
+    &::before {
+      position: absolute;
+      content: '';
+      background: $c-background;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      height: 90%;
+      border-radius: 50%;
+    }
+  }
+}
+
+@media (min-width: 1199px) {
+  .loaderCtn .loader {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@keyframes animate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

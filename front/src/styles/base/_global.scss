@@ -5,7 +5,6 @@
 body {
   min-width: 100vw;
   height: 100%;
-  // position: relative;
   background-color: $c-background;
   color: $c-text;
 
@@ -20,9 +19,6 @@ body {
   }
 
   #root {
-    // width: 100%;
-    // height: 100%;
-
     .app {
       width: 100%;
       height: 100%;
@@ -63,6 +59,14 @@ body {
         overflow: hidden;
       }
 
+      .form-container {
+        .error-message {
+          position: absolute;
+          left: 25%;
+          bottom: 7rem;
+        }
+      }
+
       @keyframes move {
         0% {
           border-radius: 34% 66% 46% 54% / 63% 88% 12% 37%;
@@ -92,11 +96,15 @@ body {
   body {
     font-size: 1.2em;
 
-    #root {
-      .app {
-        h1 {
-          font-size: 1.5em;
-          margin-bottom: 2rem;
+    #root .app {
+      h1 {
+        font-size: 1.5em;
+        margin-bottom: 2rem;
+      }
+
+      .form-container {
+        .error-message {
+          left: 35%;
         }
       }
     }
@@ -127,6 +135,12 @@ body {
         .profile-container {
           min-height: calc(100vh - $s-footer * 1.9);
         }
+
+        .form-container {
+          .error-message {
+            left: 38%;
+          }
+        }
       }
     }
   }
@@ -137,38 +151,38 @@ body {
 ----------------------------------------------------------------------------------*/
 
 @media (min-width: 1199px) {
-  body {
-    #root {
-      .app {
-        h1 {
-          font-size: 1.8em;
-        }
-      }
-    }
+  body #root .app h1 {
+    font-size: 1.8em;
   }
 }
 
-@media (min-width: 1680) {
+@media (min-width: 1399px) {
   body {
     #root {
       .app {
         h1 {
           font-size: 2em;
         }
+
+        .form-container {
+          .error-message {
+            left: 41%;
+          }
+        }
       }
     }
   }
 }
 
-@media (min-width: 1920) {
-  body {
-    font-size: 1.5em;
+@media (min-width: 1680px) {
+  body #root .app {
+    h1 {
+      font-size: 2em;
+    }
 
-    #root {
-      .app {
-        h1 {
-          font-size: 2.1em;
-        }
+    .form-container {
+      .error-message {
+        left: 40%;
       }
     }
   }

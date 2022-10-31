@@ -1,19 +1,30 @@
-import { FunctionComponent } from 'react';
+import { useState, FunctionComponent } from 'react';
 
 import Table from '../../components/Table';
 import { messagesTableHeaders, messagesData } from './constants';
 import { ItemType } from '../../utils';
+import Loader from '../../components/Loader';
 
-const Messages: FunctionComponent = () => (
-  <div className="messages-container">
-    <h1>Page des messages</h1>
-    <Table
-      thHeaders={messagesTableHeaders}
-      items={messagesData}
-      styleName="table messages-table"
-      itemType={ItemType.MESSAGE}
-    />
-  </div>
-);
+const Messages: FunctionComponent = () => {
+  const [loading, setLoading] = useState(true);
+
+  // TODO: setLoading au onCompleted et onError de la requête
+
+  return (
+    <div className="messages-container">
+      <h1>Page des messages</h1>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Table
+          thHeaders={messagesTableHeaders}
+          items={messagesData}
+          styleName="table messages-table"
+          itemType={ItemType.MESSAGE}
+        />
+      )}
+    </div>
+  );
+};
 
 export default Messages;
