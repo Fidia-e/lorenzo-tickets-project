@@ -31,6 +31,11 @@ export interface MessageInput {
   employee_id?: any | null;
 }
 
+export interface TicketEmployeeInput {
+  ticket_id: any;
+  employee_id: any;
+}
+
 export interface TicketInput {
   title: string;
   content: string;

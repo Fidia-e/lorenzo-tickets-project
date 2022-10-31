@@ -224,3 +224,39 @@ mutation CreateTicket($input: TicketInput) {
     "client_id": 1
   }
 }
+
+### Ajout d'un employee sur un ticket
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation addTicketToEmployee($input: TicketEmployeeInput) {
+  addTicketToEmployee(input: $input){
+    id
+    ticket_id
+    employee_id
+  }
+}
+
+{
+  "input": {
+    "ticket_id": 1,
+    "employee_id": 1
+  }
+}
+
+### Retirer un employee d'un ticket
+POST {{ endpoint }}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation removeTicketToEmployee($input: TicketEmployeeInput) {
+  removeTicketToEmployee(input: $input)
+}
+
+{
+  "input": {
+    "ticket_id": 1,
+    "employee_id": 1
+  }
+}

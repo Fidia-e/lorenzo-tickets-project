@@ -44,6 +44,7 @@ export interface GetTicketById_getTicketById_messages {
 export interface GetTicketById_getTicketById_employees {
   __typename: 'Employee';
   id: any;
+  email: any;
   firstname: string;
   lastname: string;
 }

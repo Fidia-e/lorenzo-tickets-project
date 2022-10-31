@@ -5,8 +5,57 @@
   align-items: center;
   justify-content: space-evenly;
 
-  .ticket-subtitle {
-    font-weight: bold;
+  .ticket-infos {
+    width: 300px;
+
+    .blue-status,
+    .yellow-status,
+    .red-status {
+      margin-left: 0.2rem;
+      border-radius: 20px;
+      padding: 0.1rem 0.6rem;
+      font-size: 0.98rem;
+      align-self: center;
+    }
+
+    .blue-status {
+      background-color: $c-status-closed;
+      color: $c-background;
+    }
+
+    .yellow-status {
+      background-color: $c-status-underway;
+      color: $c-text;
+    }
+
+    .red-status {
+      background-color: $c-status-open;
+      color: $c-background;
+    }
+
+    .ticket-minus,
+    .ticket-plus {
+      color: $c-text;
+      padding: 0 0.2rem;
+      border-radius: 5px;
+      background-color: $c-status-underway;
+    }
+
+    .ticket-status-container {
+      display: flex;
+    }
+
+    .ticket-subtitle {
+      font-weight: bold;
+    }
+
+    .ticket-employee {
+      font-size: 0.98rem;
+      border-radius: 20px;
+      margin: 0 0.2rem;
+      padding: 0 0.3rem;
+      background-color: $c-frame;
+    }
   }
 
   .messages-ctn {
@@ -70,6 +119,38 @@
       #nouveau-message {
         height: 300px;
       }
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------
+-------------------------------------  TABLETTE ------------------------------------
+----------------------------------------------------------------------------------*/
+
+@media (min-width: 599px) {
+  .ticket-container {
+    .ticket-infos {
+      width: 550px;
+    }
+  }
+}
+
+@media (min-width: 899px) {
+  .ticket-container {
+    .ticket-infos {
+      width: 850px;
+    }
+  }
+}
+
+/*----------------------------------------------------------------------------------
+-------------------------------------  DESKTOP -------------------------------------
+----------------------------------------------------------------------------------*/
+
+@media (min-width: 1199px) {
+  .ticket-container {
+    .ticket-infos {
+      width: 900px;
     }
   }
 }

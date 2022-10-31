@@ -9,6 +9,7 @@ const ClientDatasource = require('./datasources/client');
 const TicketDatasource = require('./datasources/ticket');
 const MessageDatasource = require('./datasources/message');
 const EmployeeDatasource = require('./datasources/employee');
+const TicketEmployeeDataSource = require('./datasources/ticket_employee');
 
 const knexConfig = {
   client: 'pg',
@@ -23,6 +24,7 @@ module.exports = {
     ticket: new TicketDatasource(knexConfig),
     message: new MessageDatasource(knexConfig),
     employee: new EmployeeDatasource(knexConfig),
+    ticket_employee: new TicketEmployeeDataSource(knexConfig),
   }),
   formatError: err => {
     // formate les erreurs

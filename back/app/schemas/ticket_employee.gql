@@ -1,0 +1,12 @@
+type TicketEmployee {
+  id: PositiveInt!
+  ticket_id: PositiveInt!
+  employee_id: PositiveInt!
+  created_at: DateTime!
+  updated_at: DateTime
+}
+
+input TicketEmployeeInput {
+  ticket_id: PositiveInt!
+  employee_id: PositiveInt!
+}

@@ -23,4 +23,8 @@ type Mutation {
   # readEmployee(id: PositiveInt!): Employee
   # updateEmployee(id: PositiveInt!, input: EmployeeInput): Employee
   # deleteEmployee(input: EmployeeInput): Employee
+
+  # # ---------------------------------  TicketEmployee  ---------------------------------
+  addTicketToEmployee(input: TicketEmployeeInput): TicketEmployee
+  removeTicketToEmployee(input: TicketEmployeeInput): Boolean
 }
