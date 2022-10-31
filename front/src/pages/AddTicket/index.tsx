@@ -11,8 +11,6 @@ import { ADD_TICKET } from '../../apollo/mutations/addTicket';
 import { CreateTicket, CreateTicketVariables } from '../../apollo/mutations/__generated__/CreateTicket';
 import { Status } from '../../apollo/__generated__/globalTypes';
 
-import '../../styles/index.scss';
-
 const AddTicket = (): ReactElement => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -26,15 +24,15 @@ const AddTicket = (): ReactElement => {
         title,
         content,
         status: Status.open,
-        client_id: user.id,
-      },
+        client_id: user.id
+      }
     },
     onCompleted: data => {
       navigate(`/ticket/${data?.createTicket?.id as number}`);
     },
     onError: error => {
       console.log(error);
-    },
+    }
   });
 
   const handleSubmit = (event: FormEvent): void => {

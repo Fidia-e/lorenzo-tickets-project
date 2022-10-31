@@ -1,5 +1,4 @@
 import { FunctionComponent } from 'react';
-import '../../styles/index.scss';
 
 const GTCU: FunctionComponent = () => {
   return (

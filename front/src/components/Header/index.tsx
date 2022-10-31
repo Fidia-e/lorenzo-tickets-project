@@ -1,6 +1,5 @@
 import { ReactElement, useLayoutEffect, useState } from 'react';
 
-import '../../styles/index.scss';
 import HeaderNav from '../HeaderNav';
 
 interface HeaderProps {
