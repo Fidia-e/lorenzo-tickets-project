@@ -12,6 +12,7 @@ const ticket = readFileSync(path.join(__dirname, './ticket.gql'));
 const client = readFileSync(path.join(__dirname, './client.gql'));
 const employee = readFileSync(path.join(__dirname, './employee.gql'));
 const message = readFileSync(path.join(__dirname, './message.gql'));
+const ticketEmployee = readFileSync(path.join(__dirname, './ticket_employee.gql'));
 
 // Scalars
 const scalars = readFileSync(path.join(__dirname, './scalars.gql'));
@@ -39,6 +40,8 @@ const schema = gql`
   ${employee}
 
   ${message}
+
+  ${ticketEmployee}
 
   ${mutation}
 `;

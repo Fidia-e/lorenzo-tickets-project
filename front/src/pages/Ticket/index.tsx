@@ -1,6 +1,8 @@
 import { useLazyQuery, useMutation } from '@apollo/client';
 import { FormEvent, FunctionComponent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import Moment from 'react-moment';
 
 import { ADD_MESSAGE } from '../../apollo/mutations/addMessage';
@@ -9,13 +11,24 @@ import { GET_TICKET_BY_ID } from '../../apollo/queries/getTicketById';
 import {
   GetTicketById,
   GetTicketByIdVariables,
-  GetTicketById_getTicketById
+  GetTicketById_getTicketById,
 } from '../../apollo/queries/__generated__/GetTicketById';
 import FieldLongText from '../../components/FieldLongText';
 import Message from '../../components/Message';
 import SubmitButton from '../../components/SubmitButton';
 import { useUserContext } from '../../context/user';
 import { emptyTicket } from './constants';
+import {
+  addTicketToEmployee,
+  addTicketToEmployeeVariables,
+} from '../../apollo/mutations/__generated__/addTicketToEmployee';
+import { ADD_TICKET_TO_EMPLOYEE } from '../../apollo/mutations/addTicketToEmployee';
+import { REMOVE_TICKET_TO_EMPLOYEE } from '../../apollo/mutations/removeTicketToEmployee';
+import {
+  removeTicketToEmployee,
+  removeTicketToEmployeeVariables,
+} from '../../apollo/mutations/__generated__/removeTicketToEmployee';
+import { ticketStatusClassName, ticketStatusTraduction } from '../../utils';
 
 const Ticket: FunctionComponent = () => {
   const { id } = useParams();
@@ -25,18 +38,31 @@ const Ticket: FunctionComponent = () => {
 
   const [ticket, setTicket] = useState(emptyTicket);
   const [newMessageText, setNewMessageText] = useState('');
+  // Sert à afficher le +/- pour la prise en charge du ticket
+  const [isEmployeeHandlingTicket, setIsEmployeeHandlingTicket] = useState(false);
 
   const [triggerGetTicketById] = useLazyQuery<GetTicketById, GetTicketByIdVariables>(GET_TICKET_BY_ID, {
     variables: { ticketId: idAsNumber },
     fetchPolicy: 'no-cache', // Pas de cache afin que la page soit à jour lors de l'envoie d'un nouveau message
     onCompleted: data => {
       if (data !== null) {
-        setTicket(data?.getTicketById as GetTicketById_getTicketById);
+        const { getTicketById } = data;
+        // On met à jour le ticket
+        setTicket(getTicketById as GetTicketById_getTicketById);
+        // On met à jour l'info si l'employee traite le ticket
+        if (
+          (getTicketById as GetTicketById_getTicketById).employees.find(employee => employee.email === user.email) !=
+          null
+        ) {
+          setIsEmployeeHandlingTicket(true);
+        } else {
+          setIsEmployeeHandlingTicket(false);
+        }
       }
     },
     onError: error => {
       console.log(error);
-    }
+    },
   });
 
   const [addMessage] = useMutation<CreateMessage, CreateMessageVariables>(ADD_MESSAGE, {
@@ -45,8 +71,8 @@ const Ticket: FunctionComponent = () => {
         content: newMessageText,
         ticket_id: idAsNumber,
         client_id: user.userType === 'client' ? user.id : null,
-        employee_id: user.userType === 'employee' ? user.id : null
-      }
+        employee_id: user.userType === 'employee' ? user.id : null,
+      },
     },
     onCompleted: data => {
       setNewMessageText('');
@@ -54,13 +80,60 @@ const Ticket: FunctionComponent = () => {
     },
     onError: error => {
       console.log(error);
-    }
+    },
   });
+
+  const [addTicketToEmployee] = useMutation<addTicketToEmployee, addTicketToEmployeeVariables>(ADD_TICKET_TO_EMPLOYEE, {
+    variables: {
+      input: {
+        ticket_id: ticket.id as number,
+        employee_id: user.id,
+      },
+    },
+    onCompleted: data => {
+      setIsEmployeeHandlingTicket(true);
+      void triggerGetTicketById(); // On refait la requête pour avoir le nouveau message
+    },
+    onError: error => {
+      setIsEmployeeHandlingTicket(false);
+      console.log(error);
+    },
+  });
+
+  const [removeTicketToEmployee] = useMutation<removeTicketToEmployee, removeTicketToEmployeeVariables>(
+    REMOVE_TICKET_TO_EMPLOYEE,
+    {
+      variables: {
+        input: {
+          ticket_id: ticket.id as number,
+          employee_id: user.id,
+        },
+      },
+      onCompleted: data => {
+        setIsEmployeeHandlingTicket(true);
+        void triggerGetTicketById(); // On refait la requête pour avoir le nouveau message
+      },
+      onError: error => {
+        setIsEmployeeHandlingTicket(false);
+        console.log(error);
+      },
+    }
+  );
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
 
     void addMessage();
+  };
+
+  const handlePlus = (event: FormEvent): void => {
+    event.preventDefault();
+    void addTicketToEmployee();
+  };
+
+  const handleMinus = (event: FormEvent): void => {
+    event.preventDefault();
+    void removeTicketToEmployee();
   };
 
   useEffect(() => {
@@ -70,7 +143,7 @@ const Ticket: FunctionComponent = () => {
   return (
     <div className="ticket-container">
       <h1>{ticket.title}</h1>
-      <div>
+      <div className="ticket-infos">
         <div>
           <span className="ticket-subtitle">Numéro du ticket:</span> {ticket.id}
         </div>
@@ -80,13 +153,20 @@ const Ticket: FunctionComponent = () => {
         <div>
           <span className="ticket-subtitle">Entreprise:</span> {ticket.client?.company}
         </div>
-        <div>
-          <span className="ticket-subtitle">Statut:</span> {ticket.status}
+        <div className="ticket-status-container">
+          <span className="ticket-subtitle">Statut:</span>{' '}
+          <span className={ticketStatusClassName(ticket.status)}>{ticketStatusTraduction(ticket.status)}</span>
         </div>
         <div>
           <span className="ticket-subtitle">Prise en charge:</span>{' '}
+          {isEmployeeHandlingTicket && user.userType !== 'client' && (
+            <FontAwesomeIcon icon={faMinus} onClick={handleMinus} className="ticket-minus" />
+          )}
+          {!isEmployeeHandlingTicket && user.userType !== 'client' && (
+            <FontAwesomeIcon icon={faPlus} onClick={handlePlus} className="ticket-plus" />
+          )}
           {ticket.employees.map(employee => (
-            <span key={`employee${employee.id as number}`}>
+            <span key={`employee${employee.id as number}`} className="ticket-employee">
               {employee.lastname} {employee.firstname}
             </span>
           ))}

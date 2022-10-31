@@ -39,6 +39,7 @@ export const emptyTicket: GetTicketById_getTicketById = {
     {
       __typename: 'Employee',
       id: '' as unknown as number,
+      email: '',
       firstname: '',
       lastname: '',
     },

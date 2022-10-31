@@ -30,6 +30,7 @@ export const GET_TICKET_BY_ID = gql`
       }
       employees {
         id
+        email
         firstname
         lastname
       }

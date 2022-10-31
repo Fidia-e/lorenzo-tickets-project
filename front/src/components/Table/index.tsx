@@ -6,13 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 
 import { Message, Client, Employee } from '../../types';
 import { GetAllTickets_getAllTickets } from '../../apollo/queries/__generated__/GetAllTickets';
 import { useUserContext } from '../../context/user';
 import { GetAllTicketsByClientId_getAllTicketsByClientId } from '../../apollo/queries/__generated__/GetAllTicketsByClientId';
-import { ItemType } from '../../utils';
-import Moment from 'react-moment';
+import { ItemType, ticketStatusClassName, ticketStatusTraduction } from '../../utils';
 
 interface TableProps {
   thHeaders: string[];
@@ -83,14 +83,8 @@ const Table = ({ thHeaders, items, styleName, deleteFunction, itemType }: TableP
 
                       // si la valeur correspond au statut,
                       // on lui donne une classe et on change le texte
-                      if (value === 'open') {
-                        fragment = <p className="red-status">ouvert</p>;
-                      }
-                      if (value === 'closed') {
-                        fragment = <p className="blue-status">fermé</p>;
-                      }
-                      if (value === 'underway') {
-                        fragment = <p className="yellow-status">en cours</p>;
+                      if (thHeader === 'status') {
+                        fragment = <p className={ticketStatusClassName(value)}>{ticketStatusTraduction(value)}</p>;
                       }
 
                       // Si la valeur correspond à la date, on la formate
