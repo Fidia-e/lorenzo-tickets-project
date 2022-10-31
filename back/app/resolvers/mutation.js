@@ -52,7 +52,7 @@ module.exports = {
     return response;
   },
 
-  async UpdateEmployeePassword(_, args, { dataSources, user }) {
+  async updateEmployeePassword(_, args, { dataSources, user }) {
     if (!user) {
       throw new AuthenticationError('Vous devez être connecté pour supprimer un ticket');
     }
