@@ -70,39 +70,52 @@ const Ticket: FunctionComponent = () => {
   return (
     <div className="ticket-container">
       <h1>{ticket.title}</h1>
-      <div>Numéro du ticket: {ticket.id}</div>
-      <div>Bénéficiaire: {ticket.client?.email}</div>
-      <div>Entreprise: {ticket.client?.company}</div>
-      <div>Statut: {ticket.status}</div>
       <div>
-        Prise en charge:{' '}
-        {ticket.employees.map(employee => (
-          <span key={`employee${employee.id as number}`}>
-            {employee.lastname} {employee.firstname}
-          </span>
-        ))}
-      </div>
-      <div>Date de création: {<Moment format="DD/MM/YYYY">{ticket.created_at}</Moment>}</div>
-      {Boolean(ticket.updated_at) && (
         <div>
-          Dernière modification: <Moment format="DD/MM/YYYY">{ticket.updated_at}</Moment>
+          <span className="ticket-subtitle">Numéro du ticket:</span> {ticket.id}
         </div>
-      )}
+        <div>
+          <span className="ticket-subtitle">Bénéficiaire:</span> {ticket.client?.email}
+        </div>
+        <div>
+          <span className="ticket-subtitle">Entreprise:</span> {ticket.client?.company}
+        </div>
+        <div>
+          <span className="ticket-subtitle">Statut:</span> {ticket.status}
+        </div>
+        <div>
+          <span className="ticket-subtitle">Prise en charge:</span>{' '}
+          {ticket.employees.map(employee => (
+            <span key={`employee${employee.id as number}`}>
+              {employee.lastname} {employee.firstname}
+            </span>
+          ))}
+        </div>
+        <div>
+          <span className="ticket-subtitle">Date de création:</span>{' '}
+          {<Moment format="DD/MM/YYYY à HH:mm">{ticket.created_at}</Moment>}
+        </div>
+        {Boolean(ticket.updated_at) && (
+          <div>
+            <span className="ticket-subtitle">Dernière modification:</span>{' '}
+            <Moment format="DD/MM/YYYY à HH:mm">{ticket.updated_at}</Moment>
+          </div>
+        )}
 
-      <div>
-        <h2>Description:</h2>
-        <p>{ticket.content}</p>
+        <div>
+          <span className="ticket-subtitle">Description:</span> {ticket.content}
+        </div>
       </div>
 
-      <div>
-        <h2>Messages:</h2>
+      <div className="messages-ctn">
+        <h1 className="ticket-subtitle">Messages:</h1>
         {ticket.messages.map(message => (
-          <Message key={`message${message?.id as number}`} message={message} />
+          <Message key={`message${message?.id as number}`} message={message} clientId={ticket.client?.id as number} />
         ))}
       </div>
 
-      <div>
-        <form onSubmit={handleSubmit}>
+      <div className="messages-form-container">
+        <form className="messages-form" onSubmit={handleSubmit}>
           <FieldLongText
             identifier="nouveau-message"
             placeholder=""
@@ -111,7 +124,7 @@ const Ticket: FunctionComponent = () => {
             updateField={setNewMessageText}
             styleName=""
           />
-          <SubmitButton text="Envoyer" styleName="" />
+          <SubmitButton text="Envoyer" styleName="submit-button" />
         </form>
       </div>
     </div>

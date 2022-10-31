@@ -1,4 +1,36 @@
 .clients-container {
   .clients-table {
+    thead {
+      tr {
+        padding: 0.5rem 0;
+
+        th {
+          &:nth-child(2n) {
+            // email
+            width: 400px;
+          }
+
+          &:nth-child(3n) {
+            // company
+            width: 700px;
+          }
+
+          &:nth-child(4n) {
+            // created_at
+            width: 150px;
+          }
+
+          &:nth-child(5n) {
+            // updated_at
+            width: 150px;
+          }
+
+          &:nth-child(6n) {
+            // gestion
+            width: 70px;
+          }
+        }
+      }
+    }
   }
 }

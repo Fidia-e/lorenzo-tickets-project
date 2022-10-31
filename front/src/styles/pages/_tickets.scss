@@ -2,15 +2,42 @@
   .tickets-table {
     thead {
       tr {
-        .thead-table {
+        padding: 0.5rem 0;
+
+        th {
+          &:nth-child(2n) {
+            // titre
+            width: 300px;
+          }
+
           &:nth-child(3n) {
             // content
-            width: 650px;
+            width: auto;
+          }
+
+          &:nth-child(4n) {
+            // statut
+            width: 150px;
+          }
+
+          &:nth-child(5n) {
+            // client_id
+            width: 150px;
           }
 
           &:nth-child(6n) {
             // created_at
-            width: 200px;
+            width: 150px;
+          }
+
+          &:nth-child(7n) {
+            // updated_at
+            width: 150px;
+          }
+
+          &:nth-child(8n) {
+            // gestion
+            width: 100px;
           }
         }
       }

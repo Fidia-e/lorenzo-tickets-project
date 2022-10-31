@@ -11,7 +11,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    border: 1px solid $c-grey;
+    border: 1px solid $c-blue-grey;
+    background-color: $c-background;
     padding: 1rem;
 
     #ticket-content {
@@ -20,7 +21,7 @@
 
     .input-add-ticket-title {
       &::placeholder {
-        color: darken($c-grey, 40%);
+        color: #6c6a6a;
         font-family: monospace;
       }
     }
@@ -117,7 +118,7 @@
       .bubble-1 {
         width: 1000px;
         height: 800px;
-        top: 5%;
+        top: 0;
         right: 5%;
       }
     }
@@ -132,7 +133,6 @@
       .bubble-1 {
         width: 1200px;
         height: 800px;
-        top: 10%;
         right: 10%;
       }
     }
@@ -145,7 +145,6 @@
       .bubble-1 {
         width: 1300px;
         height: 1000px;
-        top: 5%;
         right: 15%;
       }
     }
