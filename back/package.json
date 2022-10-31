@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "initDB": "psql postgres -f ./data/init.sql; npm run resetDB",
     "resetDB": "psql dev -d lorenzo_tickets -f ./data/structure.sql; psql dev -d lorenzo_tickets -f ./data/data.sql",
-    "dev": "DEBUG=*,-express*,-body-parser*,-nodemon* CACHE_ENABLED=true DATALOADER_ENABLED=true npx nodemon --ext 'js,gql'",
+    "dev": "DEBUG=*,-express*,-body-parser*,-nodemon* DATALOADER_ENABLED=true npx nodemon --ext 'js,gql'",
     "devCache": "CACHE_ENABLED=true DEBUG=*,-express*,-body-parser*,-nodemon* npx nodemon --ext 'js,gql'",
     "devDataloader": "DATALOADER_ENABLED=true DEBUG=*,-express*,-body-parser*,-nodemon* npx nodemon --ext 'js,gql'",
     "devCacheDataloader": "CACHE_ENABLED=true DATALOADER_ENABLED=true DEBUG=*,-express*,-nodemon* npx nodemon --ext 'js,gql'",
