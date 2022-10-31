@@ -1,6 +1,7 @@
-import { Role, Employee } from '../../types';
+import { Role } from '../../apollo/__generated__/globalTypes';
+import { Employee } from '../../types';
 
-const { ADMIN, LEAD, INTERVENOR } = Role;
+const { admin, lead, intervenor } = Role;
 
 export const employeesTableHeaders: string[] = [
   'id',
@@ -10,7 +11,7 @@ export const employeesTableHeaders: string[] = [
   'password',
   'role',
   'created_at',
-  'updated_at'
+  'updated_at',
 ];
 
 export const employeesData: Employee[] = [
@@ -20,9 +21,9 @@ export const employeesData: Employee[] = [
     lastname: 'Nom employee 1',
     email: 'employee1@test.test',
     password: '1234',
-    role: ADMIN,
+    role: admin,
     created_at: '2022-10-10T19:24:00.292Z',
-    updated_at: null
+    updated_at: null,
   },
   {
     id: 2,
@@ -30,9 +31,9 @@ export const employeesData: Employee[] = [
     lastname: 'Nom employee 2',
     email: 'employee2@test.test',
     password: '1234',
-    role: LEAD,
+    role: lead,
     created_at: '2022-10-10T19:24:00.292Z',
-    updated_at: null
+    updated_at: null,
   },
   {
     id: 3,
@@ -40,9 +41,9 @@ export const employeesData: Employee[] = [
     lastname: 'Nom employee 3',
     email: 'employee3@test.test',
     password: '1234',
-    role: INTERVENOR,
+    role: intervenor,
     created_at: '2022-10-10T19:24:00.292Z',
-    updated_at: null
+    updated_at: null,
   },
   {
     id: 4,
@@ -50,9 +51,9 @@ export const employeesData: Employee[] = [
     lastname: 'Nom employee 4',
     email: 'employee4@test.test',
     password: '1234',
-    role: INTERVENOR,
+    role: intervenor,
     created_at: '2022-10-10T19:24:00.292Z',
-    updated_at: null
+    updated_at: null,
   },
   {
     id: 5,
@@ -60,8 +61,8 @@ export const employeesData: Employee[] = [
     lastname: 'Nom employee 5',
     email: 'employee5@test.test',
     password: '1234',
-    role: INTERVENOR,
+    role: intervenor,
     created_at: '2022-10-10T19:24:00.292Z',
-    updated_at: null
-  }
+    updated_at: null,
+  },
 ];

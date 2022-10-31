@@ -1,20 +1,11 @@
 import { Dispatch, SetStateAction } from 'react';
+import { Role, Status, UserType } from '../apollo/__generated__/globalTypes';
 
-export enum Status {
-  OPEN = 'open',
-  CLOSED = 'closed',
-  UNDERWAY = 'underway'
-}
-
-export enum Role {
-  ADMIN = 'admin',
-  LEAD = 'lead',
-  INTERVENOR = 'intervenor'
-}
-
-export enum UserType {
-  EMPLOYEE = 'employee',
-  CLIENT = 'client'
+export enum ItemType {
+  MESSAGE = 'Message',
+  TICKET = 'Ticket',
+  EMPLOYEE = 'Employee',
+  CLIENT = 'Client',
 }
 
 export interface FieldBaseProps {
