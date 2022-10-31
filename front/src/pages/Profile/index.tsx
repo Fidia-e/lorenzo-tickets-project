@@ -4,18 +4,18 @@ import { useMutation } from '@apollo/client';
 
 import { useUserContext } from '../../context/user';
 import SubmitButton from '../../components/SubmitButton';
-// import { UPDATE_EMPLOYEE_PASSWORD } from '../../apollo/mutations/updateEmployeePassword';
-// import {
-//   UpdateEmployeePassword,
-//   UpdateEmployeePasswordVariables,
-// } from '../../apollo/mutations/__generated__/updateEmployeePassword';
+import { UPDATE_EMPLOYEE_PASSWORD } from '../../apollo/mutations/updateEmployeePassword';
+import {
+  updateEmployeePassword,
+  updateEmployeePasswordVariables,
+} from '../../apollo/mutations/__generated__/updateEmployeePassword';
 
 const Profile: FunctionComponent = () => {
   const { user } = useUserContext();
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
-  const [updatePassword] = useMutation<UpdateEmployeePassword, UpdateEmployeePasswordVariables>(
+  const [updatePassword] = useMutation<updateEmployeePassword, updateEmployeePasswordVariables>(
     UPDATE_EMPLOYEE_PASSWORD,
     {
       variables: {
