@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 
 import Table from '../../components/Table';
 import { ticketsTableHeaders } from './constants';
@@ -15,8 +15,9 @@ import { useUserContext } from '../../context/user';
 import { DeleteTicket, DeleteTicketVariables } from '../../apollo/mutations/__generated__/DeleteTicket';
 import { DELETE_TICKET } from '../../apollo/mutations/deleteTicket';
 import { ItemType } from '../../utils';
+import Loader from '../../components/Loader';
 
-const Tickets: FunctionComponent = () => {
+const Tickets = (): ReactElement => {
   const { user } = useUserContext();
 
   const initialTickets: GetAllTickets_getAllTickets[] | GetAllTicketsByClientId_getAllTicketsByClientId[] = [];
@@ -24,6 +25,7 @@ const Tickets: FunctionComponent = () => {
   const [allTickets, setAllTickets] = useState(initialTickets);
   const deleteMessageError = 'Un problème est survenu lors de la suppression du ticket';
   const [deleteMessage, setDeleteMessage] = useState('');
+  const [loading, setLoading] = useState(true);
 
   const clearDeleteMessage = (): void => {
     setTimeout(() => {
@@ -35,9 +37,11 @@ const Tickets: FunctionComponent = () => {
   const [triggerGetAllTickets] = useLazyQuery<GetAllTickets>(GET_ALL_TICKETS, {
     onCompleted: data => {
       setAllTickets(data?.getAllTickets);
+      setLoading(false);
     },
     onError: error => {
       console.log(error);
+      setLoading(false);
     }
   });
 
@@ -85,13 +89,18 @@ const Tickets: FunctionComponent = () => {
     <div className="tickets-container">
       <h1>Page des tickets</h1>
       <p>{deleteMessage}</p>
-      <Table
-        thHeaders={ticketsTableHeaders}
-        items={allTickets}
-        styleName="table tickets-table"
-        deleteFunction={triggerDeleteTicket}
-        itemType={ItemType.TICKET}
-      />
+
+      {loading ? (
+        <Loader />
+      ) : (
+        <Table
+          thHeaders={ticketsTableHeaders}
+          items={allTickets}
+          styleName="table tickets-table"
+          deleteFunction={triggerDeleteTicket}
+          itemType={ItemType.TICKET}
+        />
+      )}
     </div>
   );
 };
