@@ -52,10 +52,12 @@ const Tickets = (): ReactElement => {
       onCompleted: data => {
         if (data !== null) {
           setAllTickets(data.getAllTicketsByClientId as GetAllTicketsByClientId_getAllTicketsByClientId[]);
+          setLoading(false);
         }
       },
       onError: error => {
         console.log(error);
+        setLoading(false);
       },
     }
   );
