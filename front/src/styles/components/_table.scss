@@ -54,7 +54,6 @@
         text-align: center;
         border-left: 1px solid $c-blue-grey;
         padding: 0.3rem;
-        // margin: auto;
 
         &:nth-child(-n + 1) {
           background-color: $c-text;
@@ -72,6 +71,7 @@
       .edit,
       .delete {
         font-size: 1.5rem;
+        cursor: pointer;
       }
 
       .blue {
