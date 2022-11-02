@@ -2,7 +2,7 @@ import { useState, FunctionComponent } from 'react';
 
 import Table from '../../components/Table';
 import { messagesTableHeaders, messagesData } from './constants';
-import Loader from '../../components/Loader';
+// import Loader from '../../components/Loader';
 import { ItemType } from '../../types';
 
 const Messages: FunctionComponent = () => {
@@ -14,16 +14,16 @@ const Messages: FunctionComponent = () => {
   return (
     <div className="messages-container">
       <h1>Page des messages</h1>
-      {loading ? (
+      {/* {loading ? (
         <Loader />
-      ) : (
-        <Table
-          thHeaders={messagesTableHeaders}
-          items={messagesData}
-          styleName="table messages-table"
-          itemType={ItemType.MESSAGE}
-        />
-      )}
+      ) : ( */}
+      <Table
+        thHeaders={messagesTableHeaders}
+        items={messagesData}
+        styleName="table messages-table"
+        itemType={ItemType.MESSAGE}
+      />
+      {/*  )} */}
     </div>
   );
 };
