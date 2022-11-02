@@ -81,7 +81,7 @@ const Ticket: FunctionComponent = () => {
     },
     onCompleted: data => {
       setNewMessageText('');
-      void triggerGetTicketById(); // On refait la requête pour avoir le nouveau message
+      void triggerGetTicketById(); // On refait la requête pour avoir les infos à jour
     },
     onError: error => {
       console.log(error);
@@ -96,11 +96,9 @@ const Ticket: FunctionComponent = () => {
       },
     },
     onCompleted: data => {
-      setIsEmployeeHandlingTicket(true);
-      void triggerGetTicketById(); // On refait la requête pour avoir le nouveau message
+      void triggerGetTicketById(); // On refait la requête pour avoir les infos à jour
     },
     onError: error => {
-      setIsEmployeeHandlingTicket(false);
       console.log(error);
     },
   });
@@ -115,11 +113,9 @@ const Ticket: FunctionComponent = () => {
         },
       },
       onCompleted: data => {
-        setIsEmployeeHandlingTicket(true);
-        void triggerGetTicketById(); // On refait la requête pour avoir le nouveau message
+        void triggerGetTicketById(); // On refait la requête pour avoir les infos à jour
       },
       onError: error => {
-        setIsEmployeeHandlingTicket(false);
         console.log(error);
       },
     }
