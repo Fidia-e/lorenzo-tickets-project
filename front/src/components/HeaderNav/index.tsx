@@ -29,9 +29,11 @@ const HeaderNav = ({ setIsNavVisible, logout }: HeaderNaveProps): ReactElement =
       <NavLink onClick={handleClick} to="/accueil" className={({ isActive }) => isActiveClassName(isActive)}>
         Accueil
       </NavLink>
-      <NavLink onClick={handleClick} to="/creer-un-ticket" className={({ isActive }) => isActiveClassName(isActive)}>
-        Créer un ticket
-      </NavLink>
+      {user.role === 'admin' && (
+        <NavLink onClick={handleClick} to="/creer-un-ticket" className={({ isActive }) => isActiveClassName(isActive)}>
+          Créer un ticket
+        </NavLink>
+      )}
       <NavLink onClick={handleClick} to="/tickets" className={({ isActive }) => isActiveClassName(isActive)}>
         Tickets
       </NavLink>
