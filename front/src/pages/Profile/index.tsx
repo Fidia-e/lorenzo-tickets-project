@@ -14,6 +14,8 @@ const Profile: FunctionComponent = () => {
   const { user } = useUserContext();
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState(false);
 
   const [updatePassword] = useMutation<updateEmployeePassword, updateEmployeePasswordVariables>(
     UPDATE_EMPLOYEE_PASSWORD,
@@ -25,11 +27,16 @@ const Profile: FunctionComponent = () => {
         },
       },
       onCompleted: data => {
-        alert('mot de passe mis a jour !');
+        setSuccessMessage(true);
         setNewPassword('');
         setConfirmNewPassword('');
+        setErrorMessage('');
       },
       onError: error => {
+        setSuccessMessage(false);
+        setNewPassword('');
+        setConfirmNewPassword('');
+        setErrorMessage('Une erreur est survenue lors de la mise à jour de votre mot de passe');
         console.log(error);
       },
     }
@@ -37,11 +44,33 @@ const Profile: FunctionComponent = () => {
 
   const handleSubmit = (event: FormEvent): void => {
     event.preventDefault();
-    console.log(event);
-    if (confirmNewPassword === newPassword) {
-      void updatePassword();
-    } else {
-      alert('Vos mot de passe ne correspondent pas ');
+    // Mot de passe validation
+    if (confirmNewPassword !== newPassword) {
+      setNewPassword('');
+      setConfirmNewPassword('');
+      setErrorMessage('Vos mot de passe ne correspondent pas');
+    } else if (confirmNewPassword === newPassword) {
+      // Entre 8 et 128 caractères
+      const hasRightLenght = newPassword.length >= 8 && newPassword.length <= 128;
+      // A une lettre majuscule
+      const hasUpperCase = /[A-Z]/.test(newPassword);
+      // A une lettre minuscule
+      const hasLowerCase = /[a-z]/.test(newPassword);
+      // A un chiffre
+      const hasNumbers = /\d/.test(newPassword);
+      // A un caractère spécial
+      const hasNonalphas = /\W/.test(newPassword);
+
+      if (hasRightLenght && hasUpperCase && hasLowerCase && hasNumbers && hasNonalphas) {
+        // Mot de passe valide, requête envoyé
+        void updatePassword();
+      } else {
+        setNewPassword('');
+        setConfirmNewPassword('');
+        setErrorMessage(
+          'Votre mot de passe doit être entre 8 et 128 caractères de long et doit contenir une majuscule, une minuscule, un chiffre et un caractère spécial'
+        );
+      }
     }
   };
 
@@ -52,8 +81,10 @@ const Profile: FunctionComponent = () => {
         <p>Nom : {user.lastname}</p>
         <p>Prenom : {user.firstname}</p>
         <p>Adresse email : {user.email}</p>
+        <p>Modification de votre mot de passe :</p>
+        {successMessage && <p className="profile-success">Votre nouveau mot de passe à bien été pris en compte</p>}
+        {errorMessage.length !== 0 && <p className="profile-error">{errorMessage}</p>}
       </div>
-      <h2>Modification de votre mot de passe</h2>
       <form className="change-password-form" onSubmit={handleSubmit}>
         <Field
           styleName=""

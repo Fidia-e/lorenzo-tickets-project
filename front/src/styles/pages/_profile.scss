@@ -1,2 +1,36 @@
 .profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 auto;
+
+  .profile-success {
+    width: 300px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    background-color: $c-status-closed;
+  }
+
+  .profile-error {
+    width: 300px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    background-color: $c-status-open;
+  }
+
+  .change-password-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      border: 1px solid $c-text;
+      width: 200px;
+    }
+  }
 }
