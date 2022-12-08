@@ -18,6 +18,7 @@ const EmployeeLogin = ({ setError }: UserLoginProps): ReactElement => {
   const navigate = useNavigate();
 
   const [triggerSignin] = useLazyQuery<Signin, SigninVariables>(SIGNIN, {
+    fetchPolicy: 'no-cache', // Pas de cache afin que la page soit à jour lors du changement d'un mot de passe
     onCompleted: data => {
       const newUser: UserLogged = {
         id: data.signin.id as number,

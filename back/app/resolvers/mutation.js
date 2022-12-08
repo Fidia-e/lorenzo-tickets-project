@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server');
 const bcrypt = require('bcrypt');
+const { schemaUpdateEmployeePassword } = require('../validation/mutation');
 
 module.exports = {
   async createTicket(_, args, { dataSources, user }) {
@@ -58,9 +59,18 @@ module.exports = {
     }
 
     const data = args.input;
-    const pwd = data.password;
+    const password = data.password;
 
-    const employeeNewPwdCrypt = await bcrypt.hash(pwd, 10);
+    // Joi validation des données
+    const validatedPassword = schemaUpdateEmployeePassword.validate({ password });
+
+    // Si la validation ne passe pas
+    if (validatedPassword.error !== undefined) {
+      throw new Error('Non valid password');
+    }
+
+    // Si la validation passe on hash le mot de passe et le met à jour dans la bdd
+    const employeeNewPwdCrypt = await bcrypt.hash(password, 10);
 
     const updatedPasswordInput = { ...data, password: employeeNewPwdCrypt };
 
