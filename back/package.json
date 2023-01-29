@@ -19,9 +19,11 @@
   "dependencies": {
     "apollo-server": "^3.10.2",
     "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
     "dataloader": "^2.1.0",
     "datasource-sql": "^2.0.1",
     "dotenv": "^16.0.2",
+    "express": "^4.18.2",
     "graphql": "^16.6.0",
     "graphql-depth-limit": "^1.1.0",
     "graphql-scalars": "^1.18.0",
