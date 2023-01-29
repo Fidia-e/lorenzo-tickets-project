@@ -5,7 +5,7 @@ const { schemaUpdateEmployeePassword } = require('../validation/mutation');
 module.exports = {
   async createTicket(_, args, { dataSources, user }) {
     if (!user) {
-      throw new AuthenticationError('Vous devez être connecté pour créer un ticket');
+      throw new AuthenticationError('Vous devez être connecté pour effectuer cette action');
     }
 
     const data = args.input;
@@ -19,7 +19,7 @@ module.exports = {
 
   async createMessage(_, args, { dataSources, user }) {
     if (!user) {
-      throw new AuthenticationError('Vous devez être connecté pour ajouter un message');
+      throw new AuthenticationError('Vous devez être connecté pour effectuer cette action');
     }
 
     const data = args.input;
@@ -33,7 +33,7 @@ module.exports = {
 
   async deleteTicket(_, args, { dataSources, user }) {
     if (!user) {
-      throw new AuthenticationError('Vous devez être connecté pour supprimer un ticket');
+      throw new AuthenticationError('Vous devez être connecté pour effectuer cette action');
     }
 
     const response = await dataSources.ticket.delete(args.id);
@@ -55,7 +55,7 @@ module.exports = {
 
   async updateEmployeePassword(_, args, { dataSources, user }) {
     if (!user) {
-      throw new AuthenticationError('Vous devez être connecté pour supprimer un ticket');
+      throw new AuthenticationError('Vous devez être connecté pour effectuer cette action');
     }
 
     const data = args.input;
